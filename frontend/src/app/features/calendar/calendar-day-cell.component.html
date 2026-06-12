@@ -1,4 +1,4 @@
-<mat-card class="day-card" (click)="openDayDetail()" data-testid="day-cell">
+<mat-card class="day-card" [class.day-card--filled]="!!day().meal" (click)="openDayDetail()" data-testid="day-cell">
   <div class="day-card__header">
     <span class="day-card__number">{{ day().dayNumber }}</span>
     <span class="day-card__weekday">{{ day().weekdayLabel }}</span>

@@ -3,9 +3,8 @@
   gap: 1rem;
   min-height: 100dvh;
   padding: 1rem 1rem 1.4rem;
-  background:
-    radial-gradient(circle at top right, rgba(252, 213, 129, 0.24), transparent 24%),
-    linear-gradient(180deg, #fffefb 0%, #fff8e8 100%);
+  color: var(--color-sabro-orange);
+  background: var(--color-sabro-forest);
 }
 
 .editor__header,
@@ -23,8 +22,8 @@
 
 .editor__header p {
   margin-bottom: 0.25rem;
-  color: var(--app-text-muted);
-  font-family: var(--app-ui-font);
+  color: rgba(255, 184, 69, 0.82);
+  font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.78rem;
@@ -34,6 +33,7 @@
   font-family: var(--app-display-font);
   font-size: 1.75rem;
   line-height: 1;
+  color: var(--color-sabro-orange);
 }
 
 .editor__form {
@@ -64,18 +64,23 @@
 
 .editor__section-header p {
   margin-bottom: 0.2rem;
-  color: var(--app-text-muted);
-  font-family: var(--app-ui-font);
+  color: rgba(255, 184, 69, 0.82);
+  font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.74rem;
 }
 
+.editor__section-header h3,
+.dish-form__header h4 {
+  color: var(--color-sabro-orange);
+}
+
 .dish-form {
   padding: 0.95rem;
-  border: 1px solid var(--app-border-subtle);
+  border: 1px solid rgba(255, 184, 69, 0.38);
   border-radius: var(--app-radius-md);
-  background: var(--app-surface-base);
+  background: var(--color-sabro-chili);
   box-shadow: var(--app-shadow-card);
 }
 
@@ -83,8 +88,9 @@
   margin: 0;
   padding: 0.85rem 1rem;
   border-radius: 0.95rem;
-  color: var(--color-dark-amaranth);
-  background: rgba(213, 41, 65, 0.1);
+  color: var(--app-text-inverse);
+  background: rgba(231, 54, 46, 0.92);
+  border: 1px solid rgba(255, 184, 69, 0.38);
 }
 
 .editor__actions {
@@ -92,5 +98,47 @@
 }
 
 .editor__delete {
-  color: var(--color-dark-amaranth);
+  color: var(--color-sabro-orange);
+}
+
+:host ::ng-deep .editor .mat-mdc-stroked-button:not(:disabled) {
+  border-color: var(--color-sabro-orange) !important;
+  background: var(--color-sabro-chili);
+  color: var(--color-sabro-orange) !important;
+}
+
+:host ::ng-deep .editor .mat-mdc-stroked-button:not(:disabled):hover {
+  border-color: var(--color-sabro-orange) !important;
+  background: #bf271f;
+  color: var(--color-sabro-orange) !important;
+}
+
+:host ::ng-deep .editor .mat-mdc-unelevated-button:not(:disabled) {
+  background: var(--color-sabro-chili);
+  color: var(--color-sabro-orange) !important;
+}
+
+:host ::ng-deep .editor .mat-mdc-button:not(:disabled) {
+  color: var(--color-sabro-orange) !important;
+}
+
+:host ::ng-deep .editor .mat-mdc-text-field-wrapper {
+  background: rgba(231, 54, 46, 0.92) !important;
+}
+
+:host ::ng-deep .editor .mdc-notched-outline__leading,
+:host ::ng-deep .editor .mdc-notched-outline__notch,
+:host ::ng-deep .editor .mdc-notched-outline__trailing {
+  border-color: rgba(255, 184, 69, 0.44) !important;
+}
+
+:host ::ng-deep .editor .mdc-floating-label,
+:host ::ng-deep .editor input,
+:host ::ng-deep .editor textarea,
+:host ::ng-deep .editor .mat-mdc-select-value,
+:host ::ng-deep .editor .mat-mdc-select-arrow,
+:host ::ng-deep .editor .mat-mdc-form-field-hint,
+:host ::ng-deep .editor .mat-mdc-form-field-error,
+:host ::ng-deep .editor .mat-mdc-form-field-required-marker {
+  color: var(--color-sabro-orange) !important;
 }

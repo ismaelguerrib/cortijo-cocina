@@ -17,7 +17,7 @@
 .sheet__header p {
   margin-bottom: 0.35rem;
   color: var(--app-text-muted);
-  font-family: var(--app-ui-font);
+  font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.78rem;
@@ -34,14 +34,13 @@
   gap: 0.9rem;
   padding: 1rem;
   border-radius: var(--app-radius-lg);
-  background:
-    radial-gradient(circle at top right, rgba(252, 213, 129, 0.16), transparent 28%),
-    var(--app-surface-base);
-  border: 1px solid var(--app-border-subtle);
+  background: var(--app-surface-orange);
+  border: 1px solid rgba(255, 184, 69, 0.72);
   box-shadow: var(--app-shadow-card);
 }
 
 .meal-card--empty {
+  background: var(--app-surface-base);
   justify-items: start;
 }
 
@@ -63,7 +62,7 @@
 .meal-card__eyebrow {
   margin: 0 0 0.3rem;
   color: var(--app-text-muted);
-  font-family: var(--app-ui-font);
+  font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.72rem;
@@ -73,8 +72,8 @@
 .dish-card__header span {
   padding: 0.35rem 0.55rem;
   border-radius: var(--app-radius-pill);
-  background: rgba(213, 41, 65, 0.1);
-  color: var(--color-raspberry);
+  background: rgba(231, 54, 46, 0.14);
+  color: var(--color-sabro-chili);
   font-family: var(--app-ui-font);
   font-size: 0.78rem;
   font-weight: 700;
@@ -91,7 +90,7 @@
   padding: 0.9rem;
   border-radius: var(--app-radius-md);
   background: var(--app-surface-raised);
-  border: 1px solid var(--app-border-subtle);
+  border: 1px solid rgba(43, 107, 77, 0.2);
 }
 
 .dish-card__recipe {

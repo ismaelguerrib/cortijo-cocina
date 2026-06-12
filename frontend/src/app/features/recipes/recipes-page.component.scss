@@ -19,10 +19,7 @@
   padding: 1.1rem;
   border: 1px solid var(--app-border-subtle);
   border-radius: var(--app-radius-xl);
-  background:
-    radial-gradient(circle at top right, rgba(213, 41, 65, 0.12), transparent 32%),
-    radial-gradient(circle at bottom left, rgba(252, 213, 129, 0.22), transparent 28%),
-    var(--app-surface-base);
+  background: var(--app-surface-purple);
   box-shadow: var(--app-shadow-card);
   backdrop-filter: blur(12px);
 }
@@ -42,7 +39,7 @@
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.8rem;
-  font-family: var(--app-ui-font);
+  font-family: var(--app-subtitle-font);
   font-weight: 700;
 }
 
@@ -112,7 +109,7 @@
 
 .recipe-card__meal {
   font-weight: 700;
-  color: var(--color-dark-amaranth);
+  color: var(--color-sabro-forest);
 }
 
 .recipe-card__recipe {

@@ -2,11 +2,15 @@
   <header class="app-shell__header">
     <div class="app-shell__brand-block">
       <a routerLink="/calendrier" class="app-shell__brand">Cortijo Cocina</a>
-      <p class="app-shell__tagline">Repas familiaux, votes gourmands et recettes vivantes</p>
+      <p class="app-shell__tagline">Los Hamdanos vacaciones</p>
     </div>
 
     <nav class="app-shell__nav" aria-label="Navigation principale">
-      <a routerLink="/calendrier" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+      <a
+        routerLink="/calendrier"
+        routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
         Calendrier
       </a>
       <a routerLink="/recettes" routerLinkActive="is-active">Recettes</a>
