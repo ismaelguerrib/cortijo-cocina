@@ -152,23 +152,18 @@
   color: var(--color-sabro-forest) !important;
 }
 
-.day-card__action--create.mat-mdc-button:not(:disabled) {
-  padding-inline: 0 !important;
-  padding-block: 0 !important;
+.day-card__action--create {
+  padding: 0;
   min-width: 0;
-  border: 0 !important;
-  background: transparent !important;
-  color: var(--color-sabro-chili) !important;
+  border: 0;
+  background: transparent;
+  color: var(--color-sabro-chili);
   box-shadow: none;
-}
-
-.day-card__action--create.mat-mdc-button:not(:disabled):hover {
-  border: 0 !important;
-  background: transparent !important;
-  color: var(--color-sabro-chili) !important;
-  text-decoration: underline;
-  text-decoration-thickness: var(--app-underline-thickness);
-  text-underline-offset: 0.18em;
+  border-radius: 0;
+  appearance: none;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
 }
 
 @media (min-width: size.$bp-md) {
