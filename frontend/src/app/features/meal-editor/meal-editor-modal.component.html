@@ -1,0 +1,99 @@
+<section class="editor">
+  <header class="editor__header">
+    <div>
+      <p>{{ isEditing() ? 'Modifier' : 'Créer' }} un repas</p>
+      <h2>{{ isEditing() ? 'Mettre à jour la journée' : 'Nouveau repas' }}</h2>
+    </div>
+
+    <button mat-stroked-button type="button" (click)="close()">Fermer</button>
+  </header>
+
+  <form class="editor__form" [formGroup]="form" (ngSubmit)="submit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <input matInput type="date" formControlName="mealDate" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Titre</mat-label>
+      <input matInput maxlength="150" formControlName="title" />
+      <mat-hint align="end">{{ form.controls.title.value.length }}/150</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput rows="4" formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Préparateurs</mat-label>
+      <mat-select formControlName="assignees" multiple data-testid="assignees-select">
+        @for (member of familyMembers; track member.value) {
+          <mat-option [value]="member.value">{{ member.label }}</mat-option>
+        }
+      </mat-select>
+      @if (form.controls.assignees.invalid && form.controls.assignees.touched) {
+        <mat-error>Sélectionnez au moins un préparateur.</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Votes cumulés</mat-label>
+      <input matInput type="number" min="0" max="9999" formControlName="voteCount" />
+    </mat-form-field>
+
+    <section class="editor__dishes">
+      <div class="editor__section-header">
+        <div>
+          <p>Plats</p>
+          <h3>Recettes et photos</h3>
+        </div>
+
+        <button mat-stroked-button type="button" (click)="addDish()">Ajouter un plat</button>
+      </div>
+
+      @for (dishGroup of dishGroups; track $index; let index = $index) {
+        <article class="dish-form" [formGroup]="dishGroup">
+          <div class="dish-form__header">
+            <h4>Plat {{ index + 1 }}</h4>
+            <button mat-button type="button" (click)="removeDish(index)" [disabled]="dishGroups.length === 1">
+              Supprimer
+            </button>
+          </div>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Nom du plat</mat-label>
+            <input matInput maxlength="150" formControlName="title" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Recette</mat-label>
+            <textarea matInput rows="5" formControlName="recipe"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Photos (une URL par ligne)</mat-label>
+            <textarea matInput rows="4" formControlName="photoUrlsText"></textarea>
+            @if (dishGroup.controls.photoUrlsText.invalid && dishGroup.controls.photoUrlsText.touched) {
+              <mat-error>Ajoutez au moins une photo pour ce plat.</mat-error>
+            }
+          </mat-form-field>
+        </article>
+      }
+    </section>
+
+    @if (errorMessage(); as errorMessageText) {
+      <p class="editor__error" role="alert">{{ errorMessageText }}</p>
+    }
+
+    <footer class="editor__actions">
+      @if (isEditing()) {
+        <button mat-button type="button" class="editor__delete" (click)="deleteMeal()">Supprimer</button>
+      }
+
+      <button mat-flat-button type="submit" [disabled]="saving()">
+        {{ saving() ? 'Enregistrement…' : 'Enregistrer' }}
+      </button>
+    </footer>
+  </form>
+</section>

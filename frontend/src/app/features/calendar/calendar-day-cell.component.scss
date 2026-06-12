@@ -1,0 +1,98 @@
+.day-card {
+  display: grid;
+  gap: 0.45rem;
+  min-height: 7.8rem;
+  padding: 0.75rem 0.65rem 0.55rem;
+  border: 1px solid rgba(107, 63, 29, 0.08);
+  border-radius: 1.1rem;
+  background: rgba(255, 252, 247, 0.92);
+  box-shadow: 0 14px 28px rgba(91, 52, 17, 0.06);
+  cursor: pointer;
+}
+
+.day-card__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.day-card__number {
+  font-family: var(--app-display-font);
+  font-size: 1.65rem;
+  line-height: 1;
+  color: #6b3717;
+}
+
+.day-card__weekday {
+  color: rgba(91, 52, 17, 0.7);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.day-card__content,
+.day-card__empty {
+  display: grid;
+  gap: 0.38rem;
+}
+
+.day-card__title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.day-card__title-row h3,
+.day-card__meta,
+.day-card__preview,
+.day-card__assignees,
+.day-card__empty p,
+.day-card__empty span {
+  margin: 0;
+}
+
+.day-card__title-row h3 {
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.day-card__votes {
+  min-width: 1.8rem;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(139, 74, 34, 0.1);
+  color: #8b4a22;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.day-card__meta,
+.day-card__assignees,
+.day-card__empty span {
+  color: var(--app-text-muted);
+  font-size: 0.78rem;
+}
+
+.day-card__preview {
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.day-card__action {
+  justify-self: start;
+  margin-top: auto;
+}
+
+@media (max-width: 767px) {
+  .day-card {
+    min-height: 8.5rem;
+    padding-inline: 0.45rem;
+  }
+
+  .day-card__number {
+    font-size: 1.35rem;
+  }
+}

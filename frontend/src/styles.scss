@@ -1,0 +1,49 @@
+:root {
+  --app-display-font: 'Iowan Old Style', 'Palatino Linotype', serif;
+  --app-body-font: 'Avenir Next', 'Segoe UI Variable Text', sans-serif;
+  --app-text-color: #41250f;
+  --app-text-muted: rgba(65, 37, 15, 0.72);
+  --mat-sys-primary: #8b4a22;
+  --mat-sys-on-primary: #fff6ef;
+  --mat-sys-surface: #fffaf4;
+  --mat-sys-on-surface: #41250f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--app-body-font);
+  color: var(--app-text-color);
+  background: #fff7eb;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.mat-bottom-sheet-container.day-detail-sheet {
+  border-radius: 1.6rem 1.6rem 0 0;
+  background: linear-gradient(180deg, #fffdf9 0%, #fff5e7 100%);
+}
+
+.mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
+  border-radius: 1.8rem 1.8rem 0 0;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
+    border-radius: 1.8rem;
+  }
+}

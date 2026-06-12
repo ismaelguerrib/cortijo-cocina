@@ -1,0 +1,41 @@
+import { CALENDAR_WEEKDAY_LABELS } from '../../core/constants/calendar.constants';
+import { MealAssignment } from '../../core/models/meal-assignment.model';
+
+export interface CalendarDay {
+  isoDate: string;
+  dayNumber: number;
+  weekdayLabel: string;
+  meal?: MealAssignment;
+}
+
+const mondayBasedIndex = (date: Date): number => {
+  const day = date.getDay();
+  return day === 0 ? 6 : day - 1;
+};
+
+export const buildAugust2026CalendarDays = (
+  mealsByDate: Map<string, MealAssignment>
+): CalendarDay[] =>
+  Array.from({ length: 31 }, (_, index) => {
+    const dayNumber = index + 1;
+    const isoDate = `2026-08-${String(dayNumber).padStart(2, '0')}`;
+    const date = new Date(`${isoDate}T12:00:00`);
+
+    return {
+      isoDate,
+      dayNumber,
+      weekdayLabel: CALENDAR_WEEKDAY_LABELS[mondayBasedIndex(date)],
+      meal: mealsByDate.get(isoDate)
+    };
+  });
+
+export const buildCalendarGridCells = (days: CalendarDay[]): Array<CalendarDay | null> => {
+  if (days.length === 0) {
+    return [];
+  }
+
+  const firstDay = new Date(`${days[0].isoDate}T12:00:00`);
+  const startOffset = mondayBasedIndex(firstDay);
+
+  return [...Array.from({ length: startOffset }, () => null), ...days];
+};

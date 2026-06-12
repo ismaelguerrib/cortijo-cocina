@@ -1,0 +1,23 @@
+<section class="calendar-grid" aria-label="Calendrier du mois d'août 2026">
+  <div class="calendar-grid__scroll">
+    <div class="calendar-grid__weekdays">
+      @for (weekdayLabel of weekdayLabels(); track weekdayLabel) {
+        <span>{{ weekdayLabel }}</span>
+      }
+    </div>
+
+    <div class="calendar-grid__cells">
+      @for (cell of cells(); track cell?.isoDate ?? $index) {
+        @if (cell) {
+          <app-calendar-day-cell
+            [day]="cell"
+            (daySelected)="daySelected.emit($event)"
+            (mealSelected)="mealSelected.emit($event)"
+          />
+        } @else {
+          <div class="calendar-grid__placeholder" aria-hidden="true"></div>
+        }
+      }
+    </div>
+  </div>
+</section>

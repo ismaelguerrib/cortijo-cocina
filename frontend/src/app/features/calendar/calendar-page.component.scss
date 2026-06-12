@@ -1,0 +1,67 @@
+:host {
+  display: block;
+}
+
+.calendar-page {
+  min-height: 100dvh;
+  padding: 1rem 0.9rem 2rem;
+  background:
+    radial-gradient(circle at top left, rgba(255, 219, 168, 0.9), transparent 28%),
+    radial-gradient(circle at top right, rgba(211, 92, 41, 0.16), transparent 34%),
+    linear-gradient(180deg, #fff8ee 0%, #f8efe0 42%, #f4ead6 100%);
+}
+
+.hero {
+  display: grid;
+  gap: 1rem;
+  margin: 0 auto 1rem;
+  max-width: 72rem;
+}
+
+.hero__meta {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid rgba(91, 52, 17, 0.12);
+  border-radius: 1.4rem;
+  background: rgba(255, 251, 245, 0.92);
+  box-shadow: 0 18px 38px rgba(91, 52, 17, 0.08);
+}
+
+.hero__meta p {
+  margin: 0;
+  color: var(--app-text-muted);
+}
+
+.feedback {
+  max-width: 72rem;
+  margin: 0 auto 1rem;
+  padding: 0.9rem 1rem;
+  border-radius: 1rem;
+  font-weight: 600;
+}
+
+.feedback--error {
+  color: #7e2513;
+  background: rgba(255, 228, 221, 0.95);
+  border: 1px solid rgba(126, 37, 19, 0.2);
+}
+
+.loading-state {
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  padding: 3rem 1rem;
+  color: var(--app-text-muted);
+}
+
+@media (min-width: 768px) {
+  .calendar-page {
+    padding-inline: 1.4rem;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1.4fr) minmax(20rem, 0.8fr);
+    align-items: stretch;
+  }
+}

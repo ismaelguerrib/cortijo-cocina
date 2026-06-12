@@ -1,0 +1,28 @@
+<mat-card class="day-card" (click)="openDayDetail()" data-testid="day-cell">
+  <div class="day-card__header">
+    <span class="day-card__number">{{ day().dayNumber }}</span>
+    <span class="day-card__weekday">{{ day().weekdayLabel }}</span>
+  </div>
+
+  @if (day().meal; as meal) {
+    <div class="day-card__content">
+      <div class="day-card__title-row">
+        <h3>{{ meal.title }}</h3>
+        <span class="day-card__votes">{{ meal.voteCount }}</span>
+      </div>
+
+      <p class="day-card__meta">{{ meal.dishes.length }} plat{{ meal.dishes.length > 1 ? 's' : '' }}</p>
+      <p class="day-card__preview">{{ dishPreview() }}</p>
+      <p class="day-card__assignees">{{ assigneeSummary() }}</p>
+    </div>
+  } @else {
+    <div class="day-card__empty">
+      <p>Aucun repas</p>
+      <span>Ajoute le menu du jour</span>
+    </div>
+  }
+
+  <button mat-stroked-button type="button" class="day-card__action" (click)="openMealEditor($event)">
+    {{ day().meal ? 'Modifier' : 'Créer' }}
+  </button>
+</mat-card>

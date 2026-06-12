@@ -1,0 +1,14 @@
+<div class="app-shell">
+  <header class="app-shell__header">
+    <a routerLink="/calendrier" class="app-shell__brand">Cortijo Cocina</a>
+
+    <nav class="app-shell__nav" aria-label="Navigation principale">
+      <a routerLink="/calendrier" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+        Calendrier
+      </a>
+      <a routerLink="/recettes" routerLinkActive="is-active">Recettes</a>
+    </nav>
+  </header>
+
+  <router-outlet />
+</div>

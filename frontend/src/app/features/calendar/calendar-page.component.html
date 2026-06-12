@@ -1,0 +1,32 @@
+<main class="calendar-page">
+  <section class="hero">
+    <app-calendar-page-title [monthLabel]="monthLabel" />
+
+    <div class="hero__meta">
+      <p>
+        Un seul repas par jour, enrichi de votes, de plusieurs plats, de leurs recettes et de leurs photos.
+      </p>
+      <p>Ouvre une journée pour compléter le repas, ou consulte l’onglet recettes pour revoir toutes les fiches déjà produites.</p>
+    </div>
+  </section>
+
+  @if (error(); as errorMessage) {
+    <section class="feedback feedback--error" role="alert">
+      {{ errorMessage }}
+    </section>
+  }
+
+  @if (loading()) {
+    <section class="loading-state" aria-live="polite">
+      <mat-spinner diameter="42" />
+      <p>Chargement du calendrier…</p>
+    </section>
+  } @else {
+    <app-calendar-grid
+      [days]="days()"
+      [weekdayLabels]="weekdayLabels"
+      (daySelected)="openDayDetail($event)"
+      (mealSelected)="openMealEditor($event.date, $event.meal)"
+    />
+  }
+</main>
