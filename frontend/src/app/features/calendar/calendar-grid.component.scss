@@ -6,7 +6,7 @@
 }
 
 .calendar-grid__scroll {
-  overflow-x: auto;
+  overflow-x: clip;
   padding-bottom: var(--app-space-3xs);
 }
 
@@ -14,8 +14,8 @@
 .calendar-grid__cells {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: var(--app-space-xs);
-  min-width: var(--app-calendar-grid-min-inline);
+  gap: var(--app-space-2xs);
+  min-width: 0;
 }
 
 .calendar-grid__weekdays {
@@ -40,7 +40,6 @@
   .calendar-grid__weekdays,
   .calendar-grid__cells {
     gap: var(--app-space-sm);
-    min-width: 0;
   }
 
   .calendar-grid__placeholder {
