@@ -1,10 +1,6 @@
 .recipes-page {
   min-height: 100dvh;
   padding: 1rem 0.9rem 2rem;
-  background:
-    radial-gradient(circle at top left, rgba(255, 210, 140, 0.84), transparent 24%),
-    radial-gradient(circle at right center, rgba(184, 96, 54, 0.14), transparent 28%),
-    linear-gradient(180deg, #fffaf2 0%, #fff2e1 45%, #f7ebdc 100%);
 }
 
 .recipes-hero,
@@ -20,6 +16,15 @@
   display: grid;
   gap: 1rem;
   margin-bottom: 1rem;
+  padding: 1.1rem;
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--app-radius-xl);
+  background:
+    radial-gradient(circle at top right, rgba(213, 41, 65, 0.12), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(252, 213, 129, 0.22), transparent 28%),
+    var(--app-surface-base);
+  box-shadow: var(--app-shadow-card);
+  backdrop-filter: blur(12px);
 }
 
 .recipes-hero__copy {
@@ -37,25 +42,14 @@
   text-transform: uppercase;
   letter-spacing: 0.14em;
   font-size: 0.8rem;
+  font-family: var(--app-ui-font);
+  font-weight: 700;
 }
 
 .recipes-hero__copy h1 {
   font-family: var(--app-display-font);
   font-size: clamp(2rem, 5vw, 3.25rem);
-  line-height: 0.94;
-}
-
-.feedback {
-  margin-bottom: 1rem;
-  padding: 0.9rem 1rem;
-  border-radius: 1rem;
-  font-weight: 600;
-}
-
-.feedback--error {
-  color: #7e2513;
-  background: rgba(255, 228, 221, 0.95);
-  border: 1px solid rgba(126, 37, 19, 0.2);
+  line-height: 0.96;
 }
 
 .loading-state,
@@ -63,7 +57,6 @@
   display: grid;
   justify-items: center;
   gap: 0.9rem;
-  padding: 3rem 1rem;
   color: var(--app-text-muted);
 }
 
@@ -74,10 +67,11 @@
 
 .recipe-card {
   overflow: hidden;
-  border-radius: 1.35rem;
-  border: 1px solid rgba(107, 63, 29, 0.1);
-  background: rgba(255, 251, 246, 0.94);
-  box-shadow: 0 20px 40px rgba(89, 48, 20, 0.08);
+  border-radius: var(--app-radius-lg);
+  border: 1px solid var(--app-border-subtle);
+  background: var(--app-surface-base);
+  box-shadow: var(--app-shadow-card);
+  backdrop-filter: blur(12px);
 }
 
 .recipe-card__gallery {
@@ -91,13 +85,13 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 1rem;
+  border-radius: 1.1rem;
 }
 
 .recipe-card__body {
   display: grid;
   gap: 0.7rem;
-  padding: 1rem;
+  padding: 1.1rem;
 }
 
 .recipe-card__body h2,
@@ -110,6 +104,7 @@
   justify-content: space-between;
   gap: 0.75rem;
   color: var(--app-text-muted);
+  font-family: var(--app-ui-font);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -117,7 +112,7 @@
 
 .recipe-card__meal {
   font-weight: 700;
-  color: #8b4a22;
+  color: var(--color-dark-amaranth);
 }
 
 .recipe-card__recipe {

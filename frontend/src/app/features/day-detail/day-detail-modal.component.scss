@@ -17,6 +17,7 @@
 .sheet__header p {
   margin-bottom: 0.35rem;
   color: var(--app-text-muted);
+  font-family: var(--app-ui-font);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.78rem;
@@ -32,9 +33,12 @@
   display: grid;
   gap: 0.9rem;
   padding: 1rem;
-  border-radius: 1.1rem;
-  background: rgba(255, 248, 238, 0.98);
-  border: 1px solid rgba(107, 63, 29, 0.1);
+  border-radius: var(--app-radius-lg);
+  background:
+    radial-gradient(circle at top right, rgba(252, 213, 129, 0.16), transparent 28%),
+    var(--app-surface-base);
+  border: 1px solid var(--app-border-subtle);
+  box-shadow: var(--app-shadow-card);
 }
 
 .meal-card--empty {
@@ -59,6 +63,7 @@
 .meal-card__eyebrow {
   margin: 0 0 0.3rem;
   color: var(--app-text-muted);
+  font-family: var(--app-ui-font);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 0.72rem;
@@ -67,9 +72,10 @@
 .meal-card__votes,
 .dish-card__header span {
   padding: 0.35rem 0.55rem;
-  border-radius: 999px;
-  background: rgba(139, 74, 34, 0.1);
-  color: #8b4a22;
+  border-radius: var(--app-radius-pill);
+  background: rgba(213, 41, 65, 0.1);
+  color: var(--color-raspberry);
+  font-family: var(--app-ui-font);
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -83,9 +89,9 @@
   display: grid;
   gap: 0.65rem;
   padding: 0.9rem;
-  border-radius: 1rem;
-  background: rgba(255, 252, 247, 0.96);
-  border: 1px solid rgba(107, 63, 29, 0.08);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface-raised);
+  border: 1px solid var(--app-border-subtle);
 }
 
 .dish-card__recipe {

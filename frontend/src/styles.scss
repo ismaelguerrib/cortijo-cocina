@@ -1,12 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Slackey&display=swap');
+
 :root {
-  --app-display-font: 'Iowan Old Style', 'Palatino Linotype', serif;
-  --app-body-font: 'Avenir Next', 'Segoe UI Variable Text', sans-serif;
-  --app-text-color: #41250f;
-  --app-text-muted: rgba(65, 37, 15, 0.72);
-  --mat-sys-primary: #8b4a22;
-  --mat-sys-on-primary: #fff6ef;
-  --mat-sys-surface: #fffaf4;
-  --mat-sys-on-surface: #41250f;
+  --app-display-font: 'Slackey', cursive;
+  --app-body-font: 'Manrope', 'Segoe UI Variable Text', sans-serif;
+  --app-ui-font: 'Manrope', var(--app-body-font);
+
+  --color-white: #ffffff;
+  --color-ivory-mist: #fff8e8;
+  --color-jasmine: #fcd581;
+  --color-raspberry: #d52941;
+  --color-dark-amaranth: #990d35;
+
+  --app-text-color: #33131f;
+  --app-text-color-strong: #200b14;
+  --app-text-muted: #6a5160;
+  --app-text-inverse: #fff8f7;
+
+  --app-page-bg:
+    radial-gradient(circle at top left, rgba(252, 213, 129, 0.5), transparent 22%),
+    radial-gradient(circle at 100% 10%, rgba(213, 41, 65, 0.17), transparent 24%),
+    radial-gradient(circle at 15% 100%, rgba(153, 13, 53, 0.12), transparent 28%),
+    linear-gradient(180deg, #fffefb 0%, #fff8e8 52%, #fff2d4 100%);
+  --app-surface-base: rgba(255, 255, 255, 0.84);
+  --app-surface-raised: rgba(255, 248, 232, 0.94);
+  --app-surface-accent: rgba(252, 213, 129, 0.28);
+  --app-surface-strong: linear-gradient(160deg, #d52941 0%, #990d35 100%);
+  --app-border-subtle: rgba(153, 13, 53, 0.12);
+  --app-border-strong: rgba(153, 13, 53, 0.24);
+  --app-shadow-soft: 0 20px 60px rgba(153, 13, 53, 0.12);
+  --app-shadow-card: 0 16px 34px rgba(153, 13, 53, 0.08);
+  --app-shadow-chip: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --app-radius-xl: 2rem;
+  --app-radius-lg: 1.4rem;
+  --app-radius-md: 1rem;
+  --app-radius-pill: 999px;
+
+  --mat-sys-primary: var(--color-raspberry);
+  --mat-sys-on-primary: var(--app-text-inverse);
+  --mat-sys-primary-container: #ffd6de;
+  --mat-sys-on-primary-container: var(--app-text-color-strong);
+  --mat-sys-secondary: var(--color-jasmine);
+  --mat-sys-on-secondary: var(--app-text-color-strong);
+  --mat-sys-surface: #fffdf9;
+  --mat-sys-on-surface: var(--app-text-color);
+  --mat-sys-outline: var(--app-border-strong);
+  --mat-sys-error: var(--color-dark-amaranth);
+  --mat-sys-on-error: var(--app-text-inverse);
 }
 
 * {
@@ -22,7 +61,9 @@ body {
   margin: 0;
   font-family: var(--app-body-font);
   color: var(--app-text-color);
-  background: #fff7eb;
+  background: var(--app-page-bg);
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.01em;
 }
 
 button,
@@ -32,18 +73,122 @@ select {
   font: inherit;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.app-display-title {
+  font-family: var(--app-display-font);
+  color: var(--app-text-color-strong);
+}
+
+.app-ui-title {
+  font-family: var(--app-ui-font);
+  color: var(--app-text-color-strong);
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(252, 213, 129, 0.72);
+  color: var(--app-text-color-strong);
+}
+
+.feedback {
+  margin-bottom: 1rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--app-radius-md);
+  backdrop-filter: blur(10px);
+  background: var(--app-surface-base);
+  box-shadow: var(--app-shadow-card);
+}
+
+.feedback--error {
+  color: var(--color-dark-amaranth);
+  background: rgba(213, 41, 65, 0.1);
+  border-color: rgba(213, 41, 65, 0.24);
+}
+
+.loading-state,
+.empty-state {
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  padding: 3rem 1rem;
+  color: var(--app-text-muted);
+  text-align: center;
+}
+
+.loading-state p,
+.empty-state p,
+.empty-state h2 {
+  margin: 0;
+}
+
+.empty-state h2 {
+  font-size: clamp(1.7rem, 5vw, 2.4rem);
+  line-height: 1.04;
+  max-width: 14ch;
+}
+
+.empty-state p {
+  max-width: 28rem;
+}
+
+.mat-mdc-button-base {
+  font-family: var(--app-ui-font) !important;
+  letter-spacing: 0.01em;
+}
+
+.mat-mdc-unelevated-button,
+.mat-mdc-stroked-button,
+.mat-mdc-button {
+  border-radius: var(--app-radius-pill) !important;
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+  box-shadow: 0 12px 24px rgba(153, 13, 53, 0.18);
+}
+
+.mat-mdc-stroked-button:not(:disabled) {
+  border-color: var(--app-border-strong) !important;
+  background: rgba(255, 255, 255, 0.52);
+}
+
+.mat-mdc-form-field {
+  font-family: var(--app-body-font);
+}
+
+.mat-mdc-text-field-wrapper {
+  border-radius: 1.1rem !important;
+  background: rgba(255, 255, 255, 0.64);
+}
+
 .mat-bottom-sheet-container.day-detail-sheet {
-  border-radius: 1.6rem 1.6rem 0 0;
-  background: linear-gradient(180deg, #fffdf9 0%, #fff5e7 100%);
+  border-radius: 2rem 2rem 0 0;
+  background:
+    radial-gradient(circle at top right, rgba(252, 213, 129, 0.24), transparent 25%),
+    linear-gradient(180deg, #fffefb 0%, #fff8e8 100%);
+  box-shadow: 0 -24px 64px rgba(153, 13, 53, 0.12);
+}
+
+.mat-bottom-sheet-container.day-detail-sheet {
+  color: var(--app-text-color);
 }
 
 .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
-  border-radius: 1.8rem 1.8rem 0 0;
+  border-radius: 2rem 2rem 0 0;
   overflow: hidden;
+  box-shadow: 0 26px 80px rgba(153, 13, 53, 0.18);
 }
 
 @media (min-width: 768px) {
   .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
-    border-radius: 1.8rem;
+    border-radius: 2rem;
   }
 }

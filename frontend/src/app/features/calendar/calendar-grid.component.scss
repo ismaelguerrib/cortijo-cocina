@@ -18,7 +18,8 @@
 .calendar-grid__weekdays {
   margin-bottom: 0.55rem;
   padding: 0 0.1rem;
-  color: rgba(91, 52, 17, 0.72);
+  color: var(--app-text-muted);
+  font-family: var(--app-ui-font);
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;

@@ -3,7 +3,9 @@
   gap: 1rem;
   min-height: 100dvh;
   padding: 1rem 1rem 1.4rem;
-  background: linear-gradient(180deg, #fff9f0 0%, #fff4e4 100%);
+  background:
+    radial-gradient(circle at top right, rgba(252, 213, 129, 0.24), transparent 24%),
+    linear-gradient(180deg, #fffefb 0%, #fff8e8 100%);
 }
 
 .editor__header,
@@ -22,6 +24,7 @@
 .editor__header p {
   margin-bottom: 0.25rem;
   color: var(--app-text-muted);
+  font-family: var(--app-ui-font);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.78rem;
@@ -62,6 +65,7 @@
 .editor__section-header p {
   margin-bottom: 0.2rem;
   color: var(--app-text-muted);
+  font-family: var(--app-ui-font);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   font-size: 0.74rem;
@@ -69,17 +73,18 @@
 
 .dish-form {
   padding: 0.95rem;
-  border: 1px solid rgba(107, 63, 29, 0.1);
-  border-radius: 1.1rem;
-  background: rgba(255, 250, 243, 0.92);
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--app-radius-md);
+  background: var(--app-surface-base);
+  box-shadow: var(--app-shadow-card);
 }
 
 .editor__error {
   margin: 0;
   padding: 0.85rem 1rem;
   border-radius: 0.95rem;
-  color: #7e2513;
-  background: rgba(255, 228, 221, 0.95);
+  color: var(--color-dark-amaranth);
+  background: rgba(213, 41, 65, 0.1);
 }
 
 .editor__actions {
@@ -87,5 +92,5 @@
 }
 
 .editor__delete {
-  color: #8d2710;
+  color: var(--color-dark-amaranth);
 }

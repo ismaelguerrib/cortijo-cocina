@@ -13,13 +13,14 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     .hero-card {
       display: grid;
       gap: 0.55rem;
-      padding: 1.2rem 1rem 1.15rem;
-      border-radius: 1.8rem;
-      color: #fffaf4;
+      padding: 1.4rem 1.15rem 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--app-radius-xl);
+      color: var(--app-text-inverse);
       background:
-        linear-gradient(145deg, rgba(99, 45, 20, 0.9), rgba(165, 79, 33, 0.95)),
-        linear-gradient(120deg, #7d3c1b, #b2622f);
-      box-shadow: 0 24px 54px rgba(87, 40, 17, 0.18);
+        radial-gradient(circle at top right, rgba(252, 213, 129, 0.22), transparent 26%),
+        linear-gradient(145deg, #d52941, #990d35 76%);
+      box-shadow: 0 24px 54px rgba(153, 13, 53, 0.25);
     }
 
     .hero-card h1,
@@ -30,20 +31,21 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     .hero-card h1 {
       font-family: var(--app-display-font);
       font-size: clamp(2rem, 6vw, 3.4rem);
-      line-height: 0.92;
-      letter-spacing: -0.05em;
+      line-height: 0.96;
+      text-shadow: 0 3px 0 rgba(0, 0, 0, 0.12);
     }
 
     .hero-card__eyebrow {
+      font-family: var(--app-ui-font);
       font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.16em;
-      opacity: 0.82;
+      opacity: 0.88;
     }
 
     .hero-card__caption {
       max-width: 18rem;
-      color: rgba(255, 247, 238, 0.86);
+      color: rgba(255, 248, 247, 0.9);
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush

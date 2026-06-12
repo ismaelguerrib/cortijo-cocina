@@ -14,10 +14,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.9rem 1rem;
+  padding: 1rem 1rem 1.1rem;
   backdrop-filter: blur(18px);
-  background: rgba(255, 250, 243, 0.82);
-  border-bottom: 1px solid rgba(107, 63, 29, 0.08);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 248, 232, 0.74)),
+    rgba(255, 255, 255, 0.48);
+  border-bottom: 1px solid var(--app-border-subtle);
 }
 
 .app-shell__brand,
@@ -26,29 +28,49 @@
   text-decoration: none;
 }
 
+.app-shell__brand-block {
+  display: grid;
+  gap: 0.15rem;
+}
+
 .app-shell__brand {
   font-family: var(--app-display-font);
-  font-size: 1.35rem;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  line-height: 0.95;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.48);
+}
+
+.app-shell__tagline {
+  margin: 0;
+  color: var(--app-text-muted);
+  font-family: var(--app-ui-font);
+  font-size: 0.84rem;
 }
 
 .app-shell__nav {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.3rem;
-  border-radius: 999px;
-  background: rgba(255, 244, 228, 0.95);
+  padding: 0.35rem;
+  border: 1px solid var(--app-border-subtle);
+  border-radius: var(--app-radius-pill);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 248, 232, 0.96));
+  box-shadow: var(--app-shadow-chip);
 }
 
 .app-shell__nav a {
-  padding: 0.45rem 0.9rem;
-  border-radius: 999px;
-  font-weight: 600;
+  padding: 0.55rem 1rem;
+  border-radius: var(--app-radius-pill);
+  font-family: var(--app-display-font);
+  font-size: 0.92rem;
+  font-weight: 700;
 }
 
 .app-shell__nav a.is-active {
-  background: #8b4a22;
-  color: #fff7f0;
+  background: var(--app-surface-strong);
+  color: var(--app-text-inverse);
+  box-shadow: 0 10px 22px rgba(153, 13, 53, 0.24);
 }
 
 @media (max-width: 767px) {
