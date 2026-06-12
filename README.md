@@ -1,59 +1,125 @@
-# CortijoCocina
+# Cortijo Cocina
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.5.
+PWA mobile-first pour organiser les repas familiaux du mois d'août 2026.
 
-## Development server
+## Structure
 
-To start a local development server, run:
-
-```bash
-ng serve
+```txt
+frontend/   Application Angular PWA
+backend/    API NestJS + TypeORM
+docker-compose.yml
+README.md
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Prérequis
 
-## Code scaffolding
+- Node.js 20+
+- npm 10+
+- Docker Desktop
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Installation
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Installer les dépendances de chaque application :
 
 ```bash
-ng generate --help
+cd frontend && npm install
+cd ../backend && npm install
 ```
 
-## Building
-
-To build the project run:
+Depuis la racine, vous pouvez aussi utiliser les scripts utilitaires :
 
 ```bash
-ng build
+npm run start:frontend
+npm run start:backend
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Lancer PostgreSQL
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Depuis la racine du projet :
 
 ```bash
-ng test
+docker compose up -d postgres
 ```
 
-## Running end-to-end tests
+PostgreSQL sera exposé sur `localhost:5432` avec les identifiants suivants :
 
-For end-to-end (e2e) testing, run:
+- base : `cortijo_cocina`
+- utilisateur : `postgres`
+- mot de passe : `postgres`
+
+## Variables backend
+
+Le backend lit ces variables d'environnement :
 
 ```bash
-ng e2e
+PORT=3000
+FRONTEND_ORIGIN=http://localhost:4200
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+DB_NAME=cortijo_cocina
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Un exemple est fourni dans [backend/.env.example](/Users/ismaelguerrib/Codebase/cortijo-cocina/backend/.env.example).
 
-## Additional Resources
+## Exécuter les migrations
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Après démarrage de PostgreSQL :
+
+```bash
+cd backend
+npm run migration:run
+```
+
+## Lancer le backend
+
+```bash
+cd backend
+npm run start:dev
+```
+
+API disponible sur `http://localhost:3000`.
+
+## Lancer le frontend
+
+```bash
+cd frontend
+npm run start -- --host 127.0.0.1 --port 4200
+```
+
+Application disponible sur `http://127.0.0.1:4200`.
+
+## Tests
+
+Backend :
+
+```bash
+cd backend
+npm test
+```
+
+Frontend :
+
+```bash
+cd frontend
+npm test
+```
+
+Vérification de typage Angular :
+
+```bash
+cd frontend
+npm run typecheck
+```
+
+## Fonctionnalités livrées
+
+- calendrier complet du mois d'août 2026 ;
+- synthèse midi/soir sur chaque jour ;
+- détail d'un jour en bottom sheet ;
+- création, modification et suppression d'un repas ;
+- sélection multiple de préparateurs ;
+- persistance PostgreSQL ;
+- API REST NestJS ;
+- PWA installable avec manifest et service worker.
