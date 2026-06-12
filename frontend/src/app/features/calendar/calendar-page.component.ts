@@ -61,9 +61,9 @@ export class CalendarPageComponent implements OnInit {
     this.dialog.open(MealEditorModalComponent, {
       data: dialogData,
       panelClass: 'meal-editor-dialog',
-      width: 'min(100vw, 36rem)',
+      width: 'min(100vw, var(--app-dialog-inline-max))',
       maxWidth: '100vw',
-      height: '100dvh'
+      height: 'var(--app-shell-min-block)'
     });
   }
 }

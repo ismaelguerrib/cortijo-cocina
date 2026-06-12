@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=League+Spartan:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --app-display-font: 'Bungee', cursive;
+  --app-subtitle-font: 'League Spartan', 'Manrope', 'Segoe UI Variable Text', sans-serif;
+  --app-body-font: 'Manrope', 'Segoe UI Variable Text', sans-serif;
+  --app-ui-font: 'Manrope', 'Segoe UI Variable Text', sans-serif;
+
+  --app-letter-spacing-tight: -0.02em;
+  --app-letter-spacing-base: 0.01em;
+  --app-letter-spacing-wide: 0.08em;
+  --app-letter-spacing-wider: 0.12em;
+  --app-letter-spacing-display: 0.02em;
+}

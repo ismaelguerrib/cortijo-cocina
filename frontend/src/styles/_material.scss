@@ -1,0 +1,72 @@
+@use './sizes' as size;
+
+:root {
+  --mat-sys-primary: var(--color-sabro-forest);
+  --mat-sys-on-primary: var(--app-text-inverse);
+  --mat-sys-primary-container: #dceadf;
+  --mat-sys-on-primary-container: var(--app-text-color-strong);
+  --mat-sys-secondary: var(--color-sabro-orange);
+  --mat-sys-on-secondary: var(--app-text-color-strong);
+  --mat-sys-surface: var(--color-sabro-cream);
+  --mat-sys-on-surface: var(--app-text-color);
+  --mat-sys-outline: var(--app-border-strong);
+  --mat-sys-error: var(--color-sabro-chili);
+  --mat-sys-on-error: var(--app-text-inverse);
+}
+
+.mat-mdc-button-base {
+  font-family: var(--app-ui-font) !important;
+  letter-spacing: var(--app-letter-spacing-base);
+}
+
+.mat-mdc-unelevated-button,
+.mat-mdc-stroked-button,
+.mat-mdc-button {
+  border-radius: var(--app-radius-pill) !important;
+}
+
+.mat-mdc-unelevated-button:not(:disabled) {
+  box-shadow: var(--app-shadow-active);
+}
+
+.mat-mdc-stroked-button:not(:disabled) {
+  border-color: transparent !important;
+  background: var(--color-sabro-forest);
+  color: var(--app-text-inverse) !important;
+}
+
+.mat-mdc-stroked-button:not(:disabled):hover {
+  border-color: transparent !important;
+  background: var(--color-sabro-chili);
+  color: var(--app-text-inverse) !important;
+}
+
+.mat-mdc-form-field {
+  font-family: var(--app-body-font);
+}
+
+.mat-mdc-text-field-wrapper {
+  border-radius: var(--app-form-control-radius) !important;
+  background: rgba(255, 248, 227, 0.92);
+}
+
+.mat-bottom-sheet-container.day-detail-sheet {
+  border-radius: var(--app-radius-xl) var(--app-radius-xl) 0 0;
+  background: var(--app-surface-purple);
+  box-shadow: var(--app-shadow-sheet);
+  color: var(--app-text-color);
+}
+
+.mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
+  border-radius: var(--app-radius-xl) var(--app-radius-xl) 0 0;
+  overflow: hidden;
+  background: var(--color-sabro-forest);
+  color: var(--color-sabro-orange);
+  box-shadow: var(--app-shadow-soft);
+}
+
+@media (min-width: size.$bp-md) {
+  .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
+    border-radius: var(--app-radius-xl);
+  }
+}

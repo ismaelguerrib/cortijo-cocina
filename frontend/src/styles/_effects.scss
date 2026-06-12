@@ -1,0 +1,17 @@
+:root {
+  --app-border-subtle: rgba(43, 107, 77, 0.12);
+  --app-border-strong: rgba(43, 107, 77, 0.26);
+  --app-shadow-soft:
+    0 calc(var(--app-size-unit) * 2.6) calc(var(--app-size-unit) * 7.2)
+    rgba(43, 107, 77, 0.1);
+  --app-shadow-card:
+    0 calc(var(--app-size-unit) * 1.9) calc(var(--app-size-unit) * 4.1)
+    rgba(43, 107, 77, 0.08);
+  --app-shadow-chip: inset 0 calc(var(--app-size-unit) * 0.12) 0 rgba(255, 255, 255, 0.6);
+  --app-shadow-active:
+    0 calc(var(--app-size-unit) * 1.2) calc(var(--app-size-unit) * 2.6)
+    rgba(43, 107, 77, 0.24);
+  --app-shadow-sheet:
+    0 calc(var(--app-size-unit) * -2.6) calc(var(--app-size-unit) * 7.6)
+    rgba(43, 107, 77, 0.12);
+}

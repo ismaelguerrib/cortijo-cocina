@@ -1,10 +1,15 @@
+@use '../../../styles/sizes' as size;
+
 .sheet {
-  padding: 1rem 1rem 1.4rem;
+  padding:
+    var(--app-page-gutter-block-start)
+    var(--app-page-gutter-inline)
+    calc(var(--app-page-gutter-block-end) * 0.7);
   color: var(--app-text-color);
 }
 
 .sheet__header {
-  margin-bottom: 1rem;
+  margin-bottom: var(--app-section-gap);
 }
 
 .sheet__header p,
@@ -15,27 +20,26 @@
 }
 
 .sheet__header p {
-  margin-bottom: 0.35rem;
+  margin-bottom: var(--app-space-xs);
   color: var(--app-text-muted);
   font-family: var(--app-subtitle-font);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.78rem;
+  letter-spacing: var(--app-letter-spacing-wider);
+  font-size: var(--app-font-caption);
 }
 
 .sheet__header h2 {
   font-family: var(--app-display-font);
-  font-size: 1.8rem;
+  font-size: var(--app-font-title-sm);
   line-height: 1;
 }
 
 .meal-card {
   display: grid;
-  gap: 0.9rem;
-  padding: 1rem;
+  gap: var(--app-cluster-gap);
+  padding: var(--app-card-padding);
   border-radius: var(--app-radius-lg);
   background: var(--app-surface-orange);
-  border: 1px solid rgba(255, 184, 69, 0.72);
   box-shadow: var(--app-shadow-card);
 }
 
@@ -49,7 +53,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: var(--app-cluster-gap);
 }
 
 .meal-card__headline h3,
@@ -60,37 +64,36 @@
 }
 
 .meal-card__eyebrow {
-  margin: 0 0 0.3rem;
+  margin: 0 0 var(--app-space-2xs);
   color: var(--app-text-muted);
   font-family: var(--app-subtitle-font);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-size: 0.72rem;
+  letter-spacing: var(--app-letter-spacing-wide);
+  font-size: var(--app-font-caption);
 }
 
 .meal-card__votes,
 .dish-card__header span {
-  padding: 0.35rem 0.55rem;
+  padding: var(--app-space-xs) var(--app-space-sm);
   border-radius: var(--app-radius-pill);
   background: rgba(231, 54, 46, 0.14);
   color: var(--color-sabro-chili);
   font-family: var(--app-ui-font);
-  font-size: 0.78rem;
+  font-size: var(--app-font-caption);
   font-weight: 700;
 }
 
 .dish-list {
   display: grid;
-  gap: 0.8rem;
+  gap: var(--app-space-md);
 }
 
 .dish-card {
   display: grid;
-  gap: 0.65rem;
-  padding: 0.9rem;
+  gap: var(--app-space-sm);
+  padding: var(--app-card-padding-compact);
   border-radius: var(--app-radius-md);
   background: var(--app-surface-raised);
-  border: 1px solid rgba(43, 107, 77, 0.2);
 }
 
 .dish-card__recipe {
@@ -100,13 +103,13 @@
 
 .dish-card__gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(5.5rem, 1fr));
-  gap: 0.55rem;
+  grid-template-columns: repeat(auto-fit, minmax(var(--app-photo-tile-min-inline), 1fr));
+  gap: var(--app-space-xs);
 }
 
 .dish-card__gallery img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: 0.9rem;
+  border-radius: var(--app-radius-sm);
 }

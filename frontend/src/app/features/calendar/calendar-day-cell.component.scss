@@ -1,9 +1,11 @@
+@use '../../../styles/sizes' as size;
+
 .day-card {
   display: grid;
-  gap: 0.45rem;
-  min-height: 7.8rem;
-  padding: 0.9rem 0.8rem 0.7rem;
-  border: 1px solid rgba(249, 231, 176, 0.22);
+  gap: var(--app-space-xs);
+  min-height: var(--app-calendar-card-min-block-compact);
+  padding: var(--app-card-padding-compact) var(--app-space-sm) var(--app-space-sm);
+  border: calc(var(--app-size-unit) * 0.12) solid rgba(249, 231, 176, 0.22);
   border-radius: var(--app-radius-md);
   background: rgba(43, 107, 77, 0.92);
   box-shadow: var(--app-shadow-card);
@@ -17,10 +19,10 @@
 }
 
 .day-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(calc(var(--app-lift-distance) * -1));
   background: var(--color-sabro-orange);
   border-color: rgba(255, 184, 69, 0.9);
-  box-shadow: 0 24px 36px rgba(43, 107, 77, 0.14);
+  box-shadow: var(--app-shadow-soft);
 }
 
 .day-card--filled {
@@ -56,12 +58,12 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: var(--app-space-sm);
 }
 
 .day-card__number {
   font-family: var(--app-display-font);
-  font-size: 1.65rem;
+  font-size: var(--app-font-title-sm);
   line-height: 0.92;
   color: var(--color-sabro-chili);
   text-shadow: none;
@@ -70,22 +72,22 @@
 .day-card__weekday {
   color: var(--color-sabro-cream);
   font-family: var(--app-ui-font);
-  font-size: 0.78rem;
+  font-size: var(--app-font-caption);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: var(--app-letter-spacing-wide);
 }
 
 .day-card__content,
 .day-card__empty {
   display: grid;
-  gap: 0.38rem;
+  gap: var(--app-space-2xs);
 }
 
 .day-card__title-row {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: var(--app-space-sm);
 }
 
 .day-card__title-row h3,
@@ -99,19 +101,19 @@
 
 .day-card__title-row h3 {
   font-family: var(--app-ui-font);
-  font-size: 0.95rem;
+  font-size: var(--app-font-label);
   line-height: 1.2;
   color: var(--color-sabro-chili);
 }
 
 .day-card__votes {
-  min-width: 1.8rem;
-  padding: 0.24rem 0.5rem;
+  min-width: calc(var(--app-size-unit) * 3.4);
+  padding: var(--app-space-2xs) var(--app-space-sm);
   border-radius: var(--app-radius-pill);
   background: rgba(231, 54, 46, 0.9);
   color: var(--color-sabro-cream);
   text-align: center;
-  font-size: 0.78rem;
+  font-size: var(--app-font-caption);
   font-weight: 700;
 }
 
@@ -120,11 +122,11 @@
 .day-card__empty span {
   color: var(--color-sabro-cream);
   font-family: var(--app-ui-font);
-  font-size: 0.78rem;
+  font-size: var(--app-font-caption);
 }
 
 .day-card__preview {
-  font-size: 0.82rem;
+  font-size: var(--app-font-label);
   line-height: 1.35;
   color: var(--color-sabro-cream);
 }
@@ -150,13 +152,32 @@
   color: var(--color-sabro-forest) !important;
 }
 
-@media (max-width: 767px) {
+.day-card__action--create.mat-mdc-button:not(:disabled) {
+  padding-inline: 0 !important;
+  padding-block: 0 !important;
+  min-width: 0;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--color-sabro-chili) !important;
+  box-shadow: none;
+}
+
+.day-card__action--create.mat-mdc-button:not(:disabled):hover {
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--color-sabro-chili) !important;
+  text-decoration: underline;
+  text-decoration-thickness: var(--app-underline-thickness);
+  text-underline-offset: 0.18em;
+}
+
+@media (min-width: size.$bp-md) {
   .day-card {
-    min-height: 8.5rem;
-    padding-inline: 0.45rem;
+    min-height: var(--app-calendar-card-min-block);
+    padding: var(--app-card-padding) var(--app-space-md) var(--app-space-md);
   }
 
   .day-card__number {
-    font-size: 1.35rem;
+    font-size: var(--app-font-title-md);
   }
 }

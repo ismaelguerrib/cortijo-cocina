@@ -1,0 +1,66 @@
+$bp-md: 48rem;
+$bp-lg: 64rem;
+
+:root {
+  --app-size-unit: 1dvh;
+
+  --app-space-3xs: calc(var(--app-size-unit) * 0.24);
+  --app-space-2xs: calc(var(--app-size-unit) * 0.38);
+  --app-space-xs: calc(var(--app-size-unit) * 0.56);
+  --app-space-sm: calc(var(--app-size-unit) * 0.8);
+  --app-space-md: calc(var(--app-size-unit) * 1.1);
+  --app-space-lg: calc(var(--app-size-unit) * 1.45);
+  --app-space-xl: calc(var(--app-size-unit) * 1.85);
+  --app-space-2xl: calc(var(--app-size-unit) * 2.4);
+  --app-space-3xl: calc(var(--app-size-unit) * 3.2);
+  --app-space-4xl: calc(var(--app-size-unit) * 4.4);
+
+  --app-font-caption: calc(var(--app-size-unit) * 1.45);
+  --app-font-label: calc(var(--app-size-unit) * 1.7);
+  --app-font-body: calc(var(--app-size-unit) * 1.95);
+  --app-font-body-strong: calc(var(--app-size-unit) * 2.2);
+  --app-font-title-sm: calc(var(--app-size-unit) * 2.8);
+  --app-font-title-md: calc(var(--app-size-unit) * 3.5);
+  --app-font-title-lg: calc(var(--app-size-unit) * 4.6);
+  --app-font-display: calc(var(--app-size-unit) * 5.6);
+
+  --app-radius-sm: calc(var(--app-size-unit) * 1.4);
+  --app-radius-md: calc(var(--app-size-unit) * 1.9);
+  --app-radius-lg: calc(var(--app-size-unit) * 2.8);
+  --app-radius-xl: calc(var(--app-size-unit) * 4);
+  --app-radius-pill: calc(var(--app-size-unit) * 99);
+
+  --app-shell-min-block: calc(var(--app-size-unit) * 100);
+  --app-page-gutter-inline: var(--app-space-lg);
+  --app-page-gutter-inline-wide: var(--app-space-2xl);
+  --app-page-gutter-block-start: var(--app-space-lg);
+  --app-page-gutter-block-end: var(--app-space-3xl);
+  --app-panel-padding: var(--app-space-xl);
+  --app-card-padding: var(--app-space-lg);
+  --app-card-padding-compact: var(--app-space-md);
+  --app-section-gap: var(--app-space-xl);
+  --app-cluster-gap: var(--app-space-lg);
+  --app-inline-max: min(100%, calc(var(--app-size-unit) * 86));
+  --app-dialog-inline-max: calc(var(--app-size-unit) * 58);
+  --app-calendar-card-min-block: calc(var(--app-size-unit) * 14.2);
+  --app-calendar-card-min-block-compact: calc(var(--app-size-unit) * 11.4);
+  --app-calendar-grid-min-inline: calc(var(--app-size-unit) * 64);
+  --app-photo-tile-min-inline: calc(var(--app-size-unit) * 9.8);
+  --app-gallery-tile-min-inline: calc(var(--app-size-unit) * 14.2);
+  --app-form-control-radius: calc(var(--app-size-unit) * 2.05);
+  --app-button-inline-padding: var(--app-space-xl);
+  --app-button-block-padding: var(--app-space-sm);
+  --app-lift-distance: calc(var(--app-size-unit) * 0.24);
+  --app-underline-thickness: calc(var(--app-size-unit) * 0.24);
+  --app-blur-strong: calc(var(--app-size-unit) * 1.7);
+  --app-blur-soft: calc(var(--app-size-unit) * 1.2);
+  --app-copy-max-inline: calc(var(--app-size-unit) * 34);
+  --app-title-max-inline: calc(var(--app-size-unit) * 18);
+  --app-caption-max-inline: calc(var(--app-size-unit) * 22);
+}
+
+@supports not (height: 100dvh) {
+  :root {
+    --app-size-unit: 1vh;
+  }
+}

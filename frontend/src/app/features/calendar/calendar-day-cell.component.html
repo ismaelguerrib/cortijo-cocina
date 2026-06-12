@@ -22,7 +22,13 @@
     </div>
   }
 
-  <button mat-stroked-button type="button" class="day-card__action" (click)="openMealEditor($event)">
-    {{ day().meal ? 'Modifier' : 'Créer' }}
-  </button>
+  @if (day().meal) {
+    <button mat-stroked-button type="button" class="day-card__action" (click)="openMealEditor($event)">
+      Modifier
+    </button>
+  } @else {
+    <button mat-button type="button" class="day-card__action day-card__action--create" (click)="openMealEditor($event)">
+      Créer
+    </button>
+  }
 </mat-card>

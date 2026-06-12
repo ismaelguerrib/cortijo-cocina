@@ -1,9 +1,11 @@
+@use '../styles/sizes' as size;
+
 :host {
   display: block;
 }
 
 .app-shell {
-  min-height: 100dvh;
+  min-height: var(--app-shell-min-block);
 }
 
 .app-shell__header {
@@ -11,13 +13,16 @@
   top: 0;
   z-index: 10;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 1rem 1.1rem;
-  backdrop-filter: blur(18px);
+  gap: var(--app-cluster-gap);
+  padding:
+    var(--app-page-gutter-block-start)
+    var(--app-page-gutter-inline)
+    calc(var(--app-page-gutter-block-start) + var(--app-space-xs));
+  backdrop-filter: blur(var(--app-blur-strong));
   background: rgba(255, 248, 227, 0.92);
-  border-bottom: 1px solid var(--app-border-subtle);
 }
 
 .app-shell__brand,
@@ -28,57 +33,61 @@
 
 .app-shell__brand-block {
   display: grid;
-  gap: 0.15rem;
+  gap: var(--app-space-3xs);
 }
 
 .app-shell__brand {
   font-family: var(--app-display-font);
-  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-size: var(--app-font-title-sm);
   line-height: 0.95;
-  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.48);
+  text-shadow: 0 var(--app-space-2xs) 0 rgba(255, 255, 255, 0.48);
 }
 
 .app-shell__tagline {
   margin: 0;
   color: var(--app-text-muted);
   font-family: var(--app-subtitle-font);
-  letter-spacing: 0.06em;
+  letter-spacing: var(--app-letter-spacing-wide);
   text-transform: uppercase;
-  font-size: 0.84rem;
+  font-size: var(--app-font-caption);
 }
 
 .app-shell__nav {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem;
-  border: 1px solid var(--app-border-subtle);
+  justify-content: space-between;
+  gap: var(--app-space-xs);
+  padding: var(--app-space-xs);
   border-radius: var(--app-radius-pill);
   background: var(--app-surface-raised);
   box-shadow: var(--app-shadow-chip);
 }
 
 .app-shell__nav a {
-  padding: 0.55rem 1rem;
+  padding: var(--app-button-block-padding) var(--app-button-inline-padding);
   border-radius: var(--app-radius-pill);
   font-family: var(--app-display-font);
-  font-size: 0.92rem;
+  font-size: var(--app-font-label);
   font-weight: 700;
 }
 
 .app-shell__nav a.is-active {
   background: var(--app-surface-strong);
   color: var(--app-text-inverse);
-  box-shadow: 0 10px 22px rgba(43, 107, 77, 0.24);
+  box-shadow: var(--app-shadow-active);
 }
 
-@media (max-width: 767px) {
+@media (min-width: size.$bp-md) {
   .app-shell__header {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: center;
   }
 
   .app-shell__nav {
-    justify-content: space-between;
+    justify-content: flex-start;
+  }
+
+  .app-shell__brand {
+    font-size: var(--app-font-title-md);
   }
 }

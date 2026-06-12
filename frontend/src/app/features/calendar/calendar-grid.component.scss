@@ -1,28 +1,31 @@
+@use '../../../styles/sizes' as size;
+
 .calendar-grid {
-  max-width: 72rem;
+  max-width: var(--app-inline-max);
   margin: 0 auto;
 }
 
 .calendar-grid__scroll {
   overflow-x: auto;
-  padding-bottom: 0.2rem;
+  padding-bottom: var(--app-space-3xs);
 }
 
 .calendar-grid__weekdays,
 .calendar-grid__cells {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
-  gap: 0.45rem;
+  gap: var(--app-space-xs);
+  min-width: var(--app-calendar-grid-min-inline);
 }
 
 .calendar-grid__weekdays {
-  margin-bottom: 0.55rem;
-  padding: 0 0.1rem;
+  margin-bottom: var(--app-space-sm);
+  padding: 0 var(--app-space-3xs);
   color: var(--color-sabro-cream);
   font-family: var(--app-ui-font);
-  font-size: 0.78rem;
+  font-size: var(--app-font-caption);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: var(--app-letter-spacing-wider);
 }
 
 .calendar-grid__weekdays span {
@@ -30,21 +33,17 @@
 }
 
 .calendar-grid__placeholder {
-  min-height: 7.8rem;
+  min-height: var(--app-calendar-card-min-block-compact);
 }
 
-@media (max-width: 767px) {
+@media (min-width: size.$bp-md) {
   .calendar-grid__weekdays,
   .calendar-grid__cells {
-    min-width: 35rem;
-  }
-
-  .calendar-grid__weekdays,
-  .calendar-grid__cells {
-    gap: 0.35rem;
+    gap: var(--app-space-sm);
+    min-width: 0;
   }
 
   .calendar-grid__placeholder {
-    min-height: 6.2rem;
+    min-height: var(--app-calendar-card-min-block);
   }
 }

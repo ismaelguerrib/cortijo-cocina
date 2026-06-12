@@ -1,30 +1,34 @@
+@use '../../../styles/sizes' as size;
+
 :host {
   display: block;
   background: var(--color-sabro-forest);
 }
 
 .calendar-page {
-  min-height: 100dvh;
-  padding: 1rem 0.9rem 2rem;
+  min-height: var(--app-shell-min-block);
+  padding:
+    var(--app-page-gutter-block-start)
+    var(--app-page-gutter-inline)
+    var(--app-page-gutter-block-end);
   background: var(--color-sabro-forest);
 }
 
 .hero {
   display: grid;
-  gap: 1rem;
-  margin: 0 auto 1rem;
-  max-width: 72rem;
+  gap: var(--app-section-gap);
+  margin: 0 auto var(--app-section-gap);
+  max-width: var(--app-inline-max);
 }
 
 .hero__meta {
   display: grid;
-  gap: 0.75rem;
-  padding: 1.15rem;
-  border: 1px solid rgba(249, 231, 176, 0.28);
+  gap: var(--app-cluster-gap);
+  padding: var(--app-panel-padding);
   border-radius: var(--app-radius-lg);
   background: rgba(43, 107, 77, 0.88);
   box-shadow: var(--app-shadow-card);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(var(--app-blur-soft));
 }
 
 .hero__meta p {
@@ -35,17 +39,17 @@
 .loading-state {
   display: grid;
   justify-items: center;
-  gap: 0.9rem;
+  gap: var(--app-cluster-gap);
   color: var(--color-sabro-cream);
 }
 
-@media (min-width: 768px) {
+@media (min-width: size.$bp-md) {
   .calendar-page {
-    padding-inline: 1.4rem;
+    padding-inline: var(--app-page-gutter-inline-wide);
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1.4fr) minmax(20rem, 0.8fr);
+    grid-template-columns: minmax(0, 1.4fr) minmax(calc(var(--app-size-unit) * 24), 0.8fr);
     align-items: stretch;
   }
 }
