@@ -4,7 +4,6 @@
 
     <div class="hero__meta">
       <h3>¿Quién cocina qué? ¿Cuándo? ¡Todos ponemos las manos en la masa!</h3>
-      <p>Clique sur une journée pour ajouter le ou les plats que tu cuisineras.</p>
     </div>
   </section>
 
@@ -17,7 +16,7 @@
   @if (loading()) {
     <section class="loading-state" aria-live="polite">
       <mat-spinner diameter="42" />
-      <p>Chargement du calendrier…</p>
+      <p>Qual es la fecha de hoy …</p>
     </section>
   } @else {
     <app-calendar-grid

@@ -5,14 +5,15 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   template: `
     <section class="hero-card">
       <h1>{{ monthLabel() }}</h1>
-      <p class="hero-card__caption">¿Quién cocina esta noche?</p>
+      <p class="hero-card__caption">{{ randomSubtitle }}</p>
     </section>
   `,
   styles: `
     .hero-card {
       display: grid;
       gap: var(--app-space-sm);
-      padding: var(--app-panel-padding) calc(var(--app-panel-padding) * 0.95) calc(var(--app-panel-padding) * 0.9);
+      padding: var(--app-panel-padding) calc(var(--app-panel-padding) * 0.95)
+        calc(var(--app-panel-padding) * 0.9);
       border-radius: var(--app-radius-xl);
       color: var(--color-sabro-cream);
       background: rgba(43, 107, 77, 0.94);
@@ -51,4 +52,20 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 })
 export class CalendarPageTitleComponent {
   readonly monthLabel = input.required<string>();
+
+  readonly dummySubtitle = [
+    `Il y a deux choses dont j'ai horreur sur cette terre : l'emmental à la place de la mozza sur une pizza et l'amateurisme !`,
+    'Le meilleur moyen de coloniser quotidien des gens par des mécanismes de contrôle renforcé et global consiste à solliciter non pas seulement leur approbation, mais leur contribution active.',
+    'Si les animaux avaient instagram Zakaria aurait déjà un compte certifié.',
+    'Vous vous la jouez solo ...',
+    'La Paques elle est foutue...',
+    'Elle vaut rien la copine !',
+    `Non Mamon !`,
+    `Aujourd'hui Mickey avonce !`,
+    `Je suis Punk !`,
+    `Je suis faciné par les gangs d'Atlanta!`,
+  ];
+
+  readonly randomSubtitle =
+    this.dummySubtitle[Math.floor(Math.random() * this.dummySubtitle.length)];
 }
