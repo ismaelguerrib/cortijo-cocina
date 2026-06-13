@@ -24,9 +24,8 @@
 
   @if (day().meal) {
     <button
-      mat-stroked-button
       type="button"
-      class="day-card__action"
+      class="day-card__action day-card__action--create"
       (click)="openMealEditor($event)"
     >
       Modifier

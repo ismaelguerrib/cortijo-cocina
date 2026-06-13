@@ -140,18 +140,6 @@
   margin-top: auto;
 }
 
-.day-card__action.mat-mdc-stroked-button:not(:disabled) {
-  border-color: var(--color-sabro-chili) !important;
-  background: var(--color-sabro-chili);
-  color: var(--color-sabro-cream) !important;
-}
-
-.day-card__action.mat-mdc-stroked-button:not(:disabled):hover {
-  border-color: var(--color-sabro-orange) !important;
-  background: var(--color-sabro-orange);
-  color: var(--color-sabro-forest) !important;
-}
-
 .day-card__action--create {
   padding: 0;
   min-width: 0;
