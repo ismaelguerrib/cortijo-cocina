@@ -24,27 +24,26 @@ export interface MealEditorDialogData {
 
 const minArrayLength = (minimum: number): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
   const value = control.value;
-
-  if (Array.isArray(value) && value.length >= minimum) {
-    return null;
-  }
-
+  if (Array.isArray(value) && value.length >= minimum) return null;
   return { minArrayLength: true };
 };
 
 const nonEmptyLines = (): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
   const value = control.value;
-
-  if (typeof value !== 'string') {
-    return { nonEmptyLines: true };
-  }
-
-  const lines = value
-    .split('\n')
-    .map((line) => line.trim())
-    .filter(Boolean);
-
+  if (typeof value !== 'string') return { nonEmptyLines: true };
+  const lines = value.split('\n').map((l) => l.trim()).filter(Boolean);
   return lines.length > 0 ? null : { nonEmptyLines: true };
+};
+
+const validVoteLines = (): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
+  const value = control.value as string;
+  if (!value.trim()) return null;
+  const lines = value.split('\n').map((l) => l.trim()).filter(Boolean);
+  const allValid = lines.every((l) => {
+    const n = Number(l);
+    return Number.isInteger(n) && n >= 0 && n <= 20;
+  });
+  return allValid ? null : { validVoteLines: true };
 };
 
 @Component({
@@ -74,19 +73,7 @@ export class MealEditorModalComponent {
 
   readonly form = this.formBuilder.group({
     mealDate: this.formBuilder.control(this.data.meal?.mealDate ?? this.data.date, Validators.required),
-    title: this.formBuilder.control(this.data.meal?.title ?? '', [
-      Validators.required,
-      Validators.maxLength(150)
-    ]),
     description: this.formBuilder.control(this.data.meal?.description ?? ''),
-    assignees: this.formBuilder.control<FamilyMember[]>(this.data.meal?.assignees ?? [], [
-      minArrayLength(1)
-    ]),
-    voteCount: this.formBuilder.control(this.data.meal?.voteCount ?? 0, [
-      Validators.required,
-      Validators.min(0),
-      Validators.max(9999)
-    ]),
     dishes: this.formBuilder.array(
       (this.data.meal?.dishes.length ? this.data.meal.dishes : [undefined]).map((dish) =>
         this.createDishGroup(dish)
@@ -111,17 +98,20 @@ export class MealEditorModalComponent {
     try {
       const payload: MealAssignmentPayload = {
         mealDate: this.form.controls.mealDate.getRawValue(),
-        title: this.form.controls.title.getRawValue().trim(),
         description: this.form.controls.description.getRawValue().trim() || undefined,
-        assignees: this.form.controls.assignees.getRawValue(),
-        voteCount: this.form.controls.voteCount.getRawValue(),
         dishes: this.form.controls.dishes.getRawValue().map((dish) => ({
+          preparers: dish.preparers as FamilyMember[],
           title: dish.title.trim(),
           recipe: dish.recipe.trim(),
           photoUrls: dish.photoUrlsText
             .split('\n')
-            .map((photoUrl) => photoUrl.trim())
+            .map((url) => url.trim())
+            .filter(Boolean),
+          votes: dish.votesText
+            .split('\n')
+            .map((l) => l.trim())
             .filter(Boolean)
+            .map(Number)
         }))
       };
 
@@ -140,9 +130,7 @@ export class MealEditorModalComponent {
   }
 
   async deleteMeal(): Promise<void> {
-    if (!this.data.meal || !window.confirm('Supprimer ce repas ?')) {
-      return;
-    }
+    if (!this.data.meal || !window.confirm('Supprimer ce repas ?')) return;
 
     this.saving.set(true);
     this.errorMessage.set(null);
@@ -166,16 +154,14 @@ export class MealEditorModalComponent {
   }
 
   removeDish(index: number): void {
-    if (this.form.controls.dishes.length === 1) {
-      return;
-    }
-
+    if (this.form.controls.dishes.length === 1) return;
     this.form.controls.dishes.removeAt(index);
     this.form.controls.dishes.markAsTouched();
   }
 
   private createDishGroup(dish?: MealDish) {
     return this.formBuilder.group({
+      preparers: this.formBuilder.control<FamilyMember[]>(dish?.preparers ?? [], [minArrayLength(1)]),
       title: this.formBuilder.control(dish?.title ?? '', [
         Validators.required,
         Validators.maxLength(150)
@@ -184,10 +170,8 @@ export class MealEditorModalComponent {
         Validators.required,
         Validators.maxLength(4000)
       ]),
-      photoUrlsText: this.formBuilder.control((dish?.photoUrls ?? []).join('\n'), [
-        Validators.required,
-        nonEmptyLines()
-      ])
+      photoUrlsText: this.formBuilder.control((dish?.photoUrls ?? []).join('\n')),
+      votesText: this.formBuilder.control((dish?.votes ?? []).join('\n'), [validVoteLines()])
     });
   }
 }

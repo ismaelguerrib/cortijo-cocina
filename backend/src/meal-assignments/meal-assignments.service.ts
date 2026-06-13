@@ -28,7 +28,6 @@ export class MealAssignmentsService {
   }
 
   async create(createMealAssignmentDto: CreateMealAssignmentDto): Promise<MealAssignmentEntity> {
-    this.assertAssignees(createMealAssignmentDto.assignees);
     this.assertDishes(createMealAssignmentDto.dishes);
 
     try {
@@ -48,10 +47,6 @@ export class MealAssignmentsService {
   ): Promise<MealAssignmentEntity> {
     const existingAssignment = await this.findOneOrThrow(id);
 
-    if (updateMealAssignmentDto.assignees) {
-      this.assertAssignees(updateMealAssignmentDto.assignees);
-    }
-
     if (updateMealAssignmentDto.dishes) {
       this.assertDishes(updateMealAssignmentDto.dishes);
     }
@@ -62,11 +57,7 @@ export class MealAssignmentsService {
         description:
           updateMealAssignmentDto.description === undefined
             ? existingAssignment.description
-            : updateMealAssignmentDto.description?.trim() || null,
-        voteCount:
-          updateMealAssignmentDto.voteCount === undefined
-            ? existingAssignment.voteCount
-            : updateMealAssignmentDto.voteCount
+            : updateMealAssignmentDto.description?.trim() || null
       });
 
       return await this.mealAssignmentsRepository.save(mergedAssignment);
@@ -80,12 +71,6 @@ export class MealAssignmentsService {
     await this.mealAssignmentsRepository.remove(mealAssignment);
   }
 
-  private assertAssignees(assignees: string[]): void {
-    if (assignees.length === 0) {
-      throw new BadRequestException('At least one assignee is required.');
-    }
-  }
-
   private assertDishes(dishes: MealDishDto[]): void {
     if (dishes.length === 0) {
       throw new BadRequestException('At least one dish is required.');
@@ -97,12 +82,13 @@ export class MealAssignmentsService {
   ): Partial<MealAssignmentEntity> {
     return {
       ...payload,
-      title: payload.title?.trim(),
       description: payload.description?.trim() || null,
       dishes: payload.dishes?.map((dish) => ({
+        preparers: dish.preparers,
         title: dish.title.trim(),
         recipe: dish.recipe.trim(),
-        photoUrls: dish.photoUrls.map((photoUrl) => photoUrl.trim()).filter(Boolean)
+        photoUrls: dish.photoUrls.map((url) => url.trim()).filter(Boolean),
+        votes: dish.votes
       }))
     };
   }

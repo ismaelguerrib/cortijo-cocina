@@ -36,8 +36,9 @@ export class CalendarDayCellComponent {
   }
 
   assigneeSummary(): string {
-    const assignees = this.day().meal?.assignees ?? [];
-    return assignees.map((assignee) => FAMILY_MEMBER_LABELS[assignee]).join(', ');
+    const preparers = this.day().meal?.dishes.flatMap((dish) => dish.preparers) ?? [];
+    const unique = [...new Set(preparers)];
+    return unique.map((p) => FAMILY_MEMBER_LABELS[p]).join(', ');
   }
 
   dishPreview(): string {

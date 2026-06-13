@@ -10,11 +10,6 @@
 
   @if (day().meal; as meal) {
     <div class="day-card__content">
-      <div class="day-card__title-row">
-        <h3>{{ meal.title }}</h3>
-        <span class="day-card__votes">{{ meal.voteCount }}</span>
-      </div>
-
       <p class="day-card__meta">
         {{ meal.dishes.length }} plat{{ meal.dishes.length > 1 ? 's' : '' }}
       </p>

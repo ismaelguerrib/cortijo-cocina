@@ -11,12 +11,11 @@ type RecipeSortOption = 'recent' | 'popular' | 'alphabetical';
 interface RecipeCard {
   id: string;
   mealDate: string;
-  mealTitle: string;
-  mealVotes: number;
-  assignees: FamilyMember[];
   dishTitle: string;
+  preparers: FamilyMember[];
   recipe: string;
   photoUrls: string[];
+  votes: number[];
 }
 
 @Component({
@@ -42,12 +41,11 @@ export class RecipesPageComponent implements OnInit {
       meal.dishes.map((dish, index) => ({
         id: `${meal.id}-${index}`,
         mealDate: meal.mealDate,
-        mealTitle: meal.title,
-        mealVotes: meal.voteCount,
-        assignees: meal.assignees,
         dishTitle: dish.title,
+        preparers: dish.preparers,
         recipe: dish.recipe,
-        photoUrls: dish.photoUrls
+        photoUrls: dish.photoUrls,
+        votes: dish.votes
       }))
     );
 
@@ -55,11 +53,11 @@ export class RecipesPageComponent implements OnInit {
       switch (this.sort()) {
         case 'alphabetical':
           return leftCard.dishTitle.localeCompare(rightCard.dishTitle, 'fr');
-        case 'popular':
-          return (
-            rightCard.mealVotes - leftCard.mealVotes ||
-            rightCard.mealDate.localeCompare(leftCard.mealDate)
-          );
+        case 'popular': {
+          const leftScore = leftCard.votes.reduce((s, v) => s + v, 0);
+          const rightScore = rightCard.votes.reduce((s, v) => s + v, 0);
+          return rightScore - leftScore || rightCard.mealDate.localeCompare(leftCard.mealDate);
+        }
         case 'recent':
         default:
           return (
@@ -74,7 +72,13 @@ export class RecipesPageComponent implements OnInit {
     await this.mealStore.loadMeals();
   }
 
-  assigneeSummary(assignees: FamilyMember[]): string {
-    return assignees.map((assignee) => FAMILY_MEMBER_LABELS[assignee]).join(', ');
+  assigneeSummary(preparers: FamilyMember[]): string {
+    return preparers.map((p) => FAMILY_MEMBER_LABELS[p]).join(', ');
+  }
+
+  voteAverage(votes: number[]): string {
+    if (votes.length === 0) return '–';
+    const avg = votes.reduce((s, v) => s + v, 0) / votes.length;
+    return avg.toFixed(1);
   }
 }

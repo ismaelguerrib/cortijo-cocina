@@ -6,27 +6,20 @@
   @if (day.meal; as meal) {
     <article class="meal-card" data-testid="day-detail-meal">
       <div class="meal-card__headline">
-        <div>
-          <p class="meal-card__eyebrow">Repas du jour</p>
-          <h3>{{ meal.title }}</h3>
-        </div>
-        <span class="meal-card__votes"
-          >{{ meal.voteCount }} vote{{ meal.voteCount > 1 ? 's' : '' }}</span
-        >
+        <p class="meal-card__eyebrow">Repas du jour</p>
       </div>
 
-      <p><strong>Préparation :</strong> {{ assignees() || '—' }}</p>
       <p><strong>Note :</strong> {{ meal.description || 'Aucune note.' }}</p>
-      <p><strong>Plats :</strong> {{ meal.dishes.length }}</p>
 
       <div class="dish-list">
         @for (dish of meal.dishes; track dish.title + '-' + $index) {
           <article class="dish-card">
             <div class="dish-card__header">
               <h4>{{ dish.title }}</h4>
-              <span>{{ photoCount(dish.photoUrls) }}</span>
+              <span class="meal-card__votes">{{ voteAverage(dish.votes) }}/20</span>
             </div>
 
+            <p><strong>Préparation :</strong> {{ preparers(dish) || '—' }}</p>
             <p class="dish-card__recipe">{{ dish.recipe }}</p>
 
             <div class="dish-card__gallery">

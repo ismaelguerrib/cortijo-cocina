@@ -9,9 +9,11 @@ import {
 import { FamilyMember } from '../../common/enums/family-member.enum';
 
 export interface MealDish {
+  preparers: FamilyMember[];
   title: string;
   recipe: string;
   photoUrls: string[];
+  votes: number[];
 }
 
 @Entity('meal_assignments')
@@ -23,21 +25,8 @@ export class MealAssignmentEntity {
   @Column({ type: 'date', name: 'meal_date' })
   mealDate!: string;
 
-  @Column({ length: 150 })
-  title!: string;
-
   @Column({ type: 'text', nullable: true })
   description!: string | null;
-
-  @Column({
-    type: 'enum',
-    enum: FamilyMember,
-    array: true
-  })
-  assignees!: FamilyMember[];
-
-  @Column({ type: 'integer', name: 'vote_count', default: 0 })
-  voteCount!: number;
 
   @Column({ type: 'jsonb', default: () => "'[]'" })
   dishes!: MealDish[];

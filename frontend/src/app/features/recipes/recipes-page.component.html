@@ -48,13 +48,12 @@
           <div class="recipe-card__body">
             <div class="recipe-card__meta">
               <span>{{ recipe.mealDate }}</span>
-              <span>{{ recipe.mealVotes }} vote{{ recipe.mealVotes > 1 ? 's' : '' }}</span>
+              <span>{{ voteAverage(recipe.votes) }}/20</span>
             </div>
 
             <h2>{{ recipe.dishTitle }}</h2>
-            <p class="recipe-card__meal">{{ recipe.mealTitle }}</p>
             <p class="recipe-card__recipe">{{ recipe.recipe }}</p>
-            <p class="recipe-card__assignees">Préparation: {{ assigneeSummary(recipe.assignees) }}</p>
+            <p class="recipe-card__assignees">Préparation : {{ assigneeSummary(recipe.preparers) }}</p>
           </div>
         </article>
       }

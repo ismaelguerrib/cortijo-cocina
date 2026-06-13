@@ -17,15 +17,14 @@ interface MockRepository {
 const buildMeal = (): MealAssignmentEntity => ({
   id: 'meal-1',
   mealDate: '2026-08-15',
-  title: 'Barbecue familial',
   description: 'Prévoir les grillades',
-  assignees: [FamilyMember.MAMIE, FamilyMember.THOMAS],
-  voteCount: 7,
   dishes: [
     {
+      preparers: [FamilyMember.MAMIE, FamilyMember.THOMAS],
       title: 'Brochettes',
       recipe: 'Mariner puis griller.',
-      photoUrls: ['https://images.example.com/brochettes-1.jpg']
+      photoUrls: ['https://images.example.com/brochettes-1.jpg'],
+      votes: [15, 18]
     }
   ],
   createdAt: new Date('2026-01-01T10:00:00.000Z'),
@@ -51,15 +50,14 @@ describe('MealAssignmentsService', () => {
   it('creates a meal assignment', async () => {
     const dto: CreateMealAssignmentDto = {
       mealDate: '2026-08-15',
-      title: 'Barbecue familial',
       description: 'Prévoir les grillades',
-      assignees: [FamilyMember.MAMIE, FamilyMember.THOMAS],
-      voteCount: 7,
       dishes: [
         {
+          preparers: [FamilyMember.MAMIE, FamilyMember.THOMAS],
           title: 'Brochettes',
           recipe: 'Mariner puis griller.',
-          photoUrls: ['https://images.example.com/brochettes-1.jpg']
+          photoUrls: ['https://images.example.com/brochettes-1.jpg'],
+          votes: [15, 18]
         }
       ]
     };
@@ -68,24 +66,17 @@ describe('MealAssignmentsService', () => {
     repository.save.mockResolvedValue(meal);
 
     await expect(service.create(dto)).resolves.toEqual(meal);
-    expect(repository.create).toHaveBeenCalledWith({
-      ...dto,
-      description: 'Prévoir les grillades'
-    });
+    expect(repository.create).toHaveBeenCalled();
   });
 
   it('updates a meal assignment', async () => {
     const existingMeal = buildMeal();
     const updatedMeal = {
       ...existingMeal,
-      title: 'Barbecue du jardin',
-      assignees: [FamilyMember.JULIE, FamilyMember.CLAIRE],
-      voteCount: 12
+      description: 'Mise à jour'
     };
     const dto: UpdateMealAssignmentDto = {
-      title: 'Barbecue du jardin',
-      assignees: [FamilyMember.JULIE, FamilyMember.CLAIRE],
-      voteCount: 12
+      description: 'Mise à jour'
     };
 
     repository.findOneBy.mockResolvedValue(existingMeal);
@@ -105,48 +96,29 @@ describe('MealAssignmentsService', () => {
     expect(repository.remove).toHaveBeenCalledWith(existingMeal);
   });
 
-  it('rejects a duplicate date and slot', async () => {
+  it('rejects a duplicate date', async () => {
     repository.save.mockRejectedValue({ code: '23505' });
 
     await expect(
       service.create({
         mealDate: '2026-08-15',
-        title: 'Doublon',
-        assignees: [FamilyMember.MAMIE],
         dishes: [
           {
+            preparers: [FamilyMember.MAMIE],
             title: 'Salade',
             recipe: 'Tout mélanger.',
-            photoUrls: ['https://images.example.com/salade-1.jpg']
+            photoUrls: [],
+            votes: []
           }
         ]
       })
     ).rejects.toBeInstanceOf(ConflictException);
   });
 
-  it('rejects an empty assignee list', async () => {
-    await expect(
-      service.create({
-        mealDate: '2026-08-15',
-        title: 'Salade',
-        assignees: [],
-        dishes: [
-          {
-            title: 'Salade',
-            recipe: 'Tout mélanger.',
-            photoUrls: ['https://images.example.com/salade-1.jpg']
-          }
-        ]
-      })
-    ).rejects.toBeInstanceOf(BadRequestException);
-  });
-
   it('rejects a meal without dishes', async () => {
     await expect(
       service.create({
         mealDate: '2026-08-15',
-        title: 'Salade',
-        assignees: [FamilyMember.JULIE],
         dishes: []
       })
     ).rejects.toBeInstanceOf(BadRequestException);

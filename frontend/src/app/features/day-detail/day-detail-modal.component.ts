@@ -30,9 +30,14 @@ export class DayDetailModalComponent {
     });
   }
 
-  assignees(): string {
-    const assignees = this.day.meal?.assignees ?? [];
-    return assignees.map((assignee) => FAMILY_MEMBER_LABELS[assignee]).join(', ');
+  preparers(dish: { preparers: string[] }): string {
+    return dish.preparers.map((p) => FAMILY_MEMBER_LABELS[p as keyof typeof FAMILY_MEMBER_LABELS]).join(', ');
+  }
+
+  voteAverage(votes: number[]): string {
+    if (votes.length === 0) return '–';
+    const avg = votes.reduce((sum, v) => sum + v, 0) / votes.length;
+    return avg.toFixed(1);
   }
 
   photoCount(photoUrls: string[]): string {

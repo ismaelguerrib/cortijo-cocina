@@ -15,31 +15,8 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Titre</mat-label>
-      <input matInput maxlength="150" formControlName="title" />
-      <mat-hint align="end">{{ form.controls.title.value.length }}/150</mat-hint>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Description</mat-label>
-      <textarea matInput rows="4" formControlName="description"></textarea>
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Préparateurs</mat-label>
-      <mat-select formControlName="assignees" multiple data-testid="assignees-select">
-        @for (member of familyMembers; track member.value) {
-          <mat-option [value]="member.value">{{ member.label }}</mat-option>
-        }
-      </mat-select>
-      @if (form.controls.assignees.invalid && form.controls.assignees.touched) {
-        <mat-error>Sélectionnez au moins un préparateur.</mat-error>
-      }
-    </mat-form-field>
-
-    <mat-form-field appearance="outline">
-      <mat-label>Votes cumulés</mat-label>
-      <input matInput type="number" min="0" max="9999" formControlName="voteCount" />
+      <mat-label>Note (optionnelle)</mat-label>
+      <textarea matInput rows="3" formControlName="description"></textarea>
     </mat-form-field>
 
     <section class="editor__dishes">
@@ -62,6 +39,18 @@
           </div>
 
           <mat-form-field appearance="outline">
+            <mat-label>Préparateurs</mat-label>
+            <mat-select formControlName="preparers" multiple>
+              @for (member of familyMembers; track member.value) {
+                <mat-option [value]="member.value">{{ member.label }}</mat-option>
+              }
+            </mat-select>
+            @if (dishGroup.controls.preparers.invalid && dishGroup.controls.preparers.touched) {
+              <mat-error>Sélectionnez au moins un préparateur.</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
             <mat-label>Nom du plat</mat-label>
             <input matInput maxlength="150" formControlName="title" />
           </mat-form-field>
@@ -73,9 +62,14 @@
 
           <mat-form-field appearance="outline">
             <mat-label>Photos (une URL par ligne)</mat-label>
-            <textarea matInput rows="4" formControlName="photoUrlsText"></textarea>
-            @if (dishGroup.controls.photoUrlsText.invalid && dishGroup.controls.photoUrlsText.touched) {
-              <mat-error>Ajoutez au moins une photo pour ce plat.</mat-error>
+            <textarea matInput rows="3" formControlName="photoUrlsText"></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Votes (un score 0–20 par ligne)</mat-label>
+            <textarea matInput rows="3" formControlName="votesText"></textarea>
+            @if (dishGroup.controls.votesText.invalid && dishGroup.controls.votesText.touched) {
+              <mat-error>Chaque vote doit être un entier entre 0 et 20.</mat-error>
             }
           </mat-form-field>
         </article>
