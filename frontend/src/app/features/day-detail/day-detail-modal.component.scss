@@ -48,18 +48,25 @@
   color: var(--color-sabro-cream);
 }
 
-#save-night-button {
-  background: var(--color-sabro-purple) !important;
-  color: var(--color-sabro-cream) !important;
-}
-
-#save-night-button:hover {
-  background: var(--color-sabro-purple) !important;
-  color: var(--color-sabro-cream) !important;
-}
 
 .meal-card--empty h3 {
   color: var(--color-sabro-chili);
+}
+
+#save-night-button {
+  background-color: var(--color-sabro-purple);
+  color: var(--color-sabro-cream);
+  border: none;
+  border-radius: var(--app-radius-pill);
+  padding: var(--app-space-sm) var(--app-space-lg);
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-body);
+  cursor: pointer;
+  box-shadow: var(--app-shadow-active);
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-sabro-purple) 85%, black);
+  }
 }
 
 .meal-card--empty p {

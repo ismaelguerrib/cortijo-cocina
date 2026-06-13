@@ -44,17 +44,16 @@
     </article>
   } @else {
     <article class="meal-card meal-card--empty">
-      <h3>Aiie Caramba !</h3>
-      <p>Esta noche nadie va a comer.</p>
+      <h3>Nadie va a cocinar, nadie va a comer.</h3>
+      <p>Personne ne s'est porté volontaire pour cuisiner ce soir.</p>
 
       <button
-        mat-flat-button
         type="button"
         id="save-night-button"
         (click)="openEditor()"
         data-testid="detail-edit-button"
       >
-        Sauve la soirée !
+        Sauve la night !
       </button>
     </article>
   }
