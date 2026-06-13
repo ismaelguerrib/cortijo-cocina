@@ -1,6 +1,5 @@
 <section class="sheet">
   <header class="sheet__header">
-    <p>{{ day.weekdayLabel }}</p>
     <h2>{{ formattedDate }}</h2>
   </header>
 
@@ -11,7 +10,9 @@
           <p class="meal-card__eyebrow">Repas du jour</p>
           <h3>{{ meal.title }}</h3>
         </div>
-        <span class="meal-card__votes">{{ meal.voteCount }} vote{{ meal.voteCount > 1 ? 's' : '' }}</span>
+        <span class="meal-card__votes"
+          >{{ meal.voteCount }} vote{{ meal.voteCount > 1 ? 's' : '' }}</span
+        >
       </div>
 
       <p><strong>Préparation :</strong> {{ assignees() || '—' }}</p>
@@ -43,11 +44,17 @@
     </article>
   } @else {
     <article class="meal-card meal-card--empty">
-      <h3>Aucun repas prévu</h3>
-      <p>Crée le repas du jour, ajoute les plats, les recettes et leurs photos.</p>
+      <h3>Aiie Caramba !</h3>
+      <p>Esta noche nadie va a comer.</p>
 
-      <button mat-flat-button type="button" (click)="openEditor()" data-testid="detail-edit-button">
-        Créer le repas
+      <button
+        mat-flat-button
+        type="button"
+        id="save-night-button"
+        (click)="openEditor()"
+        data-testid="detail-edit-button"
+      >
+        Sauve la soirée !
       </button>
     </article>
   }

@@ -1,11 +1,9 @@
 @use '../../../styles/sizes' as size;
 
 .sheet {
-  padding:
-    var(--app-page-gutter-block-start)
-    var(--app-page-gutter-inline)
+  padding: var(--app-page-gutter-block-start) var(--app-page-gutter-inline)
     calc(var(--app-page-gutter-block-end) * 0.7);
-  color: var(--app-text-color);
+  color: var(--color-sabro-cream);
 }
 
 .sheet__header {
@@ -21,7 +19,7 @@
 
 .sheet__header p {
   margin-bottom: var(--app-space-xs);
-  color: var(--app-text-muted);
+  color: var(--color-sabro-cream);
   font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: var(--app-letter-spacing-wider);
@@ -32,6 +30,7 @@
   font-family: var(--app-display-font);
   font-size: var(--app-font-title-sm);
   line-height: 1;
+  color: var(--color-sabro-chili);
 }
 
 .meal-card {
@@ -44,8 +43,27 @@
 }
 
 .meal-card--empty {
-  background: var(--app-surface-base);
+  background: rgba(31, 79, 57, 0.94);
   justify-items: start;
+  color: var(--color-sabro-cream);
+}
+
+#save-night-button {
+  background: var(--color-sabro-purple) !important;
+  color: var(--color-sabro-cream) !important;
+}
+
+#save-night-button:hover {
+  background: var(--color-sabro-purple) !important;
+  color: var(--color-sabro-cream) !important;
+}
+
+.meal-card--empty h3 {
+  color: var(--color-sabro-chili);
+}
+
+.meal-card--empty p {
+  color: var(--color-sabro-cream);
 }
 
 .meal-card__headline,

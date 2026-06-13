@@ -50,11 +50,13 @@
   background: rgba(255, 248, 227, 0.92);
 }
 
-.mat-bottom-sheet-container.day-detail-sheet {
+.cdk-overlay-pane.day-detail-sheet .mat-bottom-sheet-container {
   border-radius: var(--app-radius-xl) var(--app-radius-xl) 0 0;
-  background: var(--app-surface-purple);
+  background: none !important;
+  background-color: var(--color-sabro-forest) !important;
   box-shadow: var(--app-shadow-sheet);
-  color: var(--app-text-color);
+  color: var(--color-sabro-cream);
+  opacity: 1 !important;
 }
 
 .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
