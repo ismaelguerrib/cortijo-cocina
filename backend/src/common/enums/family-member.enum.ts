@@ -1,7 +1,11 @@
 export enum FamilyMember {
-  MAMIE = 'MAMIE',
-  PAPI = 'PAPI',
-  JULIE = 'JULIE',
-  THOMAS = 'THOMAS',
-  CLAIRE = 'CLAIRE'
+  AMEL = 'AMEL',
+  ANOUK = 'ANOUK',
+  BEATRICE = 'BEATRICE',
+  CAROLE = 'CAROLE',
+  IMAN = 'IMAN',
+  ISMAEL = 'ISMAËL',
+  SOFIA = 'SOFIA',
+  SOULEIMANE = 'SOULEIMANE',
+  ZAKARIA = 'ZAKARIA',
 }

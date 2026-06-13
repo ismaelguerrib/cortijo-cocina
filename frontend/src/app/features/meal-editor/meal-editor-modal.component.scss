@@ -4,15 +4,27 @@
   display: grid;
   gap: var(--app-section-gap);
   min-height: var(--app-shell-min-block);
-  padding:
-    var(--app-page-gutter-block-start)
-    var(--app-page-gutter-inline)
-    calc(var(--app-page-gutter-block-end) * 0.7);
+  padding-inline: var(--app-page-gutter-inline);
+  padding-block-end: calc(var(--app-page-gutter-block-end) * 0.7);
   color: var(--color-sabro-orange);
   background: var(--color-sabro-forest);
 }
 
-.editor__header,
+.editor__header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: var(--app-cluster-gap);
+  padding-block: var(--app-page-gutter-block-start) var(--app-space-md);
+  padding-inline: var(--app-page-gutter-inline);
+  margin-inline: calc(-1 * var(--app-page-gutter-inline));
+  background: var(--color-sabro-forest);
+}
+
 .editor__actions {
   display: flex;
   align-items: stretch;
@@ -57,8 +69,8 @@
 .editor__section-header,
 .dish-form__header {
   display: flex;
-  align-items: stretch;
-  flex-direction: column;
+  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
   gap: var(--app-cluster-gap);
 }
@@ -85,10 +97,167 @@
 
 .dish-form {
   padding: var(--app-card-padding);
-  border: calc(var(--app-size-unit) * 0.12) solid rgba(255, 184, 69, 0.38);
+  border: 1.5px solid rgba(255, 184, 69, 0.5);
   border-radius: var(--app-radius-md);
-  background: var(--color-sabro-chili);
+  background: rgba(180, 40, 30, 0.55);
   box-shadow: var(--app-shadow-card);
+}
+
+.dish-form__remove {
+  flex-shrink: 0;
+}
+
+.votes-field {
+  display: grid;
+  gap: var(--app-space-sm);
+}
+
+.votes-field__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--app-cluster-gap);
+}
+
+.votes-field__label {
+  margin: 0;
+  color: var(--color-sabro-orange);
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-caption);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--app-letter-spacing-wide);
+}
+
+.votes-field__empty {
+  margin: 0;
+  color: rgba(255, 184, 69, 0.6);
+  font-size: var(--app-font-caption);
+  font-style: italic;
+}
+
+.votes-field__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--app-space-sm);
+}
+
+.votes-field__item {
+  display: flex;
+  align-items: center;
+  gap: var(--app-space-2xs);
+  background: rgba(255, 184, 69, 0.12);
+  border: 1px solid rgba(255, 184, 69, 0.4);
+  border-radius: var(--app-radius-sm);
+  padding: var(--app-space-2xs) var(--app-space-xs);
+}
+
+.votes-field__input {
+  width: 3.5rem;
+  background: transparent;
+  border: none;
+  color: var(--color-sabro-orange);
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-body);
+  font-weight: 700;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+}
+
+.votes-field__remove {
+  background: none;
+  border: none;
+  color: rgba(255, 184, 69, 0.7);
+  cursor: pointer;
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0;
+
+  &:hover {
+    color: var(--color-sabro-orange);
+  }
+}
+
+.photos-field {
+  display: grid;
+  gap: var(--app-space-sm);
+}
+
+.photos-field__label {
+  margin: 0;
+  color: var(--color-sabro-orange);
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-caption);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--app-letter-spacing-wide);
+}
+
+.photos-field__picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--app-space-sm) var(--app-space-md);
+  border: 1.5px dashed rgba(255, 184, 69, 0.5);
+  border-radius: var(--app-radius-md);
+  color: var(--color-sabro-orange);
+  cursor: pointer;
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-body);
+  gap: var(--app-space-xs);
+
+  input[type="file"] {
+    display: none;
+  }
+
+  &:hover {
+    border-color: var(--color-sabro-orange);
+    background: rgba(255, 184, 69, 0.08);
+  }
+}
+
+.photos-field__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--app-space-xs);
+}
+
+.photos-field__thumb {
+  position: relative;
+  aspect-ratio: 1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--app-radius-sm);
+  }
+}
+
+.photos-field__remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-size: 0.65rem;
+  height: 1.25rem;
+  width: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 }
 
 .editor__error {
@@ -108,12 +277,14 @@
   color: var(--color-sabro-orange);
 }
 
+:host ::ng-deep .editor .mat-mdc-outlined-button:not(:disabled),
 :host ::ng-deep .editor .mat-mdc-stroked-button:not(:disabled) {
   border-color: var(--color-sabro-orange) !important;
   background: var(--color-sabro-chili);
   color: var(--color-sabro-orange) !important;
 }
 
+:host ::ng-deep .editor .mat-mdc-outlined-button:not(:disabled):hover,
 :host ::ng-deep .editor .mat-mdc-stroked-button:not(:disabled):hover {
   border-color: var(--color-sabro-orange) !important;
   background: #bf271f;
@@ -151,14 +322,6 @@
 }
 
 @media (min-width: size.$bp-md) {
-  .editor__header,
-  .editor__actions,
-  .editor__section-header,
-  .dish-form__header {
-    flex-direction: row;
-    align-items: center;
-  }
-
   .editor__header h2 {
     font-size: var(--app-font-title-md);
   }

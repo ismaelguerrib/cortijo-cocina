@@ -14,6 +14,34 @@
   --mat-sys-on-error: var(--app-text-inverse);
 }
 
+.meal-editor-select-panel {
+  background: var(--color-sabro-forest) !important;
+  border: 1.5px solid rgba(255, 184, 69, 0.5) !important;
+  border-radius: var(--app-radius-md) !important;
+
+  .mat-mdc-option {
+    color: var(--color-sabro-orange) !important;
+    font-family: var(--app-ui-font);
+
+    &:hover,
+    &.mat-mdc-option-active {
+      background: rgba(255, 184, 69, 0.12) !important;
+    }
+
+    &.mdc-list-item--selected {
+      background: rgba(255, 184, 69, 0.2) !important;
+    }
+
+    .mat-pseudo-checkbox {
+      border-color: var(--color-sabro-orange) !important;
+    }
+
+    .mat-pseudo-checkbox-checked {
+      background: var(--color-sabro-orange) !important;
+    }
+  }
+}
+
 .mat-mdc-button-base {
   font-family: var(--app-ui-font) !important;
   letter-spacing: var(--app-letter-spacing-base);
@@ -61,7 +89,7 @@
 
 .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
   border-radius: var(--app-radius-xl) var(--app-radius-xl) 0 0;
-  overflow: hidden;
+  overflow-y: auto;
   background: var(--color-sabro-forest);
   color: var(--color-sabro-orange);
   box-shadow: var(--app-shadow-soft);

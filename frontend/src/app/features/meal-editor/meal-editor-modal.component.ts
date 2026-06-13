@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import {
   AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
   NonNullableFormBuilder,
   ReactiveFormsModule,
   ValidationErrors,
@@ -35,16 +38,13 @@ const nonEmptyLines = (): ValidatorFn => (control: AbstractControl): ValidationE
   return lines.length > 0 ? null : { nonEmptyLines: true };
 };
 
-const validVoteLines = (): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
-  const value = control.value as string;
-  if (!value.trim()) return null;
-  const lines = value.split('\n').map((l) => l.trim()).filter(Boolean);
-  const allValid = lines.every((l) => {
-    const n = Number(l);
-    return Number.isInteger(n) && n >= 0 && n <= 20;
-  });
-  return allValid ? null : { validVoteLines: true };
-};
+type DishGroup = FormGroup<{
+  preparers: FormControl<FamilyMember[]>;
+  title: FormControl<string>;
+  recipe: FormControl<string>;
+  photos: FormControl<string[]>;
+  votes: FormArray<FormControl<number>>;
+}>;
 
 @Component({
   selector: 'app-meal-editor-modal',
@@ -82,8 +82,45 @@ export class MealEditorModalComponent {
     )
   });
 
-  get dishGroups() {
-    return this.form.controls.dishes.controls;
+  get dishGroups(): DishGroup[] {
+    return this.form.controls.dishes.controls as DishGroup[];
+  }
+
+  voteControls(dishGroup: DishGroup): FormControl<number>[] {
+    return dishGroup.controls.votes.controls;
+  }
+
+  async handlePhotoFiles(event: Event, dishGroup: DishGroup): Promise<void> {
+    const input = event.target as HTMLInputElement;
+    if (!input.files?.length) return;
+
+    const toBase64 = (file: File): Promise<string> =>
+      new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+
+    const base64s = await Promise.all(Array.from(input.files).map(toBase64));
+    const current = dishGroup.controls.photos.getRawValue();
+    dishGroup.controls.photos.setValue([...current, ...base64s]);
+    input.value = '';
+  }
+
+  removePhoto(dishGroup: DishGroup, index: number): void {
+    const current = dishGroup.controls.photos.getRawValue();
+    dishGroup.controls.photos.setValue(current.filter((_, i) => i !== index));
+  }
+
+  addVote(dishGroup: DishGroup): void {
+    dishGroup.controls.votes.push(
+      this.formBuilder.control(0, [Validators.required, Validators.min(0), Validators.max(20)])
+    );
+  }
+
+  removeVote(dishGroup: DishGroup, voteIndex: number): void {
+    dishGroup.controls.votes.removeAt(voteIndex);
   }
 
   async submit(): Promise<void> {
@@ -99,19 +136,12 @@ export class MealEditorModalComponent {
       const payload: MealAssignmentPayload = {
         mealDate: this.form.controls.mealDate.getRawValue(),
         description: this.form.controls.description.getRawValue().trim() || undefined,
-        dishes: this.form.controls.dishes.getRawValue().map((dish) => ({
-          preparers: dish.preparers as FamilyMember[],
-          title: dish.title.trim(),
-          recipe: dish.recipe.trim(),
-          photoUrls: dish.photoUrlsText
-            .split('\n')
-            .map((url) => url.trim())
-            .filter(Boolean),
-          votes: dish.votesText
-            .split('\n')
-            .map((l) => l.trim())
-            .filter(Boolean)
-            .map(Number)
+        dishes: this.dishGroups.map((dishGroup) => ({
+          preparers: dishGroup.controls.preparers.getRawValue(),
+          title: dishGroup.controls.title.getRawValue().trim(),
+          recipe: dishGroup.controls.recipe.getRawValue().trim(),
+          photoUrls: dishGroup.controls.photos.getRawValue(),
+          votes: dishGroup.controls.votes.getRawValue()
         }))
       };
 
@@ -159,7 +189,7 @@ export class MealEditorModalComponent {
     this.form.controls.dishes.markAsTouched();
   }
 
-  private createDishGroup(dish?: MealDish) {
+  private createDishGroup(dish?: MealDish): DishGroup {
     return this.formBuilder.group({
       preparers: this.formBuilder.control<FamilyMember[]>(dish?.preparers ?? [], [minArrayLength(1)]),
       title: this.formBuilder.control(dish?.title ?? '', [
@@ -170,8 +200,12 @@ export class MealEditorModalComponent {
         Validators.required,
         Validators.maxLength(4000)
       ]),
-      photoUrlsText: this.formBuilder.control((dish?.photoUrls ?? []).join('\n')),
-      votesText: this.formBuilder.control((dish?.votes ?? []).join('\n'), [validVoteLines()])
-    });
+      photos: this.formBuilder.control<string[]>(dish?.photoUrls ?? []),
+      votes: this.formBuilder.array(
+        (dish?.votes ?? []).map((v) =>
+          this.formBuilder.control(v, [Validators.required, Validators.min(0), Validators.max(20)])
+        )
+      )
+    }) as DishGroup;
   }
 }

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "frontend",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "start"],
+      "cwd": "/Users/ismaelguerrib/Codebase/cortijo-cocina/frontend",
+      "port": 4200
+    }
+  ]
+}
