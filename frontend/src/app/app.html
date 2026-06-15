@@ -1,3 +1,22 @@
+<div class="app-background" aria-hidden="true">
+  @for (item of backgroundItems; track item.src) {
+    <img
+      class="app-background__vegetable"
+      [src]="item.src"
+      alt=""
+      [style.top]="item.top"
+      [style.left]="item.left"
+      [style.width]="item.size"
+      [style.opacity]="item.opacity"
+      [style.animation-duration]="item.duration"
+      [style.animation-delay]="item.delay"
+      [style.--vegetable-drift-x]="item.driftX"
+      [style.--vegetable-drift-y]="item.driftY"
+      [style.--vegetable-rotation]="item.rotation"
+    />
+  }
+</div>
+
 <div class="app-shell">
   <header class="app-shell__header">
     <div class="app-shell__brand-block">

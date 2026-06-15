@@ -2,7 +2,7 @@
 
 :host {
   display: block;
-  background: var(--color-sabro-forest);
+  background: transparent;
 }
 
 .calendar-page {
@@ -11,7 +11,7 @@
     var(--app-page-gutter-block-start)
     var(--app-page-gutter-inline)
     var(--app-page-gutter-block-end);
-  background: var(--color-sabro-forest);
+  background: transparent;
 }
 
 .hero {
