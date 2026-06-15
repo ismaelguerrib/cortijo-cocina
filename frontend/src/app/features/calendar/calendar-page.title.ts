@@ -60,10 +60,11 @@ export class CalendarPageTitleComponent {
     'Vous vous la jouez solo ...',
     'La Paques elle est foutue...',
     'Elle vaut rien la copine !',
-    `Non Mamon !`,
+    `Non Mamooon !`,
     `Aujourd'hui Mickey avonce !`,
     `Je suis Punk !`,
-    `Je suis faciné par les gangs d'Atlanta!`,
+    `Je suis faciné par les histoires de gangs d'Atlanta!`,
+    `Séance zikr à azhara ! `,
   ];
 
   readonly randomSubtitle =
