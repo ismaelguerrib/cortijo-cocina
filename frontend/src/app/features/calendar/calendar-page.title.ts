@@ -64,7 +64,7 @@ export class CalendarPageTitleComponent {
     `Aujourd'hui Mickey avonce !`,
     `Je suis Punk !`,
     `Je suis faciné par les histoires de gangs d'Atlanta!`,
-    `Séance zikr à azhara ! `,
+    `Séance dikeur à azhara ! `,
   ];
 
   readonly randomSubtitle =
