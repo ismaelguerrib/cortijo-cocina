@@ -58,13 +58,16 @@ export class CalendarPageTitleComponent {
     'Le meilleur moyen de coloniser quotidien des gens par des mécanismes de contrôle renforcé et global consiste à solliciter non pas seulement leur approbation, mais leur contribution active.',
     'Si les animaux avaient instagram Zakaria aurait déjà un compte certifié.',
     'Vous vous la jouez solo ...',
-    'La Paques elle est foutue...',
+    'La Paques elle est foutue.',
     'Elle vaut rien la copine !',
     `Non Mamooon !`,
-    `Aujourd'hui Mickey avonce !`,
+    `Aujourd'hui Mickey avonce.`,
     `Je suis Punk !`,
     `Je suis faciné par les histoires de gangs d'Atlanta!`,
-    `Séance dikeur à azhara ! `,
+    `Séance dikeur à azahara ! `,
+    `Le riz se multiplie à la cuisson.`,
+    `Moi je ne mange pas sur une aire d'autoroute !`,
+    `Ouvre tes yeux Salomon.`,
   ];
 
   readonly randomSubtitle =
