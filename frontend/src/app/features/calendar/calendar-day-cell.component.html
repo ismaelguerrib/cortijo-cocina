@@ -13,7 +13,13 @@
       <p class="day-card__meta">
         {{ meal.dishes.length }} plat{{ meal.dishes.length > 1 ? 's' : '' }}
       </p>
-      <p class="day-card__preview">{{ assigneeSummary() }}</p>
+      @if (cookers().length > 0) {
+        <ul class="day-card__cookers">
+          @for (cooker of cookers(); track cooker) {
+            <li class="day-card__cooker">{{ cooker }}</li>
+          }
+        </ul>
+      }
     </div>
   }
 </mat-card>

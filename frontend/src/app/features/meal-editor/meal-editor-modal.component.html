@@ -44,8 +44,8 @@
         <mat-form-field appearance="outline">
           <mat-label>Préparateurs</mat-label>
           <mat-select formControlName="preparers" multiple panelClass="meal-editor-select-panel">
-            @for (member of familyMembers; track member.value) {
-              <mat-option [value]="member.value">{{ member.label }}</mat-option>
+            @for (member of familyMembers; track member.id) {
+              <mat-option [value]="member.id">{{ member.name }}</mat-option>
             }
           </mat-select>
           @if (dishGroup.controls.preparers.invalid && dishGroup.controls.preparers.touched) {

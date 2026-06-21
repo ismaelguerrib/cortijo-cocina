@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { FAMILY_MEMBER_LABELS } from '../../core/constants/family-members';
@@ -22,6 +22,22 @@ export class CalendarDayCellComponent {
   readonly daySelected = output<CalendarDay>();
   readonly mealSelected = output<MealSelection>();
 
+  readonly cookers = computed(() => {
+    const meal = this.day().meal;
+
+    if (!meal) {
+      return [];
+    }
+
+    return Array.from(
+      new Set(
+        meal.dishes.flatMap((dish) =>
+          dish.preparers.map((preparer) => FAMILY_MEMBER_LABELS[preparer] ?? preparer),
+        ),
+      ),
+    );
+  });
+
   openDayDetail(): void {
     this.daySelected.emit(this.day());
   }
@@ -33,11 +49,5 @@ export class CalendarDayCellComponent {
       date: this.day().isoDate,
       meal: this.day().meal,
     });
-  }
-
-  assigneeSummary(): string {
-    const preparers = this.day().meal?.dishes.flatMap((dish) => dish.preparers) ?? [];
-    const unique = [...new Set(preparers)];
-    return unique.map((p) => FAMILY_MEMBER_LABELS[p]).join(',');
   }
 }

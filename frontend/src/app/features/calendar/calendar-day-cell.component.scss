@@ -125,6 +125,25 @@
   font-size: var(--app-font-caption);
 }
 
+.day-card__cookers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--app-space-2xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.day-card__cooker {
+  padding: var(--app-space-3xs) var(--app-space-xs);
+  border-radius: var(--app-radius-pill);
+  background: rgba(var(--color-sabro-orange-rgb), 0.18);
+  color: var(--color-sabro-cream);
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-caption);
+  line-height: 1.1;
+}
+
 .day-card__preview {
   font-size: var(--app-font-label);
   line-height: 1.35;
