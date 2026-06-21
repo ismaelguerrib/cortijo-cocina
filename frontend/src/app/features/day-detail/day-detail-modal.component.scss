@@ -125,6 +125,12 @@
   line-height: 1.45;
 }
 
+.dish-card__cookers {
+  color: var(--app-text-muted);
+  font-size: var(--app-font-caption);
+  line-height: 1.45;
+}
+
 .dish-card__gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--app-photo-tile-min-inline), 1fr));

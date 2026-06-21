@@ -19,7 +19,9 @@
               <span class="meal-card__votes">{{ voteAverage(dish.votes) }}/20</span>
             </div>
 
-            <p><strong>Cusinier.e.s :</strong> {{ cookers(dish) || '—' }}</p>
+            <p class="dish-card__cookers">
+              <strong>Cusinier.e.s :</strong> {{ cookers(dish) || '—' }}
+            </p>
             <p class="dish-card__recipe">{{ dish.recipe }}</p>
 
             <div class="dish-card__gallery">
@@ -31,7 +33,13 @@
         }
       </div>
 
-      <button mat-flat-button type="button" (click)="openEditor()" data-testid="detail-edit-button">
+      <button
+        id="save-night-button"
+        mat-flat-button
+        type="button"
+        (click)="openEditor()"
+        data-testid="detail-edit-button"
+      >
         Modifier
       </button>
     </article>
