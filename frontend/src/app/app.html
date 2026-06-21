@@ -1,5 +1,5 @@
 <div class="app-background" aria-hidden="true">
-  @for (item of backgroundItems; track item.src) {
+  @for (item of backgroundItems; track item.key) {
     <img
       class="app-background__family"
       [src]="item.src"
