@@ -16,12 +16,12 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at top left, rgba(var(--color-sabro-orange-rgb), 0.28), transparent 34%),
-      radial-gradient(circle at top right, rgba(var(--color-sabro-chili-rgb), 0.14), transparent 28%),
+      radial-gradient(circle at top left, rgba(var(--color-sand-rgb), 0.28), transparent 34%),
+      radial-gradient(circle at top right, rgba(var(--color-red-rgb), 0.14), transparent 28%),
       linear-gradient(
         180deg,
-        rgba(var(--color-sabro-cream-rgb), 0.96) 0%,
-        rgba(var(--color-sabro-forest-rgb), 0.9) 20%,
+        rgba(var(--color-ivory-rgb), 0.96) 0%,
+        rgba(var(--color-sky-rgb), 0.9) 20%,
         #6b97ba 100%
       );
   }
@@ -61,7 +61,7 @@
   padding: var(--app-page-gutter-block-start) var(--app-page-gutter-inline)
     calc(var(--app-page-gutter-block-start) + var(--app-space-xs));
   backdrop-filter: blur(var(--app-blur-strong));
-  background: rgba(var(--color-sabro-cream-rgb), 0.94);
+  background: rgba(var(--color-ivory-rgb), 0.94);
 }
 
 .app-shell__brand,

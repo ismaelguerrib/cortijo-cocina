@@ -6,8 +6,8 @@
   min-height: var(--app-shell-min-block);
   padding-inline: var(--app-page-gutter-inline);
   padding-block-end: calc(var(--app-page-gutter-block-end) * 0.7);
-  color: var(--color-sabro-orange);
-  background: var(--color-sabro-forest);
+  color: var(--color-sand);
+  background: var(--color-sky);
 }
 
 .editor__header {
@@ -22,7 +22,7 @@
   padding-block: var(--app-page-gutter-block-start) var(--app-space-md);
   padding-inline: var(--app-page-gutter-inline);
   margin-inline: calc(-1 * var(--app-page-gutter-inline));
-  background: var(--color-sabro-forest);
+  background: var(--color-sky);
 }
 
 .editor__actions {
@@ -40,7 +40,7 @@
 
 .editor__header p {
   margin-bottom: var(--app-space-2xs);
-  color: rgba(var(--color-sabro-orange-rgb), 0.82);
+  color: rgba(var(--color-sand-rgb), 0.82);
   font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: var(--app-letter-spacing-wider);
@@ -51,7 +51,7 @@
   font-family: var(--app-display-font);
   font-size: var(--app-font-title-sm);
   line-height: 1;
-  color: var(--color-sabro-orange);
+  color: var(--color-sand);
 }
 
 .editor__form {
@@ -83,7 +83,7 @@
 
 .editor__section-header p {
   margin-bottom: var(--app-space-3xs);
-  color: rgba(var(--color-sabro-orange-rgb), 0.82);
+  color: rgba(var(--color-sand-rgb), 0.82);
   font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: var(--app-letter-spacing-wider);
@@ -92,14 +92,14 @@
 
 .editor__section-header h3,
 .dish-form__header h4 {
-  color: var(--color-sabro-orange);
+  color: var(--color-sand);
 }
 
 .dish-form {
   padding: var(--app-card-padding);
-  border: 1.5px solid rgba(var(--color-sabro-orange-rgb), 0.5);
+  border: 1.5px solid rgba(var(--color-sand-rgb), 0.5);
   border-radius: var(--app-radius-md);
-  background: rgba(var(--color-sabro-chili-rgb), 0.55);
+  background: rgba(var(--color-red-rgb), 0.55);
   box-shadow: var(--app-shadow-card);
 }
 
@@ -121,7 +121,7 @@
 
 .votes-field__label {
   margin: 0;
-  color: var(--color-sabro-orange);
+  color: var(--color-sand);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   font-weight: 700;
@@ -131,7 +131,7 @@
 
 .votes-field__empty {
   margin: 0;
-  color: rgba(var(--color-sabro-orange-rgb), 0.6);
+  color: rgba(var(--color-sand-rgb), 0.6);
   font-size: var(--app-font-caption);
   font-style: italic;
 }
@@ -146,8 +146,8 @@
   display: flex;
   align-items: center;
   gap: var(--app-space-2xs);
-  background: rgba(var(--color-sabro-orange-rgb), 0.16);
-  border: 1px solid rgba(var(--color-sabro-orange-rgb), 0.4);
+  background: rgba(var(--color-sand-rgb), 0.16);
+  border: 1px solid rgba(var(--color-sand-rgb), 0.4);
   border-radius: var(--app-radius-sm);
   padding: var(--app-space-2xs) var(--app-space-xs);
 }
@@ -156,7 +156,7 @@
   width: 3.5rem;
   background: transparent;
   border: none;
-  color: var(--color-sabro-orange);
+  color: var(--color-sand);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-body);
   font-weight: 700;
@@ -175,14 +175,14 @@
 .votes-field__remove {
   background: none;
   border: none;
-  color: rgba(var(--color-sabro-orange-rgb), 0.7);
+  color: rgba(var(--color-sand-rgb), 0.7);
   cursor: pointer;
   font-size: 0.75rem;
   line-height: 1;
   padding: 0;
 
   &:hover {
-    color: var(--color-sabro-orange);
+    color: var(--color-sand);
   }
 }
 
@@ -193,7 +193,7 @@
 
 .photos-field__label {
   margin: 0;
-  color: var(--color-sabro-orange);
+  color: var(--color-sand);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   font-weight: 700;
@@ -206,9 +206,9 @@
   align-items: center;
   justify-content: center;
   padding: var(--app-space-sm) var(--app-space-md);
-  border: 1.5px dashed rgba(var(--color-sabro-orange-rgb), 0.5);
+  border: 1.5px dashed rgba(var(--color-sand-rgb), 0.5);
   border-radius: var(--app-radius-md);
-  color: var(--color-sabro-orange);
+  color: var(--color-sand);
   cursor: pointer;
   font-family: var(--app-ui-font);
   font-size: var(--app-font-body);
@@ -219,8 +219,8 @@
   }
 
   &:hover {
-    border-color: var(--color-sabro-orange);
-    background: rgba(var(--color-sabro-orange-rgb), 0.12);
+    border-color: var(--color-sand);
+    background: rgba(var(--color-sand-rgb), 0.12);
   }
 }
 
@@ -265,8 +265,8 @@
   padding: var(--app-card-padding-compact) var(--app-panel-padding);
   border-radius: var(--app-radius-md);
   color: var(--app-text-inverse);
-  background: rgba(var(--color-sabro-chili-rgb), 0.92);
-  border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--color-sabro-orange-rgb), 0.38);
+  background: rgba(var(--color-red-rgb), 0.92);
+  border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--color-sand-rgb), 0.38);
 }
 
 .editor__actions {
@@ -274,40 +274,40 @@
 }
 
 .editor__delete {
-  color: var(--color-sabro-orange);
+  color: var(--color-sand);
 }
 
 :host ::ng-deep .editor .mat-mdc-outlined-button:not(:disabled),
 :host ::ng-deep .editor .mat-mdc-stroked-button:not(:disabled) {
-  border-color: var(--color-sabro-orange) !important;
-  background: var(--color-sabro-chili);
-  color: var(--color-sabro-orange) !important;
+  border-color: var(--color-sand) !important;
+  background: var(--color-red);
+  color: var(--color-sand) !important;
 }
 
 :host ::ng-deep .editor .mat-mdc-outlined-button:not(:disabled):hover,
 :host ::ng-deep .editor .mat-mdc-stroked-button:not(:disabled):hover {
-  border-color: var(--color-sabro-orange) !important;
-  background: color-mix(in srgb, var(--color-sabro-chili) 88%, black);
-  color: var(--color-sabro-orange) !important;
+  border-color: var(--color-sand) !important;
+  background: color-mix(in srgb, var(--color-red) 88%, black);
+  color: var(--color-sand) !important;
 }
 
 :host ::ng-deep .editor .mat-mdc-unelevated-button:not(:disabled) {
-  background: var(--color-sabro-chili);
-  color: var(--color-sabro-orange) !important;
+  background: var(--color-red);
+  color: var(--color-sand) !important;
 }
 
 :host ::ng-deep .editor .mat-mdc-button:not(:disabled) {
-  color: var(--color-sabro-orange) !important;
+  color: var(--color-sand) !important;
 }
 
 :host ::ng-deep .editor .mat-mdc-text-field-wrapper {
-  background: rgba(var(--color-sabro-chili-rgb), 0.92) !important;
+  background: rgba(var(--color-red-rgb), 0.92) !important;
 }
 
 :host ::ng-deep .editor .mdc-notched-outline__leading,
 :host ::ng-deep .editor .mdc-notched-outline__notch,
 :host ::ng-deep .editor .mdc-notched-outline__trailing {
-  border-color: rgba(var(--color-sabro-orange-rgb), 0.44) !important;
+  border-color: rgba(var(--color-sand-rgb), 0.44) !important;
 }
 
 :host ::ng-deep .editor .mdc-floating-label,
@@ -318,7 +318,7 @@
 :host ::ng-deep .editor .mat-mdc-form-field-hint,
 :host ::ng-deep .editor .mat-mdc-form-field-error,
 :host ::ng-deep .editor .mat-mdc-form-field-required-marker {
-  color: var(--color-sabro-orange) !important;
+  color: var(--color-sand) !important;
 }
 
 @media (min-width: size.$bp-md) {

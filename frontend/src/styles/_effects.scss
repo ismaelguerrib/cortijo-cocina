@@ -1,17 +1,17 @@
 :root {
-  --app-border-subtle: rgba(var(--color-sabro-forest-rgb), 0.18);
-  --app-border-strong: rgba(var(--color-sabro-forest-rgb), 0.3);
+  --app-border-subtle: rgba(var(--color-sky-rgb), 0.18);
+  --app-border-strong: rgba(var(--color-sky-rgb), 0.3);
   --app-shadow-soft:
     0 calc(var(--app-size-unit) * 2.6) calc(var(--app-size-unit) * 7.2)
-    rgba(var(--color-sabro-forest-rgb), 0.16);
+    rgba(var(--color-sky-rgb), 0.16);
   --app-shadow-card:
     0 calc(var(--app-size-unit) * 1.9) calc(var(--app-size-unit) * 4.1)
-    rgba(var(--color-sabro-forest-rgb), 0.12);
+    rgba(var(--color-sky-rgb), 0.12);
   --app-shadow-chip:
     inset 0 calc(var(--app-size-unit) * 0.12) 0 rgba(var(--color-white-rgb), 0.72);
   --app-shadow-active:
     0 calc(var(--app-size-unit) * 1.2) calc(var(--app-size-unit) * 2.6)
-    rgba(var(--color-sabro-forest-rgb), 0.26);
+    rgba(var(--color-sky-rgb), 0.26);
   --app-shadow-sheet:
     0 calc(var(--app-size-unit) * -2.6) calc(var(--app-size-unit) * 7.6)
     rgba(var(--app-text-color-rgb), 0.18);

@@ -26,21 +26,21 @@
   gap: var(--app-cluster-gap);
   padding: var(--app-panel-padding);
   border-radius: var(--app-radius-lg);
-  background: rgba(var(--color-sabro-forest-rgb), 0.88);
+  background: rgba(var(--color-sky-rgb), 0.88);
   box-shadow: var(--app-shadow-card);
   backdrop-filter: blur(var(--app-blur-soft));
 }
 
 .hero__meta p {
   margin: 0;
-  color: var(--color-sabro-cream);
+  color: var(--color-ivory);
 }
 
 .loading-state {
   display: grid;
   justify-items: center;
   gap: var(--app-cluster-gap);
-  color: var(--color-sabro-cream);
+  color: var(--color-ivory);
 }
 
 @media (min-width: size.$bp-md) {

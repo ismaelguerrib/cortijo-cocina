@@ -17,8 +17,8 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       padding: var(--app-panel-padding) calc(var(--app-panel-padding) * 0.95)
         calc(var(--app-panel-padding) * 0.9);
       border-radius: var(--app-radius-xl);
-      color: var(--color-sabro-cream);
-      background: rgba(var(--color-sabro-forest-rgb), 0.94);
+      color: var(--color-ivory);
+      background: rgba(var(--color-sky-rgb), 0.94);
       box-shadow: var(--app-shadow-soft);
     }
 
@@ -31,7 +31,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       font-family: var(--app-display-font);
       font-size: var(--app-font-display);
       line-height: 0.96;
-      color: var(--color-sabro-chili);
+      color: var(--color-red);
       text-shadow: 0 var(--app-space-xs) 0 rgba(var(--app-text-color-strong-rgb), 0.12);
     }
 
@@ -40,14 +40,14 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       font-size: var(--app-font-caption);
       text-transform: uppercase;
       letter-spacing: var(--app-letter-spacing-wider);
-      color: var(--color-sabro-cream);
+      color: var(--color-ivory);
     }
 
     .hero-card__caption {
       max-inline-size: var(--app-caption-max-inline);
       font-family: var(--app-subtitle-font);
       font-size: var(--app-font-label);
-      color: var(--color-sabro-cream);
+      color: var(--color-ivory);
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

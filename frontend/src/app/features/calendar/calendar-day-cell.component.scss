@@ -5,9 +5,9 @@
   gap: var(--app-space-xs);
   min-height: var(--app-calendar-card-min-block-compact);
   padding: var(--app-card-padding-compact) var(--app-space-sm) var(--app-space-sm);
-  border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--color-sabro-cream-rgb), 0.3);
+  border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--color-ivory-rgb), 0.3);
   border-radius: var(--app-radius-md);
-  background: rgba(var(--color-sabro-forest-rgb), 0.92);
+  background: rgba(var(--color-sky-rgb), 0.92);
   box-shadow: var(--app-shadow-card);
   cursor: pointer;
   transition:
@@ -20,19 +20,19 @@
 
 .day-card:hover {
   transform: translateY(calc(var(--app-lift-distance) * -1));
-  background: var(--color-sabro-orange);
-  border-color: rgba(var(--color-sabro-orange-rgb), 0.95);
+  background: var(--color-sand);
+  border-color: rgba(var(--color-sand-rgb), 0.95);
   box-shadow: var(--app-shadow-soft);
 }
 
 .day-card--filled {
-  background: rgba(var(--color-sabro-forest-rgb), 0.98);
-  border-color: rgba(var(--color-sabro-chili-rgb), 0.32);
+  background: rgba(var(--color-sky-rgb), 0.98);
+  border-color: rgba(var(--color-red-rgb), 0.32);
 }
 
 .day-card--filled:hover {
-  background: var(--color-sabro-orange);
-  border-color: rgba(var(--color-sabro-orange-rgb), 0.95);
+  background: var(--color-sand);
+  border-color: rgba(var(--color-sand-rgb), 0.95);
 }
 
 .day-card:hover .day-card__weekday,
@@ -42,7 +42,7 @@
 .day-card:hover .day-card__empty p,
 .day-card:hover .day-card__empty span,
 .day-card:hover .day-card__title-row h3 {
-  color: var(--color-sabro-forest);
+  color: var(--color-sky);
 }
 
 .day-card--filled:hover .day-card__number,
@@ -51,7 +51,7 @@
 .day-card--filled:hover .day-card__meta,
 .day-card--filled:hover .day-card__preview,
 .day-card--filled:hover .day-card__assignees {
-  color: var(--color-sabro-forest);
+  color: var(--color-sky);
 }
 
 .day-card__header {
@@ -65,12 +65,12 @@
   font-family: var(--app-display-font);
   font-size: var(--app-font-title-sm);
   line-height: 0.92;
-  color: var(--color-sabro-orange);
+  color: var(--color-sand);
   text-shadow: none;
 }
 
 .day-card__weekday {
-  color: var(--color-sabro-cream);
+  color: var(--color-ivory);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   text-transform: uppercase;
@@ -103,15 +103,15 @@
   font-family: var(--app-ui-font);
   font-size: var(--app-font-label);
   line-height: 1.2;
-  color: var(--color-sabro-orange);
+  color: var(--color-sand);
 }
 
 .day-card__votes {
   min-width: calc(var(--app-size-unit) * 3.4);
   padding: var(--app-space-2xs) var(--app-space-sm);
   border-radius: var(--app-radius-pill);
-  background: rgba(var(--color-sabro-chili-rgb), 0.92);
-  color: var(--color-sabro-cream);
+  background: rgba(var(--color-red-rgb), 0.92);
+  color: var(--color-ivory);
   text-align: center;
   font-size: var(--app-font-caption);
   font-weight: 700;
@@ -120,7 +120,7 @@
 .day-card__meta,
 .day-card__assignees,
 .day-card__empty span {
-  color: var(--color-sabro-cream);
+  color: var(--color-ivory);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
 }
@@ -137,8 +137,8 @@
 .day-card__cooker {
   padding: var(--app-space-3xs) var(--app-space-xs);
   border-radius: var(--app-radius-pill);
-  background: rgba(var(--color-sabro-orange-rgb), 0.18);
-  color: var(--color-sabro-cream);
+  background: rgba(var(--color-sand-rgb), 0.18);
+  color: var(--color-ivory);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   line-height: 1.1;
@@ -147,11 +147,11 @@
 .day-card__preview {
   font-size: var(--app-font-label);
   line-height: 1.35;
-  color: var(--color-sabro-cream);
+  color: var(--color-ivory);
 }
 
 .day-card__empty p {
-  color: var(--color-sabro-cream);
+  color: var(--color-ivory);
 }
 
 .day-card__action {
@@ -164,7 +164,7 @@
   min-width: 0;
   border: 0;
   background: transparent;
-  color: var(--color-sabro-chili);
+  color: var(--color-red);
   box-shadow: none;
   border-radius: 0;
   appearance: none;
