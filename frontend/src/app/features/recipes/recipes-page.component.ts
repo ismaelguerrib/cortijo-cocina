@@ -12,7 +12,7 @@ interface RecipeCard {
   id: string;
   mealDate: string;
   dishTitle: string;
-  preparers: FamilyMember[];
+  cookers: FamilyMember[];
   recipe: string;
   photoUrls: string[];
   votes: number[];
@@ -42,7 +42,7 @@ export class RecipesPageComponent implements OnInit {
         id: `${meal.id}-${index}`,
         mealDate: meal.mealDate,
         dishTitle: dish.title,
-        preparers: dish.preparers,
+        cookers: dish.cookers,
         recipe: dish.recipe,
         photoUrls: dish.photoUrls,
         votes: dish.votes
@@ -72,8 +72,8 @@ export class RecipesPageComponent implements OnInit {
     await this.mealStore.loadMeals();
   }
 
-  assigneeSummary(preparers: FamilyMember[]): string {
-    return preparers.map((p) => FAMILY_MEMBER_LABELS[p]).join(', ');
+  cookerSummary(cookers: FamilyMember[]): string {
+    return cookers.map((c) => FAMILY_MEMBER_LABELS[c]).join(', ');
   }
 
   voteAverage(votes: number[]): string {

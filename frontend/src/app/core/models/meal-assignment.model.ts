@@ -1,7 +1,7 @@
 import { FamilyMember } from './family-member.model';
 
 export interface MealDish {
-  preparers: FamilyMember[];
+  cookers: FamilyMember[];
   title: string;
   recipe: string;
   photoUrls: string[];

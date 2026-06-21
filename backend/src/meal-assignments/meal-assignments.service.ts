@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { QueryFailedError, Repository } from 'typeorm';
+import { FAMILY_MEMBERS, FamilyMember } from '../common/constants/family-members';
 import { CreateMealAssignmentDto, MealDishDto } from './dto/create-meal-assignment.dto';
 import { UpdateMealAssignmentDto } from './dto/update-meal-assignment.dto';
 import { MealAssignmentEntity } from './entities/meal-assignment.entity';
@@ -84,7 +85,11 @@ export class MealAssignmentsService {
       ...payload,
       description: payload.description?.trim() || null,
       dishes: payload.dishes?.map((dish) => ({
-        preparers: dish.preparers,
+        cookers: dish.cookers
+          .map((cooker) => cooker.trim())
+          .filter((cooker): cooker is FamilyMember =>
+            FAMILY_MEMBERS.includes(cooker as FamilyMember),
+          ),
         title: dish.title.trim(),
         recipe: dish.recipe.trim(),
         photoUrls: dish.photoUrls.map((url) => url.trim()).filter(Boolean),

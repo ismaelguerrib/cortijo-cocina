@@ -39,7 +39,7 @@ const nonEmptyLines = (): ValidatorFn => (control: AbstractControl): ValidationE
 };
 
 type DishGroup = FormGroup<{
-  preparers: FormControl<FamilyMember[]>;
+  cookers: FormControl<FamilyMember[]>;
   title: FormControl<string>;
   recipe: FormControl<string>;
   photos: FormControl<string[]>;
@@ -137,7 +137,7 @@ export class MealEditorModalComponent {
         mealDate: this.form.controls.mealDate.getRawValue(),
         description: this.form.controls.description.getRawValue().trim() || undefined,
         dishes: this.dishGroups.map((dishGroup) => ({
-          preparers: dishGroup.controls.preparers.getRawValue(),
+          cookers: dishGroup.controls.cookers.getRawValue(),
           title: dishGroup.controls.title.getRawValue().trim(),
           recipe: dishGroup.controls.recipe.getRawValue().trim(),
           photoUrls: dishGroup.controls.photos.getRawValue(),
@@ -191,7 +191,7 @@ export class MealEditorModalComponent {
 
   private createDishGroup(dish?: MealDish): DishGroup {
     return this.formBuilder.group({
-      preparers: this.formBuilder.control<FamilyMember[]>(dish?.preparers ?? [], [minArrayLength(1)]),
+      cookers: this.formBuilder.control<FamilyMember[]>(dish?.cookers ?? [], [minArrayLength(1)]),
       title: this.formBuilder.control(dish?.title ?? '', [
         Validators.required,
         Validators.maxLength(150)

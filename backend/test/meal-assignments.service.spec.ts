@@ -1,6 +1,6 @@
 import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
-import { FamilyMember } from '../src/common/enums/family-member.enum';
+import { FamilyMember } from '../src/common/constants/family-members';
 import { CreateMealAssignmentDto } from '../src/meal-assignments/dto/create-meal-assignment.dto';
 import { UpdateMealAssignmentDto } from '../src/meal-assignments/dto/update-meal-assignment.dto';
 import { MealAssignmentEntity } from '../src/meal-assignments/entities/meal-assignment.entity';
@@ -20,7 +20,7 @@ const buildMeal = (): MealAssignmentEntity => ({
   description: 'Prévoir les grillades',
   dishes: [
     {
-      preparers: [FamilyMember.MAMIE, FamilyMember.THOMAS],
+      cookers: ['amel', 'zakaria'] as FamilyMember[],
       title: 'Brochettes',
       recipe: 'Mariner puis griller.',
       photoUrls: ['https://images.example.com/brochettes-1.jpg'],
@@ -53,7 +53,7 @@ describe('MealAssignmentsService', () => {
       description: 'Prévoir les grillades',
       dishes: [
         {
-          preparers: [FamilyMember.MAMIE, FamilyMember.THOMAS],
+          cookers: ['amel', 'zakaria'] as FamilyMember[],
           title: 'Brochettes',
           recipe: 'Mariner puis griller.',
           photoUrls: ['https://images.example.com/brochettes-1.jpg'],
@@ -104,7 +104,7 @@ describe('MealAssignmentsService', () => {
         mealDate: '2026-08-15',
         dishes: [
           {
-            preparers: [FamilyMember.MAMIE],
+            cookers: ['sophia'] as FamilyMember[],
             title: 'Salade',
             recipe: 'Tout mélanger.',
             photoUrls: [],

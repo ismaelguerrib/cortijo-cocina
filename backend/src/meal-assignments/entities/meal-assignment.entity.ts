@@ -6,10 +6,10 @@ import {
   Unique,
   UpdateDateColumn
 } from 'typeorm';
-import { FamilyMember } from '../../common/enums/family-member.enum';
+import { FamilyMember } from '../../common/constants/family-members';
 
 export interface MealDish {
-  preparers: FamilyMember[];
+  cookers: FamilyMember[];
   title: string;
   recipe: string;
   photoUrls: string[];

@@ -11,21 +11,22 @@ class MockMealStore {
     {
       id: 'meal-15',
       mealDate: '2026-08-15',
-      title: 'Grand dejeuner du jardin',
       description: 'On rassemble tous les favoris de la semaine.',
-      assignees: ['JULIE', 'CLAIRE'],
-      voteCount: 9,
       dishes: [
         {
+          cookers: ['amel', 'zakaria'],
           title: 'Salade composee',
           recipe: 'Assembler tomates, feta et herbes.',
-          photoUrls: ['https://images.example.com/salade.jpg']
+          photoUrls: ['https://images.example.com/salade.jpg'],
+          votes: [16, 18],
         },
         {
+          cookers: ['iman'],
           title: 'Tortilla',
           recipe: 'Cuire doucement les pommes de terre et les oeufs.',
-          photoUrls: ['https://images.example.com/tortilla.jpg']
-        }
+          photoUrls: ['https://images.example.com/tortilla.jpg'],
+          votes: [14],
+        },
       ],
       createdAt: '2026-05-29T10:00:00.000Z',
       updatedAt: '2026-05-29T10:00:00.000Z'
@@ -76,8 +77,8 @@ describe('CalendarPageComponent', () => {
     await fixture.whenStable();
 
     expect(document.body.textContent).toContain('Samedi 15 août 2026');
-    expect(document.body.textContent).toContain('Julie, Claire');
-    expect(document.body.textContent).toContain('Grand dejeuner du jardin');
+    expect(document.body.textContent).toContain('Amel, Zakaria');
+    expect(document.body.textContent).toContain('Salade composee');
   });
 
   it('opens the editor modal from a detail sheet action', async () => {

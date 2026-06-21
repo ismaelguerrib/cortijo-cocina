@@ -42,14 +42,14 @@
         </div>
 
         <mat-form-field appearance="outline">
-          <mat-label>Préparateurs</mat-label>
-          <mat-select formControlName="preparers" multiple panelClass="meal-editor-select-panel">
+          <mat-label>Cusinier.e.s</mat-label>
+          <mat-select formControlName="cookers" multiple panelClass="meal-editor-select-panel">
             @for (member of familyMembers; track member.id) {
               <mat-option [value]="member.id">{{ member.name }}</mat-option>
             }
           </mat-select>
-          @if (dishGroup.controls.preparers.invalid && dishGroup.controls.preparers.touched) {
-            <mat-error>Sélectionnez au moins un préparateur.</mat-error>
+          @if (dishGroup.controls.cookers.invalid && dishGroup.controls.cookers.touched) {
+            <mat-error>Sélectionnez au moins un.e cusinier.e.</mat-error>
           }
         </mat-form-field>
 

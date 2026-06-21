@@ -1,4 +1,4 @@
-import { CALENDAR_WEEKDAY_LABELS } from '../../core/constants/calendar.constants';
+import { AUGUST_2026_DAYS, CALENDAR_WEEKDAY_LABELS } from '../../core/constants/calendar.constants';
 import { MealAssignment } from '../../core/models/meal-assignment.model';
 
 export interface CalendarDay {
@@ -16,7 +16,7 @@ const mondayBasedIndex = (date: Date): number => {
 export const buildAugust2026CalendarDays = (
   mealsByDate: Map<string, MealAssignment>
 ): CalendarDay[] =>
-  Array.from({ length: 31 }, (_, index) => {
+  Array.from({ length: AUGUST_2026_DAYS }, (_, index) => {
     const dayNumber = index + 1;
     const isoDate = `2026-08-${String(dayNumber).padStart(2, '0')}`;
     const date = new Date(`${isoDate}T12:00:00`);

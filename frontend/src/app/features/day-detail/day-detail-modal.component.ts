@@ -30,8 +30,8 @@ export class DayDetailModalComponent {
     });
   }
 
-  preparers(dish: { preparers: string[] }): string {
-    return dish.preparers.map((p) => FAMILY_MEMBER_LABELS[p as keyof typeof FAMILY_MEMBER_LABELS]).join(', ');
+  cookers(dish: { cookers: string[] }): string {
+    return dish.cookers.map((c) => FAMILY_MEMBER_LABELS[c as keyof typeof FAMILY_MEMBER_LABELS]).join(', ');
   }
 
   voteAverage(votes: number[]): string {

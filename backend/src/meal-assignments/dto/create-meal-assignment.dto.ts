@@ -2,7 +2,7 @@ import {
   ArrayMinSize,
   IsArray,
   IsDateString,
-  IsEnum,
+  IsIn,
   IsInt,
   IsNotEmpty,
   IsOptional,
@@ -13,13 +13,15 @@ import {
   ValidateNested
 } from 'class-validator';
 import { Type } from 'class-transformer';
-import { FamilyMember } from '../../common/enums/family-member.enum';
+import { FAMILY_MEMBERS, FamilyMember } from '../../common/constants/family-members';
 
 export class MealDishDto {
   @IsArray()
   @ArrayMinSize(1)
-  @IsEnum(FamilyMember, { each: true })
-  preparers!: FamilyMember[];
+  @IsString({ each: true })
+  @IsNotEmpty({ each: true })
+  @IsIn(FAMILY_MEMBERS, { each: true })
+  cookers!: FamilyMember[];
 
   @IsString()
   @IsNotEmpty()

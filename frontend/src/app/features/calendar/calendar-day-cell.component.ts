@@ -32,7 +32,7 @@ export class CalendarDayCellComponent {
     return Array.from(
       new Set(
         meal.dishes.flatMap((dish) =>
-          dish.preparers.map((preparer) => FAMILY_MEMBER_LABELS[preparer] ?? preparer),
+          (dish.cookers ?? []).map((cooker) => FAMILY_MEMBER_LABELS[cooker] ?? cooker),
         ),
       ),
     );
