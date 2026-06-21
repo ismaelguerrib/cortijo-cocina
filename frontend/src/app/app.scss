@@ -18,14 +18,19 @@
     background:
       radial-gradient(circle at top left, rgba(255, 191, 51, 0.16), transparent 34%),
       radial-gradient(circle at top right, rgba(255, 122, 112, 0.14), transparent 28%),
-      linear-gradient(180deg, rgba(255, 248, 227, 0.92) 0%, rgba(61, 114, 84, 0.92) 18%, #3d7254 100%);
+      linear-gradient(
+        180deg,
+        rgba(255, 248, 227, 0.92) 0%,
+        rgba(61, 114, 84, 0.92) 18%,
+        #3d7254 100%
+      );
   }
 }
 
-.app-background__vegetable {
-  --vegetable-drift-x: 20px;
-  --vegetable-drift-y: 16px;
-  --vegetable-rotation: 4deg;
+.app-background__family {
+  --family-drift-x: 20px;
+  --family-drift-y: 16px;
+  --family-rotation: 4deg;
   position: absolute;
   z-index: 1;
   display: block;
@@ -33,7 +38,7 @@
   user-select: none;
   filter: saturate(0.92) drop-shadow(0 10px 22px rgba(24, 52, 40, 0.18));
   transform: translate3d(-50%, -50%, 0);
-  animation: vegetable-drift linear infinite alternate;
+  animation: family-drift linear infinite alternate;
   will-change: transform;
 }
 
@@ -52,9 +57,7 @@
   align-items: stretch;
   justify-content: space-between;
   gap: var(--app-cluster-gap);
-  padding:
-    var(--app-page-gutter-block-start)
-    var(--app-page-gutter-inline)
+  padding: var(--app-page-gutter-block-start) var(--app-page-gutter-inline)
     calc(var(--app-page-gutter-block-start) + var(--app-space-xs));
   backdrop-filter: blur(var(--app-blur-strong));
   background: rgba(255, 248, 227, 0.92);
@@ -127,26 +130,26 @@
   }
 }
 
-@keyframes vegetable-drift {
+@keyframes family-drift {
   0% {
-    transform: translate3d(-50%, -50%, 0) rotate(calc(var(--vegetable-rotation) * -1));
+    transform: translate3d(-50%, -50%, 0) rotate(calc(var(--family-rotation) * -1));
   }
 
   50% {
     transform: translate3d(
-        calc(-50% + var(--vegetable-drift-x)),
-        calc(-50% + var(--vegetable-drift-y)),
+        calc(-50% + var(--family-drift-x)),
+        calc(-50% + var(--family-drift-y)),
         0
       )
-      rotate(var(--vegetable-rotation));
+      rotate(var(--family-rotation));
   }
 
   100% {
     transform: translate3d(
-        calc(-50% - var(--vegetable-drift-x)),
-        calc(-50% - var(--vegetable-drift-y)),
+        calc(-50% - var(--family-drift-x)),
+        calc(-50% - var(--family-drift-y)),
         0
       )
-      rotate(calc(var(--vegetable-rotation) * -1));
+      rotate(calc(var(--family-rotation) * -1));
   }
 }

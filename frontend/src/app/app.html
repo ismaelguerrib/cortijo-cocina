@@ -1,7 +1,7 @@
 <div class="app-background" aria-hidden="true">
   @for (item of backgroundItems; track item.src) {
     <img
-      class="app-background__vegetable"
+      class="app-background__family"
       [src]="item.src"
       alt=""
       [style.top]="item.top"
@@ -10,9 +10,9 @@
       [style.opacity]="item.opacity"
       [style.animation-duration]="item.duration"
       [style.animation-delay]="item.delay"
-      [style.--vegetable-drift-x]="item.driftX"
-      [style.--vegetable-drift-y]="item.driftY"
-      [style.--vegetable-rotation]="item.rotation"
+      [style.--family-drift-x]="item.driftX"
+      [style.--family-drift-y]="item.driftY"
+      [style.--family-rotation]="item.rotation"
     />
   }
 </div>

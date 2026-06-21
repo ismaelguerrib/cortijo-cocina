@@ -1,4 +1,4 @@
-export type VegetableBackgroundItem = {
+export type BackgroundItem = {
   readonly src: string;
   readonly top: string;
   readonly left: string;
@@ -11,27 +11,15 @@ export type VegetableBackgroundItem = {
   readonly rotation: string;
 };
 
-const VEGETABLE_FILENAMES = [
-  'Avocado Opened.png',
-  'Batat.png',
-  'Broccoli.png',
-  'Carrot.png',
-  'Cauiliflower.png',
-  'Chili Pepper .png',
-  'Corn.png',
-  'Cucumber.png',
-  'Eggplant.png',
-  'Garlic.png',
-  'Green Cabbage.png',
-  'Green Onions.png',
-  'Green Sweet Pepper.png',
-  'Jalapeno.png',
-  'Onion.png',
-  'Potato.png',
-  'Radish.png',
-  'Red Sweet Pepper.png',
-  'Tomato.png',
-  'Yellow Sweet Pepper.png'
+const BACKGROUND_FILENAMES = [
+  'amel.jpeg',
+  'anouk.jpeg',
+  'hima.jpeg',
+  'iman-amel.jpeg',
+  'sophia.jpeg',
+  'nour.jpeg',
+  'zakaria-hima.jpeg',
+  'zakaria.jpeg',
 ] as const;
 
 const TOP_POSITIONS = [
@@ -54,7 +42,7 @@ const TOP_POSITIONS = [
   '60%',
   '68%',
   '76%',
-  '84%'
+  '84%',
 ] as const;
 
 const LEFT_POSITIONS = [
@@ -77,7 +65,7 @@ const LEFT_POSITIONS = [
   '90%',
   '18%',
   '34%',
-  '50%'
+  '50%',
 ] as const;
 
 const SIZES = ['76px', '92px', '108px', '124px', '140px'] as const;
@@ -88,9 +76,9 @@ const DRIFT_X = ['-28px', '-16px', '18px', '26px', '34px'] as const;
 const DRIFT_Y = ['-18px', '-10px', '12px', '20px', '28px'] as const;
 const ROTATIONS = ['-8deg', '-4deg', '0deg', '5deg', '9deg'] as const;
 
-export const VEGETABLE_BACKGROUND_ITEMS: readonly VegetableBackgroundItem[] =
-  VEGETABLE_FILENAMES.map((filename, index) => ({
-    src: `/vegetables-images/${encodeURIComponent(filename)}`,
+export const BACKGROUND_ITEMS: readonly BackgroundItem[] = BACKGROUND_FILENAMES.map(
+  (filename, index) => ({
+    src: `/family-pictures/${encodeURIComponent(filename)}`,
     top: TOP_POSITIONS[index],
     left: LEFT_POSITIONS[index],
     size: SIZES[index % SIZES.length],
@@ -99,5 +87,6 @@ export const VEGETABLE_BACKGROUND_ITEMS: readonly VegetableBackgroundItem[] =
     delay: DELAYS[index % DELAYS.length],
     driftX: DRIFT_X[index % DRIFT_X.length],
     driftY: DRIFT_Y[index % DRIFT_Y.length],
-    rotation: ROTATIONS[index % ROTATIONS.length]
-  }));
+    rotation: ROTATIONS[index % ROTATIONS.length],
+  }),
+);
