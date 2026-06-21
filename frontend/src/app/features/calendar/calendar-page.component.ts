@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -16,7 +16,7 @@ import {
   MealEditorDialogData,
   MealEditorModalComponent,
 } from '../meal-editor/meal-editor-modal.component';
-import { CalendarGridComponent } from './calendar-grid.component';
+import { CalendarLayoutMode, CalendarGridComponent } from './calendar-grid.component';
 import { CalendarPageTitleComponent } from './calendar-page.title';
 import { buildAugust2026CalendarDays, CalendarDay } from './calendar.models';
 
@@ -43,6 +43,7 @@ export class CalendarPageComponent implements OnInit {
   readonly monthLabel = CALENDAR_MONTH_LABEL;
   readonly weekdayLabels = CALENDAR_WEEKDAY_LABELS;
   readonly days = computed(() => buildAugust2026CalendarDays(this.mealStore.mealsByDate()));
+  readonly layoutMode = signal<CalendarLayoutMode>('grid');
 
   readonly quotes = [
     `Il y a deux choses dont j'ai horreur sur cette terre : l'emmental à la place de la mozza sur une pizza et l'amateurisme !`,
@@ -66,6 +67,10 @@ export class CalendarPageComponent implements OnInit {
   readonly randomQuote: string = this.quotes[Math.floor(Math.random() * this.quotes.length)];
   async ngOnInit(): Promise<void> {
     await this.mealStore.loadMeals();
+  }
+
+  setLayoutMode(mode: CalendarLayoutMode): void {
+    this.layoutMode.set(mode);
   }
 
   openDayDetail(day: CalendarDay): void {

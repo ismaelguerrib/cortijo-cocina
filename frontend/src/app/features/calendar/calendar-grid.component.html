@@ -1,23 +1,69 @@
 <section class="calendar-grid" aria-label="Calendrier du mois d'août 2026">
-  <div class="calendar-grid__scroll">
-    <div class="calendar-grid__weekdays">
-      @for (weekdayLabel of weekdayLabels(); track weekdayLabel) {
-        <span>{{ weekdayLabel }}</span>
-      }
-    </div>
+  @if (layoutMode() === 'pairs') {
+    <div class="calendar-pairs">
+      @for (row of pairRows(); track trackPairRow($index, row); let rowIndex = $index) {
+        <div class="calendar-pairs__row" [class.calendar-pairs__row--reverse]="rowIndex % 2 === 1">
+          @if (row.left; as leftDay) {
+            <button
+              type="button"
+              class="calendar-pairs__day calendar-pairs__day--left"
+              [class.calendar-pairs__day--filled]="!!leftDay.meal"
+              (click)="openDay(leftDay)"
+              [attr.data-testid]="'pair-day-' + leftDay.dayNumber"
+            >
+              <span class="calendar-pairs__number calendar-pairs__number--left">
+                {{ leftDay.dayNumber }}
+              </span>
+              <span class="calendar-pairs__weekday">{{ leftDay.weekdayLabel }}</span>
+              <span class="calendar-pairs__summary">{{ mealSummary(leftDay) }}</span>
+              <span class="calendar-pairs__cookers">{{ cookerSummary(leftDay) }}</span>
+            </button>
+          } @else {
+            <div class="calendar-pairs__day calendar-pairs__day--empty" aria-hidden="true"></div>
+          }
 
-    <div class="calendar-grid__cells">
-      @for (cell of cells(); track cell?.isoDate ?? $index) {
-        @if (cell) {
-          <app-calendar-day-cell
-            [day]="cell"
-            (daySelected)="daySelected.emit($event)"
-            (mealSelected)="mealSelected.emit($event)"
-          />
-        } @else {
-          <div class="calendar-grid__placeholder" aria-hidden="true"></div>
-        }
+          @if (row.right; as rightDay) {
+            <button
+              type="button"
+              class="calendar-pairs__day calendar-pairs__day--right"
+              [class.calendar-pairs__day--filled]="!!rightDay.meal"
+              (click)="openDay(rightDay)"
+              [attr.data-testid]="'pair-day-' + rightDay.dayNumber"
+            >
+              <span class="calendar-pairs__number calendar-pairs__number--right">
+                {{ rightDay.dayNumber }}
+              </span>
+              <span class="calendar-pairs__weekday">{{ rightDay.weekdayLabel }}</span>
+              <span class="calendar-pairs__summary">{{ mealSummary(rightDay) }}</span>
+              <span class="calendar-pairs__cookers">{{ cookerSummary(rightDay) }}</span>
+            </button>
+          } @else {
+            <div class="calendar-pairs__day calendar-pairs__day--empty" aria-hidden="true"></div>
+          }
+        </div>
       }
     </div>
-  </div>
+  } @else {
+    <div class="calendar-grid__scroll">
+      <div class="calendar-grid__weekdays">
+        @for (weekdayLabel of weekdayLabels(); track weekdayLabel) {
+          <span>{{ weekdayLabel }}</span>
+        }
+      </div>
+
+      <div class="calendar-grid__cells">
+        @for (cell of cells(); track cell?.isoDate ?? $index) {
+          @if (cell) {
+            <app-calendar-day-cell
+              [day]="cell"
+              (daySelected)="daySelected.emit($event)"
+              (mealSelected)="mealSelected.emit($event)"
+            />
+          } @else {
+            <div class="calendar-grid__placeholder" aria-hidden="true"></div>
+          }
+        }
+      </div>
+    </div>
+  }
 </section>

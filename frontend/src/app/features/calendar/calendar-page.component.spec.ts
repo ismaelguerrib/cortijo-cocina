@@ -69,6 +69,18 @@ describe('CalendarPageComponent', () => {
     expect(dayCells).toHaveLength(31);
   });
 
+  it('can switch to the two-days-per-row layout', async () => {
+    const toggleButtons = fixture.debugElement.queryAll(By.css('.hero__view-switch button'));
+
+    toggleButtons[1].nativeElement.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const pairDays = fixture.debugElement.queryAll(By.css('[data-testid^="pair-day-"]'));
+    expect(pairDays).toHaveLength(31);
+    expect(fixture.nativeElement.textContent).toContain('Touchez pour ajouter un repas');
+  });
+
   it('opens the day detail sheet and shows multiple assignees', async () => {
     const dayCells = fixture.debugElement.queryAll(By.css('[data-testid="day-cell"]'));
 

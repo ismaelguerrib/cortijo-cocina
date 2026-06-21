@@ -4,6 +4,26 @@
 
     <div class="hero__meta">
       <h3>{{ randomQuote }}</h3>
+      <div class="hero__view-switch" aria-label="Mode d'affichage du calendrier">
+        <button
+          type="button"
+          class="hero__view-button"
+          [class.hero__view-button--active]="layoutMode() === 'grid'"
+          [attr.aria-pressed]="layoutMode() === 'grid'"
+          (click)="setLayoutMode('grid')"
+        >
+          Semaine
+        </button>
+        <button
+          type="button"
+          class="hero__view-button"
+          [class.hero__view-button--active]="layoutMode() === 'pairs'"
+          [attr.aria-pressed]="layoutMode() === 'pairs'"
+          (click)="setLayoutMode('pairs')"
+        >
+          2 jours
+        </button>
+      </div>
     </div>
   </section>
 
@@ -21,6 +41,7 @@
   } @else {
     <app-calendar-grid
       [days]="days()"
+      [layoutMode]="layoutMode()"
       [weekdayLabels]="weekdayLabels"
       (daySelected)="openDayDetail($event)"
       (mealSelected)="openMealEditor($event.date, $event.meal)"
