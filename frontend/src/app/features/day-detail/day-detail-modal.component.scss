@@ -43,14 +43,14 @@
 }
 
 .meal-card--empty {
-  background: rgba(31, 79, 57, 0.94);
+  background: rgba(var(--color-sabro-forest-rgb), 0.94);
   justify-items: start;
   color: var(--color-sabro-cream);
 }
 
 
 .meal-card--empty h3 {
-  color: var(--color-sabro-chili);
+  color: var(--color-sabro-orange);
 }
 
 #save-night-button {
@@ -101,7 +101,7 @@
 .dish-card__header span {
   padding: var(--app-space-xs) var(--app-space-sm);
   border-radius: var(--app-radius-pill);
-  background: rgba(231, 54, 46, 0.14);
+  background: rgba(var(--color-sabro-chili-rgb), 0.14);
   color: var(--color-sabro-chili);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);

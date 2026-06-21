@@ -3,7 +3,7 @@
 :root {
   --mat-sys-primary: var(--color-sabro-forest);
   --mat-sys-on-primary: var(--app-text-inverse);
-  --mat-sys-primary-container: #dceadf;
+  --mat-sys-primary-container: #dce8f4;
   --mat-sys-on-primary-container: var(--app-text-color-strong);
   --mat-sys-secondary: var(--color-sabro-orange);
   --mat-sys-on-secondary: var(--app-text-color-strong);
@@ -16,7 +16,7 @@
 
 .meal-editor-select-panel {
   background: var(--color-sabro-forest) !important;
-  border: 1.5px solid rgba(255, 184, 69, 0.5) !important;
+  border: 1.5px solid rgba(var(--color-sabro-orange-rgb), 0.56) !important;
   border-radius: var(--app-radius-md) !important;
 
   .mat-mdc-option {
@@ -25,11 +25,11 @@
 
     &:hover,
     &.mat-mdc-option-active {
-      background: rgba(255, 184, 69, 0.12) !important;
+      background: rgba(var(--color-sabro-orange-rgb), 0.16) !important;
     }
 
     &.mdc-list-item--selected {
-      background: rgba(255, 184, 69, 0.2) !important;
+      background: rgba(var(--color-sabro-orange-rgb), 0.24) !important;
     }
 
     .mat-pseudo-checkbox {
@@ -75,7 +75,7 @@
 
 .mat-mdc-text-field-wrapper {
   border-radius: var(--app-form-control-radius) !important;
-  background: rgba(255, 248, 227, 0.92);
+  background: rgba(var(--color-sabro-cream-rgb), 0.96);
 }
 
 .cdk-overlay-pane.day-detail-sheet .mat-bottom-sheet-container {

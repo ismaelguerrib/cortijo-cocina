@@ -16,7 +16,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
         calc(var(--app-panel-padding) * 0.9);
       border-radius: var(--app-radius-xl);
       color: var(--color-sabro-cream);
-      background: rgba(43, 107, 77, 0.94);
+      background: rgba(var(--color-sabro-forest-rgb), 0.94);
       box-shadow: var(--app-shadow-soft);
     }
 
@@ -30,7 +30,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       font-size: var(--app-font-display);
       line-height: 0.96;
       color: var(--color-sabro-chili);
-      text-shadow: 0 var(--app-space-xs) 0 rgba(0, 0, 0, 0.12);
+      text-shadow: 0 var(--app-space-xs) 0 rgba(var(--app-text-color-strong-rgb), 0.12);
     }
 
     .hero-card__eyebrow {

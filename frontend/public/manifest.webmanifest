@@ -1,8 +1,8 @@
 {
   "name": "Cortijo Cocina",
   "short_name": "Cortijo",
-  "theme_color": "#7d3c1b",
-  "background_color": "#fff7eb",
+  "theme_color": "#7daacb",
+  "background_color": "#fffdeb",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",

@@ -52,7 +52,7 @@ a {
 }
 
 ::selection {
-  background: rgba(255, 184, 69, 0.45);
+  background: rgba(var(--color-sabro-orange-rgb), 0.55);
   color: var(--app-text-color-strong);
 }
 
@@ -67,7 +67,7 @@ a {
 
 .feedback--error {
   color: var(--color-sabro-chili);
-  background: rgba(231, 54, 46, 0.1);
+  background: rgba(var(--color-sabro-chili-rgb), 0.12);
 }
 
 .loading-state,

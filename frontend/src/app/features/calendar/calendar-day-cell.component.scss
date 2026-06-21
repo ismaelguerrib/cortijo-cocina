@@ -5,9 +5,9 @@
   gap: var(--app-space-xs);
   min-height: var(--app-calendar-card-min-block-compact);
   padding: var(--app-card-padding-compact) var(--app-space-sm) var(--app-space-sm);
-  border: calc(var(--app-size-unit) * 0.12) solid rgba(249, 231, 176, 0.22);
+  border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--color-sabro-cream-rgb), 0.3);
   border-radius: var(--app-radius-md);
-  background: rgba(43, 107, 77, 0.92);
+  background: rgba(var(--color-sabro-forest-rgb), 0.92);
   box-shadow: var(--app-shadow-card);
   cursor: pointer;
   transition:
@@ -21,18 +21,18 @@
 .day-card:hover {
   transform: translateY(calc(var(--app-lift-distance) * -1));
   background: var(--color-sabro-orange);
-  border-color: rgba(255, 184, 69, 0.9);
+  border-color: rgba(var(--color-sabro-orange-rgb), 0.95);
   box-shadow: var(--app-shadow-soft);
 }
 
 .day-card--filled {
-  background: rgba(31, 79, 57, 0.96);
-  border-color: rgba(231, 54, 46, 0.32);
+  background: rgba(var(--color-sabro-forest-rgb), 0.98);
+  border-color: rgba(var(--color-sabro-chili-rgb), 0.32);
 }
 
 .day-card--filled:hover {
   background: var(--color-sabro-orange);
-  border-color: rgba(255, 184, 69, 0.9);
+  border-color: rgba(var(--color-sabro-orange-rgb), 0.95);
 }
 
 .day-card:hover .day-card__weekday,
@@ -65,7 +65,7 @@
   font-family: var(--app-display-font);
   font-size: var(--app-font-title-sm);
   line-height: 0.92;
-  color: var(--color-sabro-chili);
+  color: var(--color-sabro-orange);
   text-shadow: none;
 }
 
@@ -103,14 +103,14 @@
   font-family: var(--app-ui-font);
   font-size: var(--app-font-label);
   line-height: 1.2;
-  color: var(--color-sabro-chili);
+  color: var(--color-sabro-orange);
 }
 
 .day-card__votes {
   min-width: calc(var(--app-size-unit) * 3.4);
   padding: var(--app-space-2xs) var(--app-space-sm);
   border-radius: var(--app-radius-pill);
-  background: rgba(231, 54, 46, 0.9);
+  background: rgba(var(--color-sabro-chili-rgb), 0.92);
   color: var(--color-sabro-cream);
   text-align: center;
   font-size: var(--app-font-caption);
