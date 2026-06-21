@@ -5,7 +5,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   template: `
     <section class="hero-card">
       <h1>{{ monthLabel() }}</h1>
-      <p class="hero-card__caption">{{ randomSubtitle }}</p>
+      <p class="hero-card__caption">
+        ¿Quién cocina qué? ¿Cuándo? ¡Todos ponemos las manos en la masa!
+      </p>
     </section>
   `,
   styles: `
@@ -52,24 +54,4 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 })
 export class CalendarPageTitleComponent {
   readonly monthLabel = input.required<string>();
-
-  readonly dummySubtitle = [
-    `Il y a deux choses dont j'ai horreur sur cette terre : l'emmental à la place de la mozza sur une pizza et l'amateurisme !`,
-    'Le meilleur moyen de coloniser quotidien des gens par des mécanismes de contrôle renforcé et global consiste à solliciter non pas seulement leur approbation, mais leur contribution active.',
-    'Si les animaux avaient instagram Zakaria aurait déjà un compte certifié.',
-    'Vous vous la jouez solo ...',
-    'La Paques elle est foutue.',
-    'Elle vaut rien la copine !',
-    `Non Mamooon !`,
-    `Aujourd'hui Mickey avonce.`,
-    `Je suis Punk !`,
-    `Je suis faciné par les histoires de gangs d'Atlanta!`,
-    `Séance dikeur à azahara ! `,
-    `Le riz se multiplie à la cuisson.`,
-    `Moi je ne mange pas sur une aire d'autoroute !`,
-    `Ouvre tes yeux Salomon.`,
-  ];
-
-  readonly randomSubtitle =
-    this.dummySubtitle[Math.floor(Math.random() * this.dummySubtitle.length)];
 }

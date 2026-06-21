@@ -1,15 +1,24 @@
-import { ChangeDetectionStrategy, Component, OnInit, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnInit } from '@angular/core';
 import { MatBottomSheet, MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { CalendarPageTitleComponent } from './calendar-page.title';
-import { CALENDAR_MONTH_LABEL, CALENDAR_WEEKDAY_LABELS } from '../../core/constants/calendar.constants';
+import {
+  CALENDAR_MONTH_LABEL,
+  CALENDAR_WEEKDAY_LABELS,
+} from '../../core/constants/calendar.constants';
 import { MealAssignment } from '../../core/models/meal-assignment.model';
 import { MealStore } from '../../core/services/meal-store.service';
-import { DayDetailModalComponent, DayDetailSheetResult } from '../day-detail/day-detail-modal.component';
-import { MealEditorDialogData, MealEditorModalComponent } from '../meal-editor/meal-editor-modal.component';
-import { buildAugust2026CalendarDays, CalendarDay } from './calendar.models';
+import {
+  DayDetailModalComponent,
+  DayDetailSheetResult,
+} from '../day-detail/day-detail-modal.component';
+import {
+  MealEditorDialogData,
+  MealEditorModalComponent,
+} from '../meal-editor/meal-editor-modal.component';
 import { CalendarGridComponent } from './calendar-grid.component';
+import { CalendarPageTitleComponent } from './calendar-page.title';
+import { buildAugust2026CalendarDays, CalendarDay } from './calendar.models';
 
 @Component({
   selector: 'app-calendar-page',
@@ -18,11 +27,11 @@ import { CalendarGridComponent } from './calendar-grid.component';
     CalendarPageTitleComponent,
     MatBottomSheetModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   templateUrl: './calendar-page.component.html',
   styleUrl: './calendar-page.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarPageComponent implements OnInit {
   private readonly mealStore = inject(MealStore);
@@ -35,6 +44,24 @@ export class CalendarPageComponent implements OnInit {
   readonly weekdayLabels = CALENDAR_WEEKDAY_LABELS;
   readonly days = computed(() => buildAugust2026CalendarDays(this.mealStore.mealsByDate()));
 
+  readonly quotes = [
+    `Il y a deux choses dont j'ai horreur sur cette terre : l'emmental à la place de la mozza sur une pizza et l'amateurisme !`,
+    'Le meilleur moyen de coloniser quotidien des gens par des mécanismes de contrôle renforcé et global consiste à solliciter non pas seulement leur approbation, mais leur contribution active.',
+    'Si les animaux avaient instagram Zakaria aurait déjà un compte certifié.',
+    'Vous vous la jouez solo ...',
+    'La Paques elle est foutue.',
+    'Elle vaut rien la copine !',
+    `Non Mamooon !`,
+    `Aujourd'hui Mickey avonce.`,
+    `Je suis Punk !`,
+    `Je suis faciné par les histoires de gangs d'Atlanta!`,
+    `Séance dikeur à azahara ! `,
+    `Le riz se multiplie à la cuisson.`,
+    `Moi je ne mange pas sur une aire d'autoroute !`,
+    `Ouvre tes yeux Salomon.`,
+  ];
+
+  readonly randomQuote: string = this.quotes[Math.floor(Math.random() * this.quotes.length)];
   async ngOnInit(): Promise<void> {
     await this.mealStore.loadMeals();
   }
@@ -42,7 +69,7 @@ export class CalendarPageComponent implements OnInit {
   openDayDetail(day: CalendarDay): void {
     const bottomSheetRef = this.bottomSheet.open(DayDetailModalComponent, {
       data: day,
-      panelClass: 'day-detail-sheet'
+      panelClass: 'day-detail-sheet',
     });
 
     bottomSheetRef.afterDismissed().subscribe((result: DayDetailSheetResult | undefined) => {
@@ -55,7 +82,7 @@ export class CalendarPageComponent implements OnInit {
   openMealEditor(date: string, meal?: MealAssignment): void {
     const dialogData: MealEditorDialogData = {
       date,
-      meal
+      meal,
     };
 
     this.dialog.open(MealEditorModalComponent, {
@@ -63,7 +90,7 @@ export class CalendarPageComponent implements OnInit {
       panelClass: 'meal-editor-dialog',
       width: 'min(100vw, var(--app-dialog-inline-max))',
       maxWidth: '100vw',
-      height: 'var(--app-shell-min-block)'
+      height: 'var(--app-shell-min-block)',
     });
   }
 }
