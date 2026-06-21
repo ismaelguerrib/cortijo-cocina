@@ -59,6 +59,8 @@ export class CalendarPageComponent implements OnInit {
     `Le riz se multiplie à la cuisson.`,
     `Moi je ne mange pas sur une aire d'autoroute !`,
     `Ouvre tes yeux Salomon.`,
+    `Boulangeeeurie !`,
+    `C'est bon je suis là !`,
   ];
 
   readonly randomQuote: string = this.quotes[Math.floor(Math.random() * this.quotes.length)];

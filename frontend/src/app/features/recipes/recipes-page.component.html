@@ -1,12 +1,7 @@
 <main class="recipes-page">
   <section class="recipes-hero">
     <div class="recipes-hero__copy">
-      <p class="recipes-hero__eyebrow">Bibliothèque recettes</p>
-      <h1>Toutes les fiches déjà cuisinées</h1>
-      <p>
-        Chaque fiche reprend un plat, sa recette, ses photos, la date du repas et le niveau d’adhésion
-        obtenu via les votes.
-      </p>
+      <h1>Les recettes du Cortijo</h1>
     </div>
 
     <mat-form-field appearance="outline">
@@ -53,7 +48,9 @@
 
             <h2>{{ recipe.dishTitle }}</h2>
             <p class="recipe-card__recipe">{{ recipe.recipe }}</p>
-            <p class="recipe-card__assignees">Préparation : {{ assigneeSummary(recipe.preparers) }}</p>
+            <p class="recipe-card__assignees">
+              Préparation : {{ assigneeSummary(recipe.preparers) }}
+            </p>
           </div>
         </article>
       }
