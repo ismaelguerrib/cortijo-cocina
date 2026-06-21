@@ -48,14 +48,13 @@
   color: var(--color-ivory);
 }
 
-
 .meal-card--empty h3 {
   color: var(--color-sand);
 }
 
 #save-night-button {
-  background-color: var(--color-sky);
-  color: var(--color-ivory);
+  background-color: var(--color-sand);
+  color: var(--color-red);
   border: none;
   border-radius: var(--app-radius-pill);
   padding: var(--app-space-sm) var(--app-space-lg);
@@ -65,7 +64,7 @@
   box-shadow: var(--app-shadow-active);
 
   &:hover {
-    background-color: color-mix(in srgb, var(--color-sky) 85%, black);
+    background-color: color-mix(in srgb, var(--color-sand) 85%, black);
   }
 }
 
