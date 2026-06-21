@@ -13,30 +13,7 @@
       <p class="day-card__meta">
         {{ meal.dishes.length }} plat{{ meal.dishes.length > 1 ? 's' : '' }}
       </p>
-      <p class="day-card__preview">{{ dishPreview() }}</p>
-      <p class="day-card__assignees">{{ assigneeSummary() }}</p>
+      <p class="day-card__preview">{{ assigneeSummary() }}</p>
     </div>
-  } @else {
-    <div class="day-card__empty">
-      <span>Ajoute le menu du jour</span>
-    </div>
-  }
-
-  @if (day().meal) {
-    <button
-      type="button"
-      class="day-card__action day-card__action--create"
-      (click)="openMealEditor($event)"
-    >
-      Modifier
-    </button>
-  } @else {
-    <button
-      type="button"
-      class="day-card__action day-card__action--create"
-      (click)="openMealEditor($event)"
-    >
-      Créer
-    </button>
   }
 </mat-card>

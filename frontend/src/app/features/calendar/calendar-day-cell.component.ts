@@ -15,7 +15,7 @@ export interface MealSelection {
   imports: [MatButtonModule, MatCardModule],
   templateUrl: './calendar-day-cell.component.html',
   styleUrl: './calendar-day-cell.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarDayCellComponent {
   readonly day = input.required<CalendarDay>();
@@ -31,17 +31,13 @@ export class CalendarDayCellComponent {
 
     this.mealSelected.emit({
       date: this.day().isoDate,
-      meal: this.day().meal
+      meal: this.day().meal,
     });
   }
 
   assigneeSummary(): string {
     const preparers = this.day().meal?.dishes.flatMap((dish) => dish.preparers) ?? [];
     const unique = [...new Set(preparers)];
-    return unique.map((p) => FAMILY_MEMBER_LABELS[p]).join(', ');
-  }
-
-  dishPreview(): string {
-    return this.day().meal?.dishes.slice(0, 2).map((dish) => dish.title).join(' · ') ?? '';
+    return unique.map((p) => FAMILY_MEMBER_LABELS[p]).join(',');
   }
 }
