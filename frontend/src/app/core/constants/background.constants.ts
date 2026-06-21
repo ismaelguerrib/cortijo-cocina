@@ -12,14 +12,14 @@ export type BackgroundItem = {
 };
 
 const BACKGROUND_FILENAMES = [
-  'amel.jpeg',
-  'anouk.jpeg',
-  'hima.jpeg',
-  'iman-amel.jpeg',
-  'sophia.jpeg',
-  'nour.jpeg',
-  'zakaria-hima.jpeg',
-  'zakaria.jpeg',
+  'amel.png',
+  'anouk.png',
+  'hima.png',
+  'iman-amel.png',
+  'sophia.png',
+  'nour.png',
+  'zakaria-hima.png',
+  'zakaria.png',
 ] as const;
 
 const TOP_POSITIONS = [
