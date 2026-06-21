@@ -103,6 +103,13 @@
   box-shadow: var(--app-shadow-card);
 }
 
+.dish-form--focused {
+  border-color: var(--color-sand);
+  box-shadow:
+    0 0 0 2px rgba(var(--color-sand-rgb), 0.3),
+    var(--app-shadow-card);
+}
+
 .dish-form__remove {
   flex-shrink: 0;
 }

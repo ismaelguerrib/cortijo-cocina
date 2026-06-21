@@ -91,7 +91,7 @@ export class MealAssignmentsService {
             FAMILY_MEMBERS.includes(cooker as FamilyMember),
           ),
         title: dish.title.trim(),
-        recipe: dish.recipe.trim(),
+        recipe: dish.recipe?.trim() || undefined,
         photoUrls: dish.photoUrls.map((url) => url.trim()).filter(Boolean),
         votes: dish.votes
       }))

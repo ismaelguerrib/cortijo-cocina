@@ -67,11 +67,27 @@
 }
 
 .recipe-card {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  text-align: left;
+  cursor: pointer;
   overflow: hidden;
   border-radius: var(--app-radius-lg);
   background: var(--app-surface-base);
   box-shadow: var(--app-shadow-card);
   backdrop-filter: blur(var(--app-blur-soft));
+
+  &:hover {
+    transform: translateY(calc(var(--app-size-unit) * -0.25));
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-sky);
+    outline-offset: 3px;
+  }
 }
 
 .recipe-card__gallery {
@@ -117,6 +133,11 @@
 
 .recipe-card__recipe {
   line-height: 1.55;
+}
+
+.recipe-card__recipe--empty {
+  color: var(--app-text-muted);
+  font-style: italic;
 }
 
 .recipe-card__assignees {

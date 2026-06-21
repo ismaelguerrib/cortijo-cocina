@@ -21,13 +21,17 @@
     <div class="editor__section-header">
       <div>
         <p class="editor__eyebrow">Plats</p>
-        <h3>Recettes et photos</h3>
+        <h3>{{ allowRecipeEditing() ? 'Recettes, photos et votes' : 'Photos et votes' }}</h3>
       </div>
       <button mat-stroked-button type="button" (click)="addDish()">+ Ajouter un plat</button>
     </div>
 
     @for (dishGroup of dishGroups; track $index; let index = $index) {
-      <article class="dish-form" [formGroup]="dishGroup">
+      <article
+        class="dish-form"
+        [class.dish-form--focused]="isFocusedDish(index)"
+        [formGroup]="dishGroup"
+      >
         <div class="dish-form__header">
           <h4>Plat {{ index + 1 }}</h4>
           <button
@@ -58,10 +62,12 @@
           <input matInput maxlength="150" formControlName="title" />
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
-          <mat-label>Recette</mat-label>
-          <textarea matInput rows="5" formControlName="recipe"></textarea>
-        </mat-form-field>
+        @if (allowRecipeEditing()) {
+          <mat-form-field appearance="outline">
+            <mat-label>Recette (optionnelle)</mat-label>
+            <textarea matInput rows="6" maxlength="4000" formControlName="recipe"></textarea>
+          </mat-form-field>
+        }
 
         <div class="photos-field">
           <p class="photos-field__label">Photos</p>
@@ -73,15 +79,25 @@
               capture="environment"
               (change)="handlePhotoFiles($event, dishGroup)"
             />
-            <span>📷 Ajouter des photos</span>
+            <span>Ajouter des photos</span>
           </label>
 
           @if (dishGroup.controls.photos.getRawValue().length > 0) {
             <div class="photos-field__grid">
-              @for (photo of dishGroup.controls.photos.getRawValue(); track $index; let pi = $index) {
+              @for (
+                photo of dishGroup.controls.photos.getRawValue();
+                track $index;
+                let pi = $index
+              ) {
                 <div class="photos-field__thumb">
                   <img [src]="photo" alt="Photo {{ pi + 1 }}" />
-                  <button type="button" class="photos-field__remove" (click)="removePhoto(dishGroup, pi)">✕</button>
+                  <button
+                    type="button"
+                    class="photos-field__remove"
+                    (click)="removePhoto(dishGroup, pi)"
+                  >
+                    ✕
+                  </button>
                 </div>
               }
             </div>
@@ -112,7 +128,9 @@
                     class="votes-field__remove"
                     (click)="removeVote(dishGroup, vi)"
                     aria-label="Supprimer ce vote"
-                  >✕</button>
+                  >
+                    ✕
+                  </button>
                 </div>
               }
             </div>

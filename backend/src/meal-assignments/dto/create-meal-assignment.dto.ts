@@ -29,9 +29,10 @@ export class MealDishDto {
   title!: string;
 
   @IsString()
-  @IsNotEmpty()
   @MaxLength(4000)
-  recipe!: string;
+  @IsOptional()
+  @IsNotEmpty()
+  recipe?: string;
 
   @IsArray()
   @IsString({ each: true })

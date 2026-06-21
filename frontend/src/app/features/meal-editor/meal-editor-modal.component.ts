@@ -8,35 +8,48 @@ import {
   ReactiveFormsModule,
   ValidationErrors,
   ValidatorFn,
-  Validators
+  Validators,
 } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { FAMILY_MEMBERS } from '../../core/constants/family-members';
-import { MealAssignment, MealAssignmentPayload, MealDish } from '../../core/models/meal-assignment.model';
 import { FamilyMember } from '../../core/models/family-member.model';
+import {
+  MealAssignment,
+  MealAssignmentPayload,
+  MealDish,
+} from '../../core/models/meal-assignment.model';
 import { MealStore } from '../../core/services/meal-store.service';
 
 export interface MealEditorDialogData {
   date: string;
   meal?: MealAssignment;
+  allowRecipeEditing?: boolean;
+  focusDishIndex?: number;
 }
 
-const minArrayLength = (minimum: number): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
-  const value = control.value;
-  if (Array.isArray(value) && value.length >= minimum) return null;
-  return { minArrayLength: true };
-};
+const minArrayLength =
+  (minimum: number): ValidatorFn =>
+  (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value;
+    if (Array.isArray(value) && value.length >= minimum) return null;
+    return { minArrayLength: true };
+  };
 
-const nonEmptyLines = (): ValidatorFn => (control: AbstractControl): ValidationErrors | null => {
-  const value = control.value;
-  if (typeof value !== 'string') return { nonEmptyLines: true };
-  const lines = value.split('\n').map((l) => l.trim()).filter(Boolean);
-  return lines.length > 0 ? null : { nonEmptyLines: true };
-};
+const nonEmptyLines =
+  (): ValidatorFn =>
+  (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value;
+    if (typeof value !== 'string') return { nonEmptyLines: true };
+    const lines = value
+      .split('\n')
+      .map((l) => l.trim())
+      .filter(Boolean);
+    return lines.length > 0 ? null : { nonEmptyLines: true };
+  };
 
 type DishGroup = FormGroup<{
   cookers: FormControl<FamilyMember[]>;
@@ -54,11 +67,11 @@ type DishGroup = FormGroup<{
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   templateUrl: './meal-editor-modal.component.html',
   styleUrl: './meal-editor-modal.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MealEditorModalComponent {
   private readonly dialogRef = inject(MatDialogRef<MealEditorModalComponent>);
@@ -70,16 +83,20 @@ export class MealEditorModalComponent {
   readonly saving = signal(false);
   readonly errorMessage = signal<string | null>(null);
   readonly isEditing = computed(() => Boolean(this.data.meal));
+  readonly allowRecipeEditing = computed(() => Boolean(this.data.allowRecipeEditing));
 
   readonly form = this.formBuilder.group({
-    mealDate: this.formBuilder.control(this.data.meal?.mealDate ?? this.data.date, Validators.required),
+    mealDate: this.formBuilder.control(
+      this.data.meal?.mealDate ?? this.data.date,
+      Validators.required,
+    ),
     description: this.formBuilder.control(this.data.meal?.description ?? ''),
     dishes: this.formBuilder.array(
       (this.data.meal?.dishes.length ? this.data.meal.dishes : [undefined]).map((dish) =>
-        this.createDishGroup(dish)
+        this.createDishGroup(dish),
       ),
-      [minArrayLength(1)]
-    )
+      [minArrayLength(1)],
+    ),
   });
 
   get dishGroups(): DishGroup[] {
@@ -88,6 +105,10 @@ export class MealEditorModalComponent {
 
   voteControls(dishGroup: DishGroup): FormControl<number>[] {
     return dishGroup.controls.votes.controls;
+  }
+
+  isFocusedDish(index: number): boolean {
+    return this.allowRecipeEditing() && this.data.focusDishIndex === index;
   }
 
   async handlePhotoFiles(event: Event, dishGroup: DishGroup): Promise<void> {
@@ -115,7 +136,7 @@ export class MealEditorModalComponent {
 
   addVote(dishGroup: DishGroup): void {
     dishGroup.controls.votes.push(
-      this.formBuilder.control(0, [Validators.required, Validators.min(0), Validators.max(20)])
+      this.formBuilder.control(0, [Validators.required, Validators.min(0), Validators.max(20)]),
     );
   }
 
@@ -139,10 +160,10 @@ export class MealEditorModalComponent {
         dishes: this.dishGroups.map((dishGroup) => ({
           cookers: dishGroup.controls.cookers.getRawValue(),
           title: dishGroup.controls.title.getRawValue().trim(),
-          recipe: dishGroup.controls.recipe.getRawValue().trim(),
+          recipe: dishGroup.controls.recipe.getRawValue().trim() || undefined,
           photoUrls: dishGroup.controls.photos.getRawValue(),
-          votes: dishGroup.controls.votes.getRawValue()
-        }))
+          votes: dishGroup.controls.votes.getRawValue(),
+        })),
       };
 
       if (this.data.meal) {
@@ -194,18 +215,15 @@ export class MealEditorModalComponent {
       cookers: this.formBuilder.control<FamilyMember[]>(dish?.cookers ?? [], [minArrayLength(1)]),
       title: this.formBuilder.control(dish?.title ?? '', [
         Validators.required,
-        Validators.maxLength(150)
+        Validators.maxLength(150),
       ]),
-      recipe: this.formBuilder.control(dish?.recipe ?? '', [
-        Validators.required,
-        Validators.maxLength(4000)
-      ]),
+      recipe: this.formBuilder.control(dish?.recipe ?? '', [Validators.maxLength(4000)]),
       photos: this.formBuilder.control<string[]>(dish?.photoUrls ?? []),
       votes: this.formBuilder.array(
         (dish?.votes ?? []).map((v) =>
-          this.formBuilder.control(v, [Validators.required, Validators.min(0), Validators.max(20)])
-        )
-      )
+          this.formBuilder.control(v, [Validators.required, Validators.min(0), Validators.max(20)]),
+        ),
+      ),
     }) as DishGroup;
   }
 }

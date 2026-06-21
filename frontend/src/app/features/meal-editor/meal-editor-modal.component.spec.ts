@@ -6,24 +6,24 @@ import { MealEditorDialogData, MealEditorModalComponent } from './meal-editor-mo
 
 describe('MealEditorModalComponent', () => {
   const dialogRef = {
-    close: jest.fn()
+    close: jest.fn(),
   };
   const mealStore = {
     createMeal: jest.fn().mockResolvedValue(undefined),
     updateMeal: jest.fn().mockResolvedValue(undefined),
-    deleteMeal: jest.fn().mockResolvedValue(undefined)
+    deleteMeal: jest.fn().mockResolvedValue(undefined),
   };
 
   const createComponent = async (
-    data: MealEditorDialogData
+    data: MealEditorDialogData,
   ): Promise<ComponentFixture<MealEditorModalComponent>> => {
     await TestBed.configureTestingModule({
       imports: [MealEditorModalComponent, NoopAnimationsModule],
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: data },
         { provide: MatDialogRef, useValue: dialogRef },
-        { provide: MealStore, useValue: mealStore }
-      ]
+        { provide: MealStore, useValue: mealStore },
+      ],
     }).compileComponents();
 
     const fixture = TestBed.createComponent(MealEditorModalComponent);
@@ -37,95 +37,134 @@ describe('MealEditorModalComponent', () => {
     jest.clearAllMocks();
   });
 
-  it('creates a meal assignment', async () => {
+  it('creates a meal assignment without recipe', async () => {
     const fixture = await createComponent({
-      date: '2026-08-15'
+      date: '2026-08-15',
     });
     const component = fixture.componentInstance;
 
     component.form.controls.mealDate.setValue('2026-08-15');
-    component.form.controls.title.setValue('Dejeuner du marche');
     component.form.controls.description.setValue('Tomates, feta et herbes du jardin');
-    component.form.controls.assignees.setValue(['JULIE', 'CLAIRE']);
-    component.form.controls.voteCount.setValue(4);
-    component.dishGroups[0].setValue({
-      title: 'Salade composee',
-      recipe: 'Tomates, feta et basilic.',
-      photoUrlsText: 'https://images.example.com/salade-1.jpg\nhttps://images.example.com/salade-2.jpg'
-    });
+    component.dishGroups[0].controls.cookers.setValue(['amel', 'zakaria']);
+    component.dishGroups[0].controls.title.setValue('Salade composee');
+    component.dishGroups[0].controls.recipe.setValue('');
+    component.dishGroups[0].controls.photos.setValue(['https://images.example.com/salade-1.jpg']);
+    component.addVote(component.dishGroups[0]);
+    component.addVote(component.dishGroups[0]);
+    component.voteControls(component.dishGroups[0])[0].setValue(15);
+    component.voteControls(component.dishGroups[0])[1].setValue(18);
 
     await component.submit();
 
     expect(mealStore.createMeal).toHaveBeenCalledWith({
       mealDate: '2026-08-15',
-      title: 'Dejeuner du marche',
       description: 'Tomates, feta et herbes du jardin',
-      assignees: ['JULIE', 'CLAIRE'],
-      voteCount: 4,
       dishes: [
         {
+          cookers: ['amel', 'zakaria'],
           title: 'Salade composee',
-          recipe: 'Tomates, feta et basilic.',
-          photoUrls: [
-            'https://images.example.com/salade-1.jpg',
-            'https://images.example.com/salade-2.jpg'
-          ]
-        }
-      ]
+          recipe: undefined,
+          photoUrls: ['https://images.example.com/salade-1.jpg'],
+          votes: [15, 18],
+        },
+      ],
     });
     expect(dialogRef.close).toHaveBeenCalledWith(true);
   });
 
-  it('updates an existing meal assignment', async () => {
+  it('preserves an existing recipe when editing outside recipes mode', async () => {
     const fixture = await createComponent({
       date: '2026-08-15',
       meal: {
         id: 'meal-15',
         mealDate: '2026-08-15',
-        title: 'Barbecue familial',
         description: 'Prevoir les grillades',
-        assignees: ['MAMIE', 'THOMAS'],
-        voteCount: 8,
         dishes: [
           {
+            cookers: ['amel', 'zakaria'],
             title: 'Brochettes',
             recipe: 'Mariner puis griller.',
-            photoUrls: ['https://images.example.com/brochettes.jpg']
-          }
+            photoUrls: ['https://images.example.com/brochettes.jpg'],
+            votes: [14, 19],
+          },
         ],
         createdAt: '2026-05-29T10:00:00.000Z',
-        updatedAt: '2026-05-29T10:00:00.000Z'
-      }
+        updatedAt: '2026-05-29T10:00:00.000Z',
+      },
     });
     const component = fixture.componentInstance;
 
-    component.form.controls.mealDate.setValue('2026-08-15');
-    component.form.controls.title.setValue('Barbecue du dimanche');
     component.form.controls.description.setValue('Ajouter les salades et les sauces');
-    component.form.controls.assignees.setValue(['MAMIE', 'THOMAS']);
-    component.form.controls.voteCount.setValue(11);
-    component.dishGroups[0].setValue({
-      title: 'Brochettes',
-      recipe: 'Mariner plus longtemps puis griller.',
-      photoUrlsText: 'https://images.example.com/brochettes.jpg'
-    });
+    component.dishGroups[0].controls.title.setValue('Brochettes');
+    component.dishGroups[0].controls.photos.setValue([
+      'https://images.example.com/brochettes.jpg',
+      'https://images.example.com/brochettes-2.jpg',
+    ]);
+    component.addVote(component.dishGroups[0]);
+    component.voteControls(component.dishGroups[0])[0].setValue(14);
+    component.voteControls(component.dishGroups[0])[1].setValue(19);
+    component.voteControls(component.dishGroups[0])[2].setValue(20);
 
     await component.submit();
 
     expect(mealStore.updateMeal).toHaveBeenCalledWith('meal-15', {
       mealDate: '2026-08-15',
-      title: 'Barbecue du dimanche',
       description: 'Ajouter les salades et les sauces',
-      assignees: ['MAMIE', 'THOMAS'],
-      voteCount: 11,
       dishes: [
         {
+          cookers: ['amel', 'zakaria'],
           title: 'Brochettes',
-          recipe: 'Mariner plus longtemps puis griller.',
-          photoUrls: ['https://images.example.com/brochettes.jpg']
-        }
-      ]
+          recipe: 'Mariner puis griller.',
+          photoUrls: [
+            'https://images.example.com/brochettes.jpg',
+            'https://images.example.com/brochettes-2.jpg',
+          ],
+          votes: [14, 19, 20],
+        },
+      ],
     });
     expect(dialogRef.close).toHaveBeenCalledWith(true);
+  });
+
+  it('updates the recipe in recipes mode', async () => {
+    const fixture = await createComponent({
+      date: '2026-08-15',
+      allowRecipeEditing: true,
+      focusDishIndex: 0,
+      meal: {
+        id: 'meal-15',
+        mealDate: '2026-08-15',
+        description: null,
+        dishes: [
+          {
+            cookers: ['amel'],
+            title: 'Salade composee',
+            photoUrls: [],
+            votes: [],
+          },
+        ],
+        createdAt: '2026-05-29T10:00:00.000Z',
+        updatedAt: '2026-05-29T10:00:00.000Z',
+      },
+    });
+    const component = fixture.componentInstance;
+
+    component.dishGroups[0].controls.recipe.setValue('Tomates, feta et basilic.');
+
+    await component.submit();
+
+    expect(mealStore.updateMeal).toHaveBeenCalledWith('meal-15', {
+      mealDate: '2026-08-15',
+      description: undefined,
+      dishes: [
+        {
+          cookers: ['amel'],
+          title: 'Salade composee',
+          recipe: 'Tomates, feta et basilic.',
+          photoUrls: [],
+          votes: [],
+        },
+      ],
+    });
   });
 });

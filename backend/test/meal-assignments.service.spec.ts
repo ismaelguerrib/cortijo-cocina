@@ -69,6 +69,48 @@ describe('MealAssignmentsService', () => {
     expect(repository.create).toHaveBeenCalled();
   });
 
+  it('creates a meal assignment without recipe', async () => {
+    const dto: CreateMealAssignmentDto = {
+      mealDate: '2026-08-15',
+      dishes: [
+        {
+          cookers: ['amel'] as FamilyMember[],
+          title: 'Salade',
+          photoUrls: [],
+          votes: []
+        }
+      ]
+    };
+    const meal = {
+      ...buildMeal(),
+      dishes: [
+        {
+          cookers: ['amel'] as FamilyMember[],
+          title: 'Salade',
+          photoUrls: [],
+          votes: []
+        }
+      ]
+    };
+
+    repository.save.mockResolvedValue(meal);
+
+    await expect(service.create(dto)).resolves.toEqual(meal);
+    expect(repository.create).toHaveBeenCalledWith({
+      mealDate: '2026-08-15',
+      description: null,
+      dishes: [
+        {
+          cookers: ['amel'],
+          title: 'Salade',
+          recipe: undefined,
+          photoUrls: [],
+          votes: []
+        }
+      ]
+    });
+  });
+
   it('updates a meal assignment', async () => {
     const existingMeal = buildMeal();
     const updatedMeal = {

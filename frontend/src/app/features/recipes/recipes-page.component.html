@@ -2,6 +2,7 @@
   <section class="recipes-hero">
     <div class="recipes-hero__copy">
       <h1>Les recettes du Cortijo</h1>
+      <p>Chaque carte peut servir à ajouter ou compléter la recette d’un plat.</p>
     </div>
 
     <mat-form-field appearance="outline">
@@ -27,13 +28,13 @@
     </section>
   } @else if (recipeCards().length === 0) {
     <section class="empty-state">
-      <h2>Aucune recette disponible</h2>
+      <h2>Aucun plat disponible</h2>
       <p>Ajoute un repas avec un ou plusieurs plats pour alimenter cette bibliothèque.</p>
     </section>
   } @else {
     <section class="recipe-grid">
       @for (recipe of recipeCards(); track recipe.id) {
-        <article class="recipe-card">
+        <button type="button" class="recipe-card" (click)="openRecipeEditor(recipe)">
           <div class="recipe-card__gallery">
             @for (photoUrl of recipe.photoUrls; track photoUrl) {
               <img [src]="photoUrl" [alt]="'Photo du plat ' + recipe.dishTitle" loading="lazy" />
@@ -47,12 +48,14 @@
             </div>
 
             <h2>{{ recipe.dishTitle }}</h2>
-            <p class="recipe-card__recipe">{{ recipe.recipe }}</p>
+            <p class="recipe-card__recipe" [class.recipe-card__recipe--empty]="!recipe.recipe">
+              {{ recipe.recipe || 'Aucune recette pour l’instant. Clique pour en ajouter une.' }}
+            </p>
             <p class="recipe-card__assignees">
               Cusinier.e.s : {{ cookerSummary(recipe.cookers) }}
             </p>
           </div>
-        </article>
+        </button>
       }
     </section>
   }
