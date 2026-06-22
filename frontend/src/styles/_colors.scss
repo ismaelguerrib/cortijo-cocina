@@ -1,29 +1,32 @@
 :root {
   --color-white: #ffffff;
   --color-white-rgb: 255, 255, 255;
-  --color-ivory: #fffdeb;
-  --color-ivory-rgb: 255, 253, 235;
-  --color-sky: #7daacb;
-  --color-sky-rgb: 125, 170, 203;
-  --color-red: #ce2626;
-  --color-red-rgb: 206, 38, 38;
-  --color-sand: #e8dbb3;
-  --color-sand-rgb: 232, 219, 179;
+  --color-cream: #f4efe7;
+  --color-cream-rgb: 244, 239, 231;
+  --color-pink: #f3a8d2;
+  --color-pink-rgb: 243, 168, 210;
+  --color-red: #ff1116;
+  --color-red-rgb: 255, 17, 22;
+  --color-yellow: #f7cf1d;
+  --color-yellow-rgb: 247, 207, 29;
+  --color-blue: #0b49f4;
+  --color-blue-rgb: 11, 73, 244;
+  --color-green: #009847;
+  --color-green-rgb: 0, 152, 71;
 
-  --app-text-color: #35546d;
-  --app-text-color-rgb: 53, 84, 109;
-  --app-text-color-strong: #223d52;
-  --app-text-color-strong-rgb: 34, 61, 82;
-  --app-text-muted: #6e7f8e;
-  --app-text-inverse: #fffdeb;
+  --app-text-color: #1d3798;
+  --app-text-color-rgb: 29, 55, 152;
+  --app-text-color-strong: #10205d;
+  --app-text-color-strong-rgb: 16, 32, 93;
+  --app-text-muted: #5a70bf;
+  --app-text-inverse: #f4efe7;
 
-  --app-page-bg: #fffdeb;
-  --app-surface-base: #fffdeb;
-  --app-surface-raised: #ffffff;
-  --app-surface-accent: #e8dbb3;
-  --app-surface-strong: #6b97ba;
-  --app-surface-orange: #e8dbb3;
-  --app-surface-purple: #d9e7f2;
-  --app-surface-green: #c6dced;
-  --app-surface-red: #f2cbcb;
+  --app-page-bg: #f4efe7;
+  --app-surface-cream: #f4efe7;
+  --app-surface-white: #ffffff;
+  --app-surface-yellow: #f7cf1d;
+  --app-surface-blue: #0b49f4;
+  --app-surface-pink: #f3a8d2;
+  --app-surface-green: #009847;
+  --app-surface-red: #ff1116;
 }

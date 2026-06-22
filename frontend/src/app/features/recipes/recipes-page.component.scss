@@ -23,7 +23,7 @@
   margin-bottom: var(--app-section-gap);
   padding: var(--app-panel-padding);
   border-radius: var(--app-radius-xl);
-  background: var(--app-surface-purple);
+  background: var(--app-surface-pink);
   box-shadow: var(--app-shadow-card);
   backdrop-filter: blur(var(--app-blur-soft));
 }
@@ -76,7 +76,7 @@
   cursor: pointer;
   overflow: hidden;
   border-radius: var(--app-radius-lg);
-  background: var(--app-surface-base);
+  background: var(--app-surface-cream);
   box-shadow: var(--app-shadow-card);
   backdrop-filter: blur(var(--app-blur-soft));
 
@@ -85,7 +85,7 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--color-sky);
+    outline: 2px solid var(--color-blue);
     outline-offset: 3px;
   }
 }
@@ -128,7 +128,7 @@
 
 .recipe-card__meal {
   font-weight: 700;
-  color: var(--color-sky);
+  color: var(--color-blue);
 }
 
 .recipe-card__recipe {

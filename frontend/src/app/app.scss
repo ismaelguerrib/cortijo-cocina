@@ -10,21 +10,7 @@
   z-index: 0;
   overflow: clip;
   pointer-events: none;
-
-  &::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(circle at top left, rgba(var(--color-sand-rgb), 0.28), transparent 34%),
-      radial-gradient(circle at top right, rgba(var(--color-red-rgb), 0.14), transparent 28%),
-      linear-gradient(
-        180deg,
-        rgba(var(--color-ivory-rgb), 0.96) 0%,
-        rgba(var(--color-sky-rgb), 0.9) 20%,
-        #6b97ba 100%
-      );
-  }
+  background: var(--color-white);
 }
 
 .app-background__family {
@@ -37,7 +23,7 @@
   height: auto;
   max-width: 42vw;
   user-select: none;
-  filter: saturate(0.92) drop-shadow(0 10px 22px rgba(var(--app-text-color-strong-rgb), 0.18));
+  filter: saturate(0.88) drop-shadow(0 10px 22px rgba(var(--app-text-color-strong-rgb), 0.12));
   transform: translate3d(-50%, -50%, 0);
   animation: family-drift linear infinite alternate;
   will-change: transform;
@@ -61,7 +47,7 @@
   padding: var(--app-page-gutter-block-start) var(--app-page-gutter-inline)
     calc(var(--app-page-gutter-block-start) + var(--app-space-xs));
   backdrop-filter: blur(var(--app-blur-strong));
-  background: rgba(var(--color-ivory-rgb), 0.94);
+  background: rgba(var(--color-cream-rgb), 0.94);
 }
 
 .app-shell__brand,
@@ -98,7 +84,7 @@
   gap: var(--app-space-xs);
   padding: var(--app-space-xs);
   border-radius: var(--app-radius-pill);
-  background: var(--app-surface-raised);
+  background: var(--app-surface-white);
   box-shadow: var(--app-shadow-chip);
 }
 
@@ -111,7 +97,7 @@
 }
 
 .app-shell__nav a.is-active {
-  background: var(--app-surface-strong);
+  background: var(--app-surface-red);
   color: var(--app-text-inverse);
   box-shadow: var(--app-shadow-active);
 }

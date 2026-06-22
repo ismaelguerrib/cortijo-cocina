@@ -52,7 +52,7 @@ a {
 }
 
 ::selection {
-  background: rgba(var(--color-sand-rgb), 0.55);
+  background: rgba(var(--color-yellow-rgb), 0.55);
   color: var(--app-text-color-strong);
 }
 
@@ -61,7 +61,7 @@ a {
   padding: var(--app-card-padding) var(--app-panel-padding);
   border-radius: var(--app-radius-md);
   backdrop-filter: blur(var(--app-blur-soft));
-  background: var(--app-surface-base);
+  background: var(--app-surface-cream);
   box-shadow: var(--app-shadow-card);
 }
 

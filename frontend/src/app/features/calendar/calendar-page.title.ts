@@ -17,8 +17,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       padding: var(--app-panel-padding) calc(var(--app-panel-padding) * 0.95)
         calc(var(--app-panel-padding) * 0.9);
       border-radius: var(--app-radius-xl);
-      color: var(--color-ivory);
-      background: rgba(var(--color-sky-rgb), 0.94);
+      color: var(--color-blue);
+      background: rgba(var(--color-pink-rgb), 0.92);
+      border: 2px solid rgba(var(--color-red-rgb), 0.3);
       box-shadow: var(--app-shadow-soft);
     }
 
@@ -40,14 +41,14 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       font-size: var(--app-font-caption);
       text-transform: uppercase;
       letter-spacing: var(--app-letter-spacing-wider);
-      color: var(--color-ivory);
+      color: var(--color-cream);
     }
 
     .hero-card__caption {
       max-inline-size: var(--app-caption-max-inline);
       font-family: var(--app-subtitle-font);
       font-size: var(--app-font-label);
-      color: var(--color-ivory);
+      color: var(--color-blue);
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,13 +1,13 @@
 @use './sizes' as size;
 
 :root {
-  --mat-sys-primary: var(--color-sky);
+  --mat-sys-primary: var(--color-blue);
   --mat-sys-on-primary: var(--app-text-inverse);
-  --mat-sys-primary-container: #dce8f4;
+  --mat-sys-primary-container: var(--color-pink);
   --mat-sys-on-primary-container: var(--app-text-color-strong);
-  --mat-sys-secondary: var(--color-sand);
+  --mat-sys-secondary: var(--color-yellow);
   --mat-sys-on-secondary: var(--app-text-color-strong);
-  --mat-sys-surface: var(--color-ivory);
+  --mat-sys-surface: var(--color-cream);
   --mat-sys-on-surface: var(--app-text-color);
   --mat-sys-outline: var(--app-border-strong);
   --mat-sys-error: var(--color-red);
@@ -15,29 +15,29 @@
 }
 
 .meal-editor-select-panel {
-  background: var(--color-sky) !important;
-  border: 1.5px solid rgba(var(--color-sand-rgb), 0.56) !important;
+  background: var(--color-blue) !important;
+  border: 1.5px solid rgba(var(--color-yellow-rgb), 0.56) !important;
   border-radius: var(--app-radius-md) !important;
 
   .mat-mdc-option {
-    color: var(--color-sand) !important;
+    color: var(--color-yellow) !important;
     font-family: var(--app-ui-font);
 
     &:hover,
     &.mat-mdc-option-active {
-      background: rgba(var(--color-sand-rgb), 0.16) !important;
+      background: rgba(var(--color-yellow-rgb), 0.16) !important;
     }
 
     &.mdc-list-item--selected {
-      background: rgba(var(--color-sand-rgb), 0.24) !important;
+      background: rgba(var(--color-yellow-rgb), 0.24) !important;
     }
 
     .mat-pseudo-checkbox {
-      border-color: var(--color-sand) !important;
+      border-color: var(--color-yellow) !important;
     }
 
     .mat-pseudo-checkbox-checked {
-      background: var(--color-sand) !important;
+      background: var(--color-yellow) !important;
     }
   }
 }
@@ -59,7 +59,7 @@
 
 .mat-mdc-stroked-button:not(:disabled) {
   border-color: transparent !important;
-  background: var(--color-sky);
+  background: var(--color-blue);
   color: var(--app-text-inverse) !important;
 }
 
@@ -75,23 +75,23 @@
 
 .mat-mdc-text-field-wrapper {
   border-radius: var(--app-form-control-radius) !important;
-  background: rgba(var(--color-ivory-rgb), 0.96);
+  background: rgba(var(--color-cream-rgb), 0.96);
 }
 
 .cdk-overlay-pane.day-detail-sheet .mat-bottom-sheet-container {
   border-radius: var(--app-radius-xl) var(--app-radius-xl) 0 0;
   background: none !important;
-  background-color: var(--color-sky) !important;
+  background-color: var(--color-blue) !important;
   box-shadow: var(--app-shadow-sheet);
-  color: var(--color-ivory);
+  color: var(--color-cream);
   opacity: 1 !important;
 }
 
 .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
   border-radius: var(--app-radius-xl) var(--app-radius-xl) 0 0;
   overflow-y: auto;
-  background: var(--color-sky);
-  color: var(--color-sand);
+  background: var(--color-blue);
+  color: var(--color-yellow);
   box-shadow: var(--app-shadow-soft);
 }
 
