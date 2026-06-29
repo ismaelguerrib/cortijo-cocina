@@ -12,34 +12,33 @@
   width: calc(100vw - (var(--app-page-gutter-inline) * 2));
   max-width: var(--app-inline-max);
   border-radius: var(--app-radius-xl);
-  background:
-    linear-gradient(
-      90deg,
-      rgba(var(--color-cream-rgb), 0.2) 0%,
-      rgba(var(--color-cream-rgb), 0.2) 49.4%,
-      rgba(var(--color-red-rgb), 0.3) 49.4%,
-      rgba(var(--color-red-rgb), 0.3) 50.6%,
-      rgba(var(--color-cream-rgb), 0.2) 50.6%,
-      rgba(var(--color-cream-rgb), 0.2) 100%
-    );
+  background: linear-gradient(
+    90deg,
+    rgba(var(--color-cream-rgb), 0.2) 0%,
+    rgba(var(--color-cream-rgb), 0.2) 49.4%,
+    rgba(var(--color-red-rgb), 0.3) 49.4%,
+    rgba(var(--color-red-rgb), 0.3) 50.6%,
+    rgba(var(--color-cream-rgb), 0.2) 50.6%,
+    rgba(var(--color-cream-rgb), 0.2) 100%
+  );
   box-shadow: var(--app-shadow-soft);
 }
 
 .calendar-pairs__row {
-  --calendar-pair-left-bg: rgba(var(--color-yellow-rgb), 0.98);
-  --calendar-pair-right-bg: rgba(var(--color-red-rgb), 0.9);
-  --calendar-pair-left-hover: rgba(var(--color-yellow-rgb), 0.88);
-  --calendar-pair-right-hover: rgba(var(--color-red-rgb), 0.8);
+  --calendar-pair-left-bg: rgba(var(--color-cream-rgb), 0.98);
+  --calendar-pair-right-bg: rgba(var(--color-pink-rgb), 0.9);
+  --calendar-pair-left-hover: rgba(var(--color-cream-rgb), 0.88);
+  --calendar-pair-right-hover: rgba(var(--color-pink-rgb), 0.8);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   min-height: calc(var(--app-size-unit) * 12);
 }
 
 .calendar-pairs__row--reverse {
-  --calendar-pair-left-bg: rgba(var(--color-red-rgb), 0.9);
-  --calendar-pair-right-bg: rgba(var(--color-yellow-rgb), 0.98);
-  --calendar-pair-left-hover: rgba(var(--color-red-rgb), 0.8);
-  --calendar-pair-right-hover: rgba(var(--color-yellow-rgb), 0.88);
+  --calendar-pair-left-bg: rgba(var(--color-pink-rgb), 0.9);
+  --calendar-pair-right-bg: rgba(var(--color-cream-rgb), 0.98);
+  --calendar-pair-left-hover: rgba(var(--color-pink-rgb), 0.8);
+  --calendar-pair-right-hover: rgba(var(--color-cream-rgb), 0.88);
 }
 
 .calendar-pairs__day {
@@ -51,7 +50,7 @@
   padding: var(--app-space-md) var(--app-space-lg);
   border: 0;
   background: transparent;
-  color: var(--color-blue);
+  color: var(--color-red);
   text-align: left;
   cursor: pointer;
   transition:
@@ -62,7 +61,6 @@
 
 .calendar-pairs__day--left {
   background: var(--calendar-pair-left-bg);
-  border-right: 2px solid rgba(var(--color-blue-rgb), 0.16);
   padding-right: calc(var(--app-space-lg) + clamp(2.6rem, 6vw, 4.5rem));
 }
 
@@ -94,11 +92,11 @@
 }
 
 .calendar-pairs__day--filled .calendar-pairs__summary {
-  color: var(--color-red);
+  color: var(--color-green);
 }
 
 .calendar-pairs__day--filled {
-  box-shadow: inset 0 0 0 2px rgba(var(--color-blue-rgb), 0.16);
+  box-shadow: inset 0 0 0 2px rgba(var(--color-red-rgb), 0.16);
 }
 
 .calendar-pairs__day--empty {
@@ -112,7 +110,7 @@
   font-family: var(--app-display-font);
   font-size: clamp(2.8rem, 4.5vw, 5.4rem);
   line-height: 0.88;
-  color: rgba(var(--color-blue-rgb), 0.94);
+  color: rgba(var(--color-red-rgb), 0.94);
 }
 
 .calendar-pairs__number--left {
@@ -135,18 +133,18 @@
   font-size: var(--app-font-caption);
   text-transform: uppercase;
   letter-spacing: var(--app-letter-spacing-wide);
-  color: rgba(var(--color-blue-rgb), 0.72);
+  color: rgba(var(--color-red-rgb), 0.72);
 }
 
 .calendar-pairs__summary {
   font-family: var(--app-ui-font);
   font-size: var(--app-font-label);
   font-weight: 700;
-  color: var(--color-blue);
+  color: var(--color-red);
 }
 
 .calendar-pairs__cookers {
-  color: rgba(var(--color-blue-rgb), 0.78);
+  color: rgba(var(--color-red-rgb), 0.78);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   line-height: 1.4;
@@ -168,7 +166,7 @@
 .calendar-grid__weekdays {
   margin-bottom: var(--app-space-sm);
   padding: 0 var(--app-space-3xs);
-  color: var(--color-cream);
+  color: var(--color-red);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   text-transform: uppercase;
