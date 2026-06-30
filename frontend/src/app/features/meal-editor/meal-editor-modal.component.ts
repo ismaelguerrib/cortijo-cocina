@@ -10,7 +10,6 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -63,7 +62,6 @@ type DishGroup = FormGroup<{
   selector: 'app-meal-editor-modal',
   imports: [
     ReactiveFormsModule,
-    MatButtonModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,

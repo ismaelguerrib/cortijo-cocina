@@ -22,10 +22,10 @@
   gap: var(--app-section-gap);
   margin-bottom: var(--app-section-gap);
   padding: var(--app-panel-padding);
-  border-radius: var(--app-radius-xl);
   background: var(--app-surface-pink);
   box-shadow: var(--app-shadow-card);
   backdrop-filter: blur(var(--app-blur-soft));
+  border: 1px solid rgba(var(--app-outline-color-rgb), 0.26);
 }
 
 .recipes-hero__copy {
@@ -71,23 +71,12 @@
   width: 100%;
   padding: 0;
   overflow: hidden;
-  border: none;
+  border: 1px solid rgba(var(--app-outline-color-rgb), 0.24);
   text-align: left;
-  cursor: pointer;
   overflow: hidden;
-  border-radius: var(--app-radius-lg);
   background: var(--app-surface-cream);
   box-shadow: var(--app-shadow-card);
   backdrop-filter: blur(var(--app-blur-soft));
-
-  &:hover {
-    transform: translateY(calc(var(--app-size-unit) * -0.25));
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-blue);
-    outline-offset: 3px;
-  }
 }
 
 .recipe-card__gallery {
@@ -101,7 +90,6 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: var(--app-form-control-radius);
 }
 
 .recipe-card__body {
@@ -142,6 +130,10 @@
 
 .recipe-card__assignees {
   color: var(--app-text-muted);
+}
+
+.recipe-card__action {
+  justify-self: start;
 }
 
 :host ::ng-deep .recipes-page .mdc-notched-outline__leading,

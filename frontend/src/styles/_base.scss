@@ -33,13 +33,13 @@ h5,
 h6,
 .app-display-title {
   font-family: var(--app-display-font);
-  color: var(--app-text-color-strong);
+  color: var(--app-heading-color);
   letter-spacing: var(--app-letter-spacing-display);
 }
 
 .app-ui-title {
   font-family: var(--app-ui-font);
-  color: var(--app-text-color-strong);
+  color: var(--app-heading-color);
 }
 
 .app-subtitle {
@@ -48,7 +48,43 @@ h6,
 }
 
 a {
-  color: inherit;
+  color: var(--app-link-color);
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--app-underline-thickness);
+  text-underline-offset: 0.18em;
+  text-decoration-skip-ink: auto;
+}
+
+a:hover {
+  color: var(--app-accent-color);
+}
+
+.app-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--app-space-2xs);
+  padding: 0;
+  border: 0;
+  background: none;
+  appearance: none;
+  color: var(--app-link-color);
+  cursor: pointer;
+  font: inherit;
+  line-height: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: var(--app-underline-thickness);
+  text-underline-offset: 0.18em;
+}
+
+.app-link-button:hover,
+.app-link-button[aria-pressed='true'],
+.app-link-button.is-active {
+  color: var(--app-accent-color);
+}
+
+.app-link-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
 }
 
 ::selection {
@@ -59,15 +95,15 @@ a {
 .feedback {
   margin-bottom: var(--app-section-gap);
   padding: var(--app-card-padding) var(--app-panel-padding);
-  border-radius: var(--app-radius-md);
   backdrop-filter: blur(var(--app-blur-soft));
-  background: var(--app-surface-cream);
+  background: rgba(var(--app-surface-panel-rgb), 0.9);
   box-shadow: var(--app-shadow-card);
+  border: 1px solid rgba(var(--app-outline-color-rgb), 0.34);
 }
 
 .feedback--error {
-  color: var(--color-red);
-  background: rgba(var(--color-red-rgb), 0.12);
+  color: var(--app-text-color-strong);
+  background: rgba(var(--app-accent-color-rgb), 0.18);
 }
 
 .loading-state,
@@ -76,7 +112,7 @@ a {
   justify-items: center;
   gap: var(--app-cluster-gap);
   padding: var(--app-space-4xl) var(--app-panel-padding);
-  color: var(--app-text-muted);
+  color: var(--app-text-color);
   text-align: center;
 }
 

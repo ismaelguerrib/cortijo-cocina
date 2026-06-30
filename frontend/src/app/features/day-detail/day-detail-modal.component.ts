@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MAT_BOTTOM_SHEET_DATA, MatBottomSheetModule, MatBottomSheetRef } from '@angular/material/bottom-sheet';
-import { MatButtonModule } from '@angular/material/button';
 import { FAMILY_MEMBER_LABELS } from '../../core/constants/family-members';
 import { MealAssignment } from '../../core/models/meal-assignment.model';
 import { CalendarDay } from '../calendar/calendar.models';
@@ -12,7 +11,7 @@ export interface DayDetailSheetResult {
 
 @Component({
   selector: 'app-day-detail-modal',
-  imports: [MatBottomSheetModule, MatButtonModule],
+  imports: [MatBottomSheetModule],
   templateUrl: './day-detail-modal.component.html',
   styleUrl: './day-detail-modal.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

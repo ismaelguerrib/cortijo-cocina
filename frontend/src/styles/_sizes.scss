@@ -24,12 +24,6 @@ $bp-lg: 64rem;
   --app-font-title-lg: calc(var(--app-size-unit) * 4.6);
   --app-font-display: calc(var(--app-size-unit) * 5.6);
 
-  --app-radius-sm: calc(var(--app-size-unit) * 1.4);
-  --app-radius-md: calc(var(--app-size-unit) * 1.9);
-  --app-radius-lg: calc(var(--app-size-unit) * 2.8);
-  --app-radius-xl: calc(var(--app-size-unit) * 4);
-  --app-radius-pill: calc(var(--app-size-unit) * 99);
-
   --app-shell-min-block: calc(var(--app-size-unit) * 100);
   --app-page-gutter-inline: var(--app-space-lg);
   --app-page-gutter-inline-wide: var(--app-space-2xl);
@@ -47,7 +41,6 @@ $bp-lg: 64rem;
   --app-calendar-grid-min-inline: calc(var(--app-size-unit) * 64);
   --app-photo-tile-min-inline: calc(var(--app-size-unit) * 9.8);
   --app-gallery-tile-min-inline: calc(var(--app-size-unit) * 14.2);
-  --app-form-control-radius: calc(var(--app-size-unit) * 2.05);
   --app-button-inline-padding: var(--app-space-xl);
   --app-button-block-padding: var(--app-space-sm);
   --app-lift-distance: calc(var(--app-size-unit) * 0.24);

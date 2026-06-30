@@ -7,7 +7,7 @@
       <div class="hero__view-switch" aria-label="Mode d'affichage du calendrier">
         <button
           type="button"
-          class="hero__view-button"
+          class="app-link-button hero__view-button"
           [class.hero__view-button--active]="layoutMode() === 'grid'"
           [attr.aria-pressed]="layoutMode() === 'grid'"
           (click)="setLayoutMode('grid')"
@@ -16,7 +16,7 @@
         </button>
         <button
           type="button"
-          class="hero__view-button"
+          class="app-link-button hero__view-button"
           [class.hero__view-button--active]="layoutMode() === 'pairs'"
           [attr.aria-pressed]="layoutMode() === 'pairs'"
           (click)="setLayoutMode('pairs')"

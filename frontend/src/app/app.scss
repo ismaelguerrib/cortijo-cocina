@@ -10,7 +10,7 @@
   z-index: 0;
   overflow: clip;
   pointer-events: none;
-  background: var(--color-white);
+  background: var(--app-page-bg);
 }
 
 .app-background__family {
@@ -23,7 +23,7 @@
   height: auto;
   max-width: 42vw;
   user-select: none;
-  filter: saturate(0.88) drop-shadow(0 10px 22px rgba(var(--app-text-color-strong-rgb), 0.12));
+  filter: saturate(0.88) drop-shadow(0 10px 22px rgba(var(--app-heading-color-rgb), 0.12));
   transform: translate3d(-50%, -50%, 0);
   animation: family-drift linear infinite alternate;
   will-change: transform;
@@ -46,14 +46,12 @@
   gap: var(--app-cluster-gap);
   padding: var(--app-page-gutter-block-start) var(--app-page-gutter-inline)
     calc(var(--app-page-gutter-block-start) + var(--app-space-xs));
-  backdrop-filter: blur(var(--app-blur-strong));
-  background: rgba(var(--color-cream-rgb), 0.94);
+  background: transparent;
 }
 
 .app-shell__brand,
 .app-shell__nav a {
-  color: var(--app-text-color);
-  text-decoration: none;
+  color: var(--app-link-color);
 }
 
 .app-shell__brand-block {
@@ -65,7 +63,7 @@
   font-family: var(--app-display-font);
   font-size: var(--app-font-title-sm);
   line-height: 0.95;
-  text-shadow: 0 var(--app-space-2xs) 0 rgba(var(--color-white-rgb), 0.64);
+  text-shadow: 0 var(--app-space-2xs) 0 rgba(var(--app-surface-white-rgb), 0.64);
 }
 
 .app-shell__tagline {
@@ -83,23 +81,20 @@
   justify-content: space-between;
   gap: var(--app-space-xs);
   padding: var(--app-space-xs);
-  border-radius: var(--app-radius-pill);
-  background: var(--app-surface-white);
+  background: rgba(var(--app-surface-white-rgb), 0.72);
   box-shadow: var(--app-shadow-chip);
+  border: 1px solid rgba(var(--app-outline-color-rgb), 0.28);
 }
 
 .app-shell__nav a {
   padding: var(--app-button-block-padding) var(--app-button-inline-padding);
-  border-radius: var(--app-radius-pill);
   font-family: var(--app-display-font);
   font-size: var(--app-font-label);
   font-weight: 700;
 }
 
 .app-shell__nav a.is-active {
-  background: var(--app-surface-red);
-  color: var(--app-text-inverse);
-  box-shadow: var(--app-shadow-active);
+  color: var(--app-accent-color);
 }
 
 @media (min-width: size.$bp-md) {

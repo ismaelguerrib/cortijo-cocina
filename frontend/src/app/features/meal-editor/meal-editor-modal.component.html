@@ -4,7 +4,7 @@
       <p class="editor__eyebrow">{{ isEditing() ? 'Modifier' : 'Créer' }} un repas</p>
       <h2>{{ isEditing() ? 'Mettre à jour la journée' : 'Nouveau repas' }}</h2>
     </div>
-    <button mat-stroked-button type="button" (click)="close()">Fermer</button>
+    <button type="button" class="app-link-button" (click)="close()">Fermer</button>
   </header>
 
   <form class="editor__form" [formGroup]="form" (ngSubmit)="submit()">
@@ -23,7 +23,7 @@
         <p class="editor__eyebrow">Plats</p>
         <h3>{{ allowRecipeEditing() ? 'Recettes, photos et votes' : 'Photos et votes' }}</h3>
       </div>
-      <button mat-stroked-button type="button" (click)="addDish()">+ Ajouter un plat</button>
+      <button type="button" class="app-link-button" (click)="addDish()">+ Ajouter un plat</button>
     </div>
 
     @for (dishGroup of dishGroups; track $index; let index = $index) {
@@ -35,9 +35,8 @@
         <div class="dish-form__header">
           <h4>Plat {{ index + 1 }}</h4>
           <button
-            mat-stroked-button
             type="button"
-            class="dish-form__remove"
+            class="app-link-button dish-form__remove"
             (click)="removeDish(index)"
             [disabled]="dishGroups.length === 1"
           >
@@ -93,7 +92,7 @@
                   <img [src]="photo" alt="Photo {{ pi + 1 }}" />
                   <button
                     type="button"
-                    class="photos-field__remove"
+                    class="app-link-button photos-field__remove"
                     (click)="removePhoto(dishGroup, pi)"
                   >
                     ✕
@@ -107,7 +106,7 @@
         <div class="votes-field">
           <div class="votes-field__header">
             <p class="votes-field__label">Votes (0–20)</p>
-            <button mat-stroked-button type="button" (click)="addVote(dishGroup)">+ Vote</button>
+            <button type="button" class="app-link-button" (click)="addVote(dishGroup)">+ Vote</button>
           </div>
 
           @if (voteControls(dishGroup).length === 0) {
@@ -125,7 +124,7 @@
                   />
                   <button
                     type="button"
-                    class="votes-field__remove"
+                    class="app-link-button votes-field__remove"
                     (click)="removeVote(dishGroup, vi)"
                     aria-label="Supprimer ce vote"
                   >
@@ -145,11 +144,11 @@
 
     <footer class="editor__actions">
       @if (isEditing()) {
-        <button mat-button type="button" class="editor__delete" (click)="deleteMeal()">
+        <button type="button" class="app-link-button editor__delete" (click)="deleteMeal()">
           Supprimer le repas
         </button>
       }
-      <button mat-flat-button type="submit" [disabled]="saving()">
+      <button type="submit" class="app-link-button" [disabled]="saving()">
         {{ saving() ? 'Enregistrement…' : 'Enregistrer' }}
       </button>
     </footer>

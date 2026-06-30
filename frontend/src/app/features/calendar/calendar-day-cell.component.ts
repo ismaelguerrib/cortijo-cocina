@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { FAMILY_MEMBER_LABELS } from '../../core/constants/family-members';
 import { MealAssignment } from '../../core/models/meal-assignment.model';
@@ -12,7 +11,7 @@ export interface MealSelection {
 
 @Component({
   selector: 'app-calendar-day-cell',
-  imports: [MatButtonModule, MatCardModule],
+  imports: [MatCardModule],
   templateUrl: './calendar-day-cell.component.html',
   styleUrl: './calendar-day-cell.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -40,14 +39,5 @@ export class CalendarDayCellComponent {
 
   openDayDetail(): void {
     this.daySelected.emit(this.day());
-  }
-
-  openMealEditor(event: Event): void {
-    event.stopPropagation();
-
-    this.mealSelected.emit({
-      date: this.day().isoDate,
-      meal: this.day().meal,
-    });
   }
 }

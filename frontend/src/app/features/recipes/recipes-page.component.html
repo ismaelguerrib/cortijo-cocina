@@ -34,7 +34,7 @@
   } @else {
     <section class="recipe-grid">
       @for (recipe of recipeCards(); track recipe.id) {
-        <button type="button" class="recipe-card" (click)="openRecipeEditor(recipe)">
+        <article class="recipe-card">
           <div class="recipe-card__gallery">
             @for (photoUrl of recipe.photoUrls; track photoUrl) {
               <img [src]="photoUrl" [alt]="'Photo du plat ' + recipe.dishTitle" loading="lazy" />
@@ -54,8 +54,12 @@
             <p class="recipe-card__assignees">
               Cusinier.e.s : {{ cookerSummary(recipe.cookers) }}
             </p>
+
+            <button type="button" class="app-link-button recipe-card__action" (click)="openRecipeEditor(recipe)">
+              Modifier ou compléter la recette
+            </button>
           </div>
-        </button>
+        </article>
       }
     </section>
   }

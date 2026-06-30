@@ -5,9 +5,8 @@
   gap: var(--app-space-xs);
   min-height: var(--app-calendar-card-min-block-compact);
   padding: var(--app-card-padding-compact) var(--app-space-sm) var(--app-space-sm);
-  border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--color-green-rgb), 0.28);
-  border-radius: var(--app-radius-md);
-  background: rgba(var(--color-cream-rgb), 0.96);
+  border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--app-outline-color-rgb), 0.28);
+  background: rgba(var(--app-page-bg-rgb), 0.96);
   box-shadow: var(--app-shadow-card);
   cursor: pointer;
   transition:
@@ -20,19 +19,19 @@
 
 .day-card:hover {
   transform: translateY(calc(var(--app-lift-distance) * -1));
-  background: rgba(var(--color-yellow-rgb), 0.92);
-  border-color: rgba(var(--color-red-rgb), 0.72);
+  background: rgba(var(--app-accent-alt-color-rgb), 0.92);
+  border-color: rgba(var(--app-accent-color-rgb), 0.72);
   box-shadow: var(--app-shadow-soft);
 }
 
 .day-card--filled {
-  background: rgba(var(--color-pink-rgb), 0.9);
-  border-color: rgba(var(--color-red-rgb), 0.4);
+  background: rgba(var(--app-surface-section-rgb), 0.9);
+  border-color: rgba(var(--app-accent-color-rgb), 0.4);
 }
 
 .day-card--filled:hover {
-  background: rgba(var(--color-yellow-rgb), 0.92);
-  border-color: rgba(var(--color-red-rgb), 0.72);
+  background: rgba(var(--app-accent-alt-color-rgb), 0.92);
+  border-color: rgba(var(--app-accent-color-rgb), 0.72);
 }
 
 .day-card:hover .day-card__weekday,
@@ -65,12 +64,12 @@
   font-family: var(--app-display-font);
   font-size: var(--app-font-title-sm);
   line-height: 0.92;
-  color: var(--color-red);
+  color: var(--app-heading-color);
   text-shadow: none;
 }
 
 .day-card__weekday {
-  color: rgba(var(--color-blue-rgb), 0.72);
+  color: rgba(var(--app-text-color-rgb), 0.72);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   text-transform: uppercase;
@@ -109,9 +108,8 @@
 .day-card__votes {
   min-width: calc(var(--app-size-unit) * 3.4);
   padding: var(--app-space-2xs) var(--app-space-sm);
-  border-radius: var(--app-radius-pill);
-  background: rgba(var(--color-red-rgb), 0.92);
-  color: var(--color-cream);
+  background: rgba(var(--app-accent-color-rgb), 0.92);
+  color: var(--app-text-inverse);
   text-align: center;
   font-size: var(--app-font-caption);
   font-weight: 700;
@@ -120,7 +118,7 @@
 .day-card__meta,
 .day-card__assignees,
 .day-card__empty span {
-  color: var(--color-blue);
+  color: var(--app-text-color);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
 }
@@ -136,9 +134,8 @@
 
 .day-card__cooker {
   padding: var(--app-space-3xs) var(--app-space-xs);
-  border-radius: var(--app-radius-pill);
-  background: rgba(var(--color-green-rgb), 0.14);
-  color: var(--color-blue);
+  background: rgba(var(--app-outline-color-rgb), 0.14);
+  color: var(--app-text-color);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   line-height: 1.1;
@@ -147,30 +144,11 @@
 .day-card__preview {
   font-size: var(--app-font-label);
   line-height: 1.35;
-  color: var(--color-blue);
+  color: var(--app-text-color);
 }
 
 .day-card__empty p {
-  color: rgba(var(--color-blue-rgb), 0.76);
-}
-
-.day-card__action {
-  justify-self: start;
-  margin-top: auto;
-}
-
-.day-card__action--create {
-  padding: 0;
-  min-width: 0;
-  border: 0;
-  background: transparent;
-  color: var(--color-red);
-  box-shadow: none;
-  border-radius: 0;
-  appearance: none;
-  font: inherit;
-  line-height: 1;
-  cursor: pointer;
+  color: rgba(var(--app-text-color-rgb), 0.76);
 }
 
 @media (min-width: size.$bp-md) {

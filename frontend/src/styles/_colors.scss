@@ -1,32 +1,96 @@
+@use 'sass:color';
+@use 'sass:list';
+
+$palette-colors: (
+  #0039e5,
+  #0087ff,
+  #009bff,
+  #00aeef,
+  #010029,
+  #055fcd,
+  #1e84f8,
+  #2b00ff,
+  #385a1d,
+  #3c60df,
+  #49efcf,
+  #6163de,
+  #a3c5cd,
+  #aa68ff,
+  #b0ff07,
+  #c03930,
+  #c1ff00,
+  #c2d9f7,
+  #cefd53,
+  #daef24,
+  #e4e4e4,
+  #e90982,
+  #ec5f36,
+  #eeeeee,
+  #efaaff,
+  #f0b4fa,
+  #f36d37,
+  #f9fe59,
+  #fbaa75,
+  #ff1947,
+  #ff2d69,
+  #ff3008,
+  #ff8931,
+  #ff9b94,
+  #ffaa00,
+  #ffaded,
+  #ffaff8,
+  #ffcc56,
+  #ffe433
+);
+
+@function rgb-channels($value) {
+  @return #{color.channel($value, 'red', $space: rgb)},
+    #{color.channel($value, 'green', $space: rgb)},
+    #{color.channel($value, 'blue', $space: rgb)};
+}
+
+@mixin emit-color-vars($name, $value) {
+  --#{$name}: #{$value};
+  --#{$name}-rgb: #{rgb-channels($value)};
+}
+
 :root {
-  --color-white: #ffffff;
-  --color-white-rgb: 255, 255, 255;
-  --color-cream: #f4efe7;
-  --color-cream-rgb: 244, 239, 231;
-  --color-pink: #f3a8d2;
-  --color-pink-rgb: 243, 168, 210;
-  --color-red: #ff1116;
-  --color-red-rgb: 255, 17, 22;
-  --color-yellow: #f7cf1d;
-  --color-yellow-rgb: 247, 207, 29;
-  --color-blue: #0b49f4;
-  --color-blue-rgb: 11, 73, 244;
-  --color-green: #009847;
-  --color-green-rgb: 0, 152, 71;
+  --palette-size: #{list.length($palette-colors)};
 
-  --app-text-color: #1d3798;
-  --app-text-color-rgb: 29, 55, 152;
-  --app-text-color-strong: #10205d;
-  --app-text-color-strong-rgb: 16, 32, 93;
-  --app-text-muted: #5a70bf;
-  --app-text-inverse: #f4efe7;
+  @for $index from 1 through list.length($palette-colors) {
+    --palette-color-#{$index}: #{list.nth($palette-colors, $index)};
+  }
 
-  --app-page-bg: #f4efe7;
-  --app-surface-cream: #f4efe7;
-  --app-surface-white: #ffffff;
-  --app-surface-yellow: #f7cf1d;
-  --app-surface-blue: #0b49f4;
-  --app-surface-pink: #f3a8d2;
-  --app-surface-green: #009847;
-  --app-surface-red: #ff1116;
+  @include emit-color-vars('color-white', #ffffff);
+  @include emit-color-vars('color-cream', #ffaded);
+  @include emit-color-vars('color-pink', #f0b4fa);
+  @include emit-color-vars('color-red', #ff1947);
+  @include emit-color-vars('color-yellow', #ffe433);
+  @include emit-color-vars('color-blue', #0039e5);
+  @include emit-color-vars('color-green', #49efcf);
+
+  @include emit-color-vars('app-page-bg', #ffffff);
+  @include emit-color-vars('app-surface-cream', #ffaded);
+  @include emit-color-vars('app-surface-white', #ffffff);
+  @include emit-color-vars('app-surface-yellow', #ffcc56);
+  @include emit-color-vars('app-surface-blue', #0039e5);
+  @include emit-color-vars('app-surface-pink', #f0b4fa);
+  @include emit-color-vars('app-surface-green', #49efcf);
+  @include emit-color-vars('app-surface-red', #ff1947);
+  @include emit-color-vars('app-surface-panel', #c2d9f7);
+  @include emit-color-vars('app-surface-section', #ffaff8);
+  @include emit-color-vars('app-surface-highlight', #ffaa00);
+  @include emit-color-vars('app-text-color', #0039e5);
+  @include emit-color-vars('app-text-color-strong', #010029);
+  @include emit-color-vars('app-text-muted', #6163de);
+  @include emit-color-vars('app-text-inverse', #eeeeee);
+  @include emit-color-vars('app-link-color', #e90982);
+  @include emit-color-vars('app-heading-color', #0039e5);
+  @include emit-color-vars('app-icon-color', #ff3008);
+  @include emit-color-vars('app-section-color', #ffaff8);
+  @include emit-color-vars('app-accent-color', #ff1947);
+  @include emit-color-vars('app-accent-alt-color', #ffe433);
+  @include emit-color-vars('app-outline-color', #49efcf);
+
+  --app-scroll-progress: 0;
 }

@@ -1,72 +1,42 @@
-@use './sizes' as size;
-
 :root {
-  --mat-sys-primary: var(--color-blue);
+  --mat-sys-primary: var(--app-link-color);
   --mat-sys-on-primary: var(--app-text-inverse);
-  --mat-sys-primary-container: var(--color-pink);
+  --mat-sys-primary-container: var(--app-surface-panel);
   --mat-sys-on-primary-container: var(--app-text-color-strong);
-  --mat-sys-secondary: var(--color-yellow);
+  --mat-sys-secondary: var(--app-accent-alt-color);
   --mat-sys-on-secondary: var(--app-text-color-strong);
-  --mat-sys-surface: var(--color-cream);
+  --mat-sys-surface: var(--app-page-bg);
   --mat-sys-on-surface: var(--app-text-color);
-  --mat-sys-outline: var(--app-border-strong);
-  --mat-sys-error: var(--color-red);
+  --mat-sys-outline: var(--app-outline-color);
+  --mat-sys-error: var(--app-accent-color);
   --mat-sys-on-error: var(--app-text-inverse);
 }
 
 .meal-editor-select-panel {
-  background: var(--color-blue) !important;
-  border: 1.5px solid rgba(var(--color-yellow-rgb), 0.56) !important;
-  border-radius: var(--app-radius-md) !important;
+  background: var(--app-surface-cream) !important;
+  border: 1.5px solid rgba(var(--app-outline-color-rgb), 0.56) !important;
 
   .mat-mdc-option {
-    color: var(--color-yellow) !important;
+    color: var(--app-text-color-strong) !important;
     font-family: var(--app-ui-font);
 
     &:hover,
     &.mat-mdc-option-active {
-      background: rgba(var(--color-yellow-rgb), 0.16) !important;
+      background: rgba(var(--app-accent-alt-color-rgb), 0.16) !important;
     }
 
     &.mdc-list-item--selected {
-      background: rgba(var(--color-yellow-rgb), 0.24) !important;
+      background: rgba(var(--app-accent-alt-color-rgb), 0.24) !important;
     }
 
     .mat-pseudo-checkbox {
-      border-color: var(--color-yellow) !important;
+      border-color: var(--app-link-color) !important;
     }
 
     .mat-pseudo-checkbox-checked {
-      background: var(--color-yellow) !important;
+      background: var(--app-link-color) !important;
     }
   }
-}
-
-.mat-mdc-button-base {
-  font-family: var(--app-ui-font) !important;
-  letter-spacing: var(--app-letter-spacing-base);
-}
-
-.mat-mdc-unelevated-button,
-.mat-mdc-stroked-button,
-.mat-mdc-button {
-  border-radius: var(--app-radius-pill) !important;
-}
-
-.mat-mdc-unelevated-button:not(:disabled) {
-  box-shadow: var(--app-shadow-active);
-}
-
-.mat-mdc-stroked-button:not(:disabled) {
-  border-color: transparent !important;
-  background: var(--color-blue);
-  color: var(--app-text-inverse) !important;
-}
-
-.mat-mdc-stroked-button:not(:disabled):hover {
-  border-color: transparent !important;
-  background: var(--color-red);
-  color: var(--app-text-inverse) !important;
 }
 
 .mat-mdc-form-field {
@@ -74,29 +44,20 @@
 }
 
 .mat-mdc-text-field-wrapper {
-  border-radius: var(--app-form-control-radius) !important;
-  background: rgba(var(--color-cream-rgb), 0.96);
+  background: rgba(var(--app-surface-white-rgb), 0.96);
 }
 
 .cdk-overlay-pane.day-detail-sheet .mat-bottom-sheet-container {
-  border-radius: var(--app-radius-xl) var(--app-radius-xl) 0 0;
   background: none !important;
-  background-color: var(--color-blue) !important;
+  background-color: var(--app-surface-blue) !important;
   box-shadow: var(--app-shadow-sheet);
-  color: var(--color-cream);
+  color: var(--app-text-inverse);
   opacity: 1 !important;
 }
 
 .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
-  border-radius: var(--app-radius-xl) var(--app-radius-xl) 0 0;
   overflow-y: auto;
-  background: var(--color-blue);
-  color: var(--color-yellow);
+  background: var(--app-surface-blue);
+  color: var(--app-text-inverse);
   box-shadow: var(--app-shadow-soft);
-}
-
-@media (min-width: size.$bp-md) {
-  .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {
-    border-radius: var(--app-radius-xl);
-  }
 }

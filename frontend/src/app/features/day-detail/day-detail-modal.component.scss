@@ -3,7 +3,7 @@
 .sheet {
   padding: var(--app-page-gutter-block-start) var(--app-page-gutter-inline)
     calc(var(--app-page-gutter-block-end) * 0.7);
-  color: var(--color-cream);
+  color: var(--app-text-inverse);
 }
 
 .sheet__header {
@@ -19,7 +19,7 @@
 
 .sheet__header p {
   margin-bottom: var(--app-space-xs);
-  color: var(--color-cream);
+  color: var(--app-text-inverse);
   font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: var(--app-letter-spacing-wider);
@@ -30,46 +30,34 @@
   font-family: var(--app-display-font);
   font-size: var(--app-font-title-sm);
   line-height: 1;
-  color: var(--color-red);
+  color: var(--app-heading-color);
 }
 
 .meal-card {
   display: grid;
   gap: var(--app-cluster-gap);
   padding: var(--app-card-padding);
-  border-radius: var(--app-radius-lg);
   background: var(--app-surface-yellow);
   box-shadow: var(--app-shadow-card);
 }
 
 .meal-card--empty {
-  background: rgba(var(--color-blue-rgb), 0.94);
+  background: rgba(var(--app-surface-blue-rgb), 0.94);
   justify-items: start;
-  color: var(--color-cream);
+  color: var(--app-text-inverse);
 }
 
 .meal-card--empty h3 {
-  color: var(--color-yellow);
+  color: var(--app-accent-alt-color);
 }
 
 #save-night-button {
-  background-color: var(--color-yellow);
-  color: var(--color-red);
-  border: none;
-  border-radius: var(--app-radius-pill);
-  padding: var(--app-space-sm) var(--app-space-lg);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-body);
-  cursor: pointer;
-  box-shadow: var(--app-shadow-active);
-
-  &:hover {
-    background-color: color-mix(in srgb, var(--color-yellow) 85%, black);
-  }
 }
 
 .meal-card--empty p {
-  color: var(--color-cream);
+  color: var(--app-text-inverse);
 }
 
 .meal-card__headline,
@@ -99,9 +87,8 @@
 .meal-card__votes,
 .dish-card__header span {
   padding: var(--app-space-xs) var(--app-space-sm);
-  border-radius: var(--app-radius-pill);
-  background: rgba(var(--color-red-rgb), 0.14);
-  color: var(--color-red);
+  background: rgba(var(--app-accent-color-rgb), 0.14);
+  color: var(--app-accent-color);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   font-weight: 700;
@@ -116,7 +103,6 @@
   display: grid;
   gap: var(--app-space-sm);
   padding: var(--app-card-padding-compact);
-  border-radius: var(--app-radius-md);
   background: var(--app-surface-white);
 }
 
@@ -141,5 +127,4 @@
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  border-radius: var(--app-radius-sm);
 }
