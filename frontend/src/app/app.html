@@ -22,6 +22,9 @@
     <div class="app-shell__brand-block">
       <a routerLink="/calendrier" class="app-shell__brand">Cortijo Cocina</a>
       <p class="app-shell__tagline">Los Hamdanos vacaciones</p>
+      @if (currentThemeName()) {
+        <p class="app-shell__palette">{{ currentThemeName() }}</p>
+      }
     </div>
 
     <nav class="app-shell__nav" aria-label="Navigation principale">

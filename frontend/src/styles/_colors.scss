@@ -1,52 +1,130 @@
 @use 'sass:color';
+@use 'sass:map';
 @use 'sass:list';
 
-$palette-colors: (
-  #0039e5,
-  #0087ff,
-  #009bff,
-  #00aeef,
-  #010029,
-  #055fcd,
-  #1e84f8,
-  #2b00ff,
-  #385a1d,
-  #3c60df,
-  #49efcf,
-  #6163de,
-  #a3c5cd,
-  #aa68ff,
-  #b0ff07,
-  #c03930,
-  #c1ff00,
-  #c2d9f7,
-  #cefd53,
-  #daef24,
-  #e4e4e4,
-  #e90982,
-  #ec5f36,
-  #eeeeee,
-  #efaaff,
-  #f0b4fa,
-  #f36d37,
-  #f9fe59,
-  #fbaa75,
-  #ff1947,
-  #ff2d69,
-  #ff3008,
-  #ff8931,
-  #ff9b94,
-  #ffaa00,
-  #ffaded,
-  #ffaff8,
-  #ffcc56,
-  #ffe433
+$color-themes: (
+  (
+    name: 'Electro Punch',
+    page-background: #ff004d,
+    page-text: #ffffff,
+    page-heading: #ffff00,
+    page-link: #00e5ff,
+    page-muted: #ff8fab,
+    surface-background: #b48a76,
+    surface-text: #ffffff,
+    action: #ffff00,
+    accent-alt: #00e5ff,
+    surface-accent-alt: #ff00a6,
+  ),
+  (
+    name: 'Acid Lime',
+    page-background: #dfff00,
+    page-text: #111111,
+    page-heading: #ff3d00,
+    page-link: #0057ff,
+    page-muted: #8aa0ff,
+    surface-background: #ff9edb,
+    surface-text: #f7ff00,
+    action: #ff3d00,
+    accent-alt: #00ffd0,
+    surface-accent-alt: #0057ff,
+  ),
+  (
+    name: 'Solar Flare',
+    page-background: #ff5a00,
+    page-text: #ffffff,
+    page-heading: #ffe600,
+    page-link: #0047ff,
+    page-muted: #ffb280,
+    surface-background: #ff9edb,
+    surface-text: #ffffff,
+    action: #ffe600,
+    accent-alt: #00e5ff,
+    surface-accent-alt: #ff00b8,
+  ),
+  (
+    name: 'Violet Rave',
+    page-background: #e100ff,
+    page-text: #00e5ff,
+    page-heading: #00ffc2,
+    page-link: #ffd600,
+    page-muted: #c18bff,
+    surface-background: #ffffff,
+    surface-text: #00e5ff,
+    action: #00ffc2,
+    accent-alt: #ffd600,
+    surface-accent-alt: #ff006e,
+  ),
+  (
+    name: 'White Pop Gallery',
+    page-background: #ffffff,
+    page-text: #0a0a0a,
+    page-heading: #0057ff,
+    page-link: #ff00b8,
+    page-muted: #606060,
+    surface-background: #f1f1f1,
+    surface-text: #0a0a0a,
+    action: #ff3d00,
+    accent-alt: #dfff00,
+    surface-accent-alt: #00e5ff,
+  ),
+  (
+    name: 'Retro Brown Pop',
+    page-background: #4b2e20,
+    page-text: #ffede1,
+    page-heading: #59b4ff,
+    page-link: #ff69b4,
+    page-muted: #b48a76,
+    surface-background: #6a3f2a,
+    surface-text: #ffede1,
+    action: #ff3b30,
+    accent-alt: #59b4ff,
+    surface-accent-alt: #ff69b4,
+  ),
+  (
+    name: 'Sunflower Bold',
+    page-background: #ffc600,
+    page-text: #1a1a1a,
+    page-heading: #ff0055,
+    page-link: #0066ff,
+    page-muted: #7a5b00,
+    surface-background: #ffffff,
+    surface-text: #7a5b00,
+    action: #ff0055,
+    accent-alt: #0066ff,
+    surface-accent-alt: #0066ff,
+  ),
+  (
+    name: 'Peach Cream',
+    page-background: #ffe6d6,
+    page-text: #2b1b12,
+    page-heading: #ff6b00,
+    page-link: #008cff,
+    page-muted: #9a6f5a,
+    surface-background: #6d3d2a,
+    surface-text: #fff6ee,
+    action: #ff6b00,
+    accent-alt: #00c5ff,
+    surface-accent-alt: #ff4da6,
+  ),
+  (
+    name: 'Ruby Energy',
+    page-background: #d90429,
+    page-text: #3a0a12,
+    page-heading: #00e0ff,
+    page-link: #ffd200,
+    page-muted: #ffa3b1,
+    surface-background: #ffffff,
+    surface-text: #3a0a12,
+    action: #ffd200,
+    accent-alt: #00e0ff,
+    surface-accent-alt: #ff69ba,
+  )
 );
 
 @function rgb-channels($value) {
   @return #{color.channel($value, 'red', $space: rgb)},
-    #{color.channel($value, 'green', $space: rgb)},
-    #{color.channel($value, 'blue', $space: rgb)};
+    #{color.channel($value, 'green', $space: rgb)}, #{color.channel($value, 'blue', $space: rgb)};
 }
 
 @mixin emit-color-vars($name, $value) {
@@ -55,42 +133,54 @@ $palette-colors: (
 }
 
 :root {
-  --palette-size: #{list.length($palette-colors)};
+  --color-theme-size: #{list.length($color-themes)};
 
-  @for $index from 1 through list.length($palette-colors) {
-    --palette-color-#{$index}: #{list.nth($palette-colors, $index)};
+  @for $index from 1 through list.length($color-themes) {
+    $theme: list.nth($color-themes, $index);
+    --color-theme-#{$index}-name: #{map.get($theme, name)};
+    --color-theme-#{$index}-page-background: #{map.get($theme, page-background)};
+    --color-theme-#{$index}-page-text: #{map.get($theme, page-text)};
+    --color-theme-#{$index}-page-heading: #{map.get($theme, page-heading)};
+    --color-theme-#{$index}-page-link: #{map.get($theme, page-link)};
+    --color-theme-#{$index}-page-muted: #{map.get($theme, page-muted)};
+    --color-theme-#{$index}-surface-background: #{map.get($theme, surface-background)};
+    --color-theme-#{$index}-surface-text: #{map.get($theme, surface-text)};
+    --color-theme-#{$index}-action: #{map.get($theme, action)};
+    --color-theme-#{$index}-accent-alt: #{map.get($theme, accent-alt)};
+    --color-theme-#{$index}-surface-accent-alt: #{map.get($theme, surface-accent-alt)};
   }
 
   @include emit-color-vars('color-white', #ffffff);
-  @include emit-color-vars('color-cream', #ffaded);
-  @include emit-color-vars('color-pink', #f0b4fa);
-  @include emit-color-vars('color-red', #ff1947);
-  @include emit-color-vars('color-yellow', #ffe433);
-  @include emit-color-vars('color-blue', #0039e5);
-  @include emit-color-vars('color-green', #49efcf);
+  @include emit-color-vars('color-cream', #e7e2d8);
+  @include emit-color-vars('color-pink', #e7e2d8);
+  @include emit-color-vars('color-red', #704d3a);
+  @include emit-color-vars('color-yellow', #f9e4b7);
+  @include emit-color-vars('color-blue', #5d4d3f);
+  @include emit-color-vars('color-green', #42523e);
 
-  @include emit-color-vars('app-page-bg', #ffffff);
-  @include emit-color-vars('app-surface-cream', #ffaded);
-  @include emit-color-vars('app-surface-white', #ffffff);
-  @include emit-color-vars('app-surface-yellow', #ffcc56);
-  @include emit-color-vars('app-surface-blue', #0039e5);
-  @include emit-color-vars('app-surface-pink', #f0b4fa);
-  @include emit-color-vars('app-surface-green', #49efcf);
-  @include emit-color-vars('app-surface-red', #ff1947);
-  @include emit-color-vars('app-surface-panel', #c2d9f7);
-  @include emit-color-vars('app-surface-section', #ffaff8);
-  @include emit-color-vars('app-surface-highlight', #ffaa00);
-  @include emit-color-vars('app-text-color', #0039e5);
-  @include emit-color-vars('app-text-color-strong', #010029);
-  @include emit-color-vars('app-text-muted', #6163de);
-  @include emit-color-vars('app-text-inverse', #eeeeee);
-  @include emit-color-vars('app-link-color', #e90982);
-  @include emit-color-vars('app-heading-color', #0039e5);
-  @include emit-color-vars('app-icon-color', #ff3008);
-  @include emit-color-vars('app-section-color', #ffaff8);
-  @include emit-color-vars('app-accent-color', #ff1947);
-  @include emit-color-vars('app-accent-alt-color', #ffe433);
-  @include emit-color-vars('app-outline-color', #49efcf);
+  @include emit-color-vars('app-page-bg', #e7e2d8);
+  @include emit-color-vars('app-surface-cream', #e7e2d8);
+  @include emit-color-vars('app-surface-white', #e7e2d8);
+  @include emit-color-vars('app-surface-yellow', #4c5a5f);
+  @include emit-color-vars('app-surface-blue', #4c5a5f);
+  @include emit-color-vars('app-surface-pink', #e7e2d8);
+  @include emit-color-vars('app-surface-green', #4c5a5f);
+  @include emit-color-vars('app-surface-red', #4c5a5f);
+  @include emit-color-vars('app-surface-panel', #e7e2d8);
+  @include emit-color-vars('app-surface-section', #e7e2d8);
+  @include emit-color-vars('app-surface-highlight', #42523e);
+  @include emit-color-vars('app-text-color', #2c241d);
+  @include emit-color-vars('app-text-color-strong', #5d4d3f);
+  @include emit-color-vars('app-text-muted', #4d4338);
+  @include emit-color-vars('app-text-inverse', #f3ede3);
+  @include emit-color-vars('app-link-color', #42523e);
+  @include emit-color-vars('app-heading-color', #5d4d3f);
+  @include emit-color-vars('app-icon-color', #42523e);
+  @include emit-color-vars('app-section-color', #4c5a5f);
+  @include emit-color-vars('app-accent-color', #704d3a);
+  @include emit-color-vars('app-accent-alt-color', #f9e4b7);
+  @include emit-color-vars('app-accent-alt-on-surface', #f9e4b7);
+  @include emit-color-vars('app-outline-color', #42523e);
 
   --app-scroll-progress: 0;
 }

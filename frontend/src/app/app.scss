@@ -75,15 +75,25 @@
   font-size: var(--app-font-caption);
 }
 
+.app-shell__palette {
+  margin: 0;
+  color: var(--app-heading-color);
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-caption);
+  font-weight: 700;
+  letter-spacing: var(--app-letter-spacing-wide);
+  text-transform: uppercase;
+}
+
 .app-shell__nav {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--app-space-xs);
-  padding: var(--app-space-xs);
-  background: rgba(var(--app-surface-white-rgb), 0.72);
-  box-shadow: var(--app-shadow-chip);
-  border: 1px solid rgba(var(--app-outline-color-rgb), 0.28);
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  border: 0;
 }
 
 .app-shell__nav a {

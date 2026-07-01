@@ -37,10 +37,11 @@
   display: inline-grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-self: start;
-  padding: var(--app-space-3xs);
-  border: 1px solid rgba(var(--app-outline-color-rgb), 0.45);
-  background: rgba(var(--app-surface-white-rgb), 0.78);
-  box-shadow: inset 0 0 0 1px rgba(var(--app-section-color-rgb), 0.28);
+  gap: var(--app-space-xs);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .hero__view-button {
@@ -71,6 +72,9 @@
 
 .hero__view-button--active {
   color: var(--app-accent-color);
+  text-decoration: underline;
+  text-decoration-thickness: var(--app-underline-thickness);
+  text-underline-offset: 0.18em;
 }
 
 .hero__meta p {

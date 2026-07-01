@@ -41,7 +41,7 @@
 .day-card:hover .day-card__empty p,
 .day-card:hover .day-card__empty span,
 .day-card:hover .day-card__title-row h3 {
-  color: var(--color-blue);
+  color: var(--app-text-inverse);
 }
 
 .day-card--filled:hover .day-card__number,
@@ -50,7 +50,7 @@
 .day-card--filled:hover .day-card__meta,
 .day-card--filled:hover .day-card__preview,
 .day-card--filled:hover .day-card__assignees {
-  color: var(--color-blue);
+  color: var(--app-text-inverse);
 }
 
 .day-card__header {
@@ -69,7 +69,7 @@
 }
 
 .day-card__weekday {
-  color: rgba(var(--app-text-color-rgb), 0.72);
+  color: var(--app-text-muted);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   text-transform: uppercase;
@@ -102,7 +102,7 @@
   font-family: var(--app-ui-font);
   font-size: var(--app-font-label);
   line-height: 1.2;
-  color: var(--color-blue);
+  color: var(--app-heading-color);
 }
 
 .day-card__votes {
@@ -148,7 +148,7 @@
 }
 
 .day-card__empty p {
-  color: rgba(var(--app-text-color-rgb), 0.76);
+  color: var(--app-text-muted);
 }
 
 @media (min-width: size.$bp-md) {

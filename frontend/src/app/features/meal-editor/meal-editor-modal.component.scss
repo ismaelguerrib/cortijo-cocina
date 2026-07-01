@@ -40,7 +40,7 @@
 
 .editor__header p {
   margin-bottom: var(--app-space-2xs);
-  color: rgba(var(--app-accent-alt-color-rgb), 0.82);
+  color: rgba(var(--app-accent-alt-on-surface-rgb), 0.82);
   font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: var(--app-letter-spacing-wider);
@@ -83,7 +83,7 @@
 
 .editor__section-header p {
   margin-bottom: var(--app-space-3xs);
-  color: rgba(var(--app-accent-alt-color-rgb), 0.82);
+  color: rgba(var(--app-accent-alt-on-surface-rgb), 0.82);
   font-family: var(--app-subtitle-font);
   text-transform: uppercase;
   letter-spacing: var(--app-letter-spacing-wider);
@@ -97,15 +97,15 @@
 
 .dish-form {
   padding: var(--app-card-padding);
-  border: 1.5px solid rgba(var(--app-accent-alt-color-rgb), 0.5);
+  border: 1.5px solid rgba(var(--app-accent-alt-on-surface-rgb), 0.5);
   background: rgba(var(--app-accent-color-rgb), 0.55);
   box-shadow: var(--app-shadow-card);
 }
 
 .dish-form--focused {
-  border-color: var(--app-accent-alt-color);
+  border-color: var(--app-accent-alt-on-surface);
   box-shadow:
-    0 0 0 2px rgba(var(--app-accent-alt-color-rgb), 0.3),
+    0 0 0 2px rgba(var(--app-accent-alt-on-surface-rgb), 0.3),
     var(--app-shadow-card);
 }
 
@@ -152,8 +152,8 @@
   display: flex;
   align-items: center;
   gap: var(--app-space-2xs);
-  background: rgba(var(--app-accent-alt-color-rgb), 0.16);
-  border: 1px solid rgba(var(--app-accent-alt-color-rgb), 0.4);
+  background: rgba(var(--app-accent-alt-on-surface-rgb), 0.16);
+  border: 1px solid rgba(var(--app-accent-alt-on-surface-rgb), 0.4);
   padding: var(--app-space-2xs) var(--app-space-xs);
 }
 
@@ -207,7 +207,7 @@
   align-items: center;
   justify-content: center;
   padding: var(--app-space-sm) var(--app-space-md);
-  border: 1.5px dashed rgba(var(--app-accent-alt-color-rgb), 0.5);
+  border: 1.5px dashed rgba(var(--app-accent-alt-on-surface-rgb), 0.5);
   color: var(--app-text-inverse);
   cursor: pointer;
   font-family: var(--app-ui-font);
@@ -219,8 +219,8 @@
   }
 
   &:hover {
-    border-color: var(--app-accent-alt-color);
-    background: rgba(var(--app-accent-alt-color-rgb), 0.12);
+    border-color: var(--app-accent-alt-on-surface);
+    background: rgba(var(--app-accent-alt-on-surface-rgb), 0.12);
   }
 }
 
@@ -258,7 +258,7 @@
   padding: var(--app-card-padding-compact) var(--app-panel-padding);
   color: var(--app-text-inverse);
   background: rgba(var(--app-accent-color-rgb), 0.92);
-  border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--app-accent-alt-color-rgb), 0.38);
+  border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--app-accent-alt-on-surface-rgb), 0.38);
 }
 
 .editor__actions {
@@ -266,7 +266,7 @@
 }
 
 .editor__delete {
-  color: var(--app-accent-alt-color);
+  color: var(--app-accent-alt-on-surface);
 }
 
 :host ::ng-deep .editor .mat-mdc-text-field-wrapper {
@@ -276,7 +276,7 @@
 :host ::ng-deep .editor .mdc-notched-outline__leading,
 :host ::ng-deep .editor .mdc-notched-outline__notch,
 :host ::ng-deep .editor .mdc-notched-outline__trailing {
-  border-color: rgba(var(--app-accent-alt-color-rgb), 0.44) !important;
+  border-color: rgba(var(--app-accent-alt-on-surface-rgb), 0.44) !important;
 }
 
 :host ::ng-deep .editor .mdc-floating-label,

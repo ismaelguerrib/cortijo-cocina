@@ -112,7 +112,7 @@
   font-family: var(--app-display-font);
   font-size: clamp(2.8rem, 4.5vw, 5.4rem);
   line-height: 0.88;
-  color: rgba(var(--app-heading-color-rgb), 0.94);
+  color: var(--app-heading-color);
 }
 
 .calendar-pairs__number--left {
@@ -135,7 +135,7 @@
   font-size: var(--app-font-caption);
   text-transform: uppercase;
   letter-spacing: var(--app-letter-spacing-wide);
-  color: rgba(var(--app-text-color-rgb), 0.72);
+  color: var(--app-text-muted);
 }
 
 .calendar-pairs__summary {
@@ -146,7 +146,7 @@
 }
 
 .calendar-pairs__cookers {
-  color: rgba(var(--app-text-color-rgb), 0.78);
+  color: var(--app-text-muted);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   line-height: 1.4;

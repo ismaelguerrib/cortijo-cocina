@@ -38,7 +38,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       font-size: var(--app-font-caption);
       text-transform: uppercase;
       letter-spacing: var(--app-letter-spacing-wider);
-      color: var(--color-cream);
+      color: var(--app-text-muted);
     }
 
     .hero-card__caption {

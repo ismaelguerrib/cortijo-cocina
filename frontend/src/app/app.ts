@@ -14,6 +14,7 @@ import { ColorSystemService } from './core/services/color-system.service';
 export class App {
   private readonly colorSystem = inject(ColorSystemService);
   protected readonly backgroundItems = BACKGROUND_ITEMS;
+  protected readonly currentThemeName = this.colorSystem.currentThemeName;
 
   constructor() {
     afterNextRender(() => this.colorSystem.initialize());
