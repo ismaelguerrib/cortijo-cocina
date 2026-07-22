@@ -1,0 +1,1 @@
+import { Module } from '@nestjs/common'; import { TypeOrmModule } from '@nestjs/typeorm'; import { RecipePhotoEntity } from './entities/recipe-photo.entity'; import { RecipePhotosController } from './recipe-photos.controller'; @Module({ imports: [TypeOrmModule.forFeature([RecipePhotoEntity])], controllers: [RecipePhotosController] }) export class RecipePhotosModule {}

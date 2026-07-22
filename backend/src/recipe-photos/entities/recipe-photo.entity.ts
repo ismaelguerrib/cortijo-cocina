@@ -1,0 +1,3 @@
+import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { RecipeEntity } from '../../recipes/entities/recipe.entity';
+@Entity('recipe_photos') export class RecipePhotoEntity { @PrimaryGeneratedColumn('uuid') id!: string; @Column({ name: 'recipe_id', type: 'uuid' }) recipeId!: string; @ManyToOne(() => RecipeEntity, { onDelete: 'CASCADE' }) recipe!: RecipeEntity; @Column({ name: 'storage_key', length: 255, unique: true }) storageKey!: string; @Column({ name: 'content_type', length: 100 }) contentType!: string; @CreateDateColumn({ name: 'created_at' }) createdAt!: Date; }

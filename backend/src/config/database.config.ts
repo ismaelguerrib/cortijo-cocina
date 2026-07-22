@@ -2,6 +2,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { MealAssignmentEntity } from '../meal-assignments/entities/meal-assignment.entity';
 import { RecipeEntity } from '../recipes/entities/recipe.entity';
 import { RecipeVoteEntity } from '../recipe-votes/entities/recipe-vote.entity';
+import { RecipePhotoEntity } from '../recipe-photos/entities/recipe-photo.entity';
 
 const parsePort = (value: string | undefined, fallback: number): number => {
   if (!value) {
@@ -19,7 +20,7 @@ export const buildDatabaseConfig = (): TypeOrmModuleOptions => ({
   username: process.env.DB_USERNAME ?? 'postgres',
   password: process.env.DB_PASSWORD ?? 'postgres',
   database: process.env.DB_NAME ?? 'cortijo_cocina',
-  entities: [MealAssignmentEntity, RecipeEntity, RecipeVoteEntity],
+  entities: [MealAssignmentEntity, RecipeEntity, RecipeVoteEntity, RecipePhotoEntity],
   migrations: ['dist/database/migrations/*.js'],
   synchronize: false
 });
