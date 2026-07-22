@@ -31,6 +31,13 @@
   flex-direction: column;
   justify-content: space-between;
   gap: var(--app-cluster-gap);
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  margin-inline: calc(-1 * var(--app-page-gutter-inline));
+  padding: var(--app-space-sm) var(--app-page-gutter-inline) calc(var(--app-space-sm) + env(safe-area-inset-bottom));
+  background: var(--app-surface-blue);
+  box-shadow: 0 -10px 24px rgba(var(--app-heading-color-rgb), 0.2);
 }
 
 .editor__header p,
@@ -263,6 +270,21 @@
 
 .editor__actions {
   margin-top: var(--app-space-xs);
+}
+
+.editor__actions .app-link-button:last-child {
+  justify-content: center;
+  min-height: 52px;
+  padding-inline: var(--app-space-lg);
+  background: var(--app-accent-alt-on-surface);
+  color: var(--app-heading-color);
+  font-family: var(--app-ui-font);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.photos-field__picker {
+  min-height: 52px;
 }
 
 .editor__delete {
