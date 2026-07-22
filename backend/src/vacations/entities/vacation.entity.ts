@@ -1,0 +1,2 @@
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+@Entity('vacations') export class VacationEntity { @PrimaryGeneratedColumn('uuid') id!: string; @Column({ length: 120 }) name!: string; @Column({ type: 'date', name: 'starts_on' }) startsOn!: string; @Column({ type: 'date', name: 'ends_on' }) endsOn!: string; @CreateDateColumn({ name: 'created_at' }) createdAt!: Date; @UpdateDateColumn({ name: 'updated_at' }) updatedAt!: Date; }

@@ -2,11 +2,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
 import { FamilyMember } from '../../common/constants/family-members';
+import { VacationEntity } from '../../vacations/entities/vacation.entity';
 
 export interface MealDish {
   cookers: FamilyMember[];
@@ -24,6 +26,12 @@ export class MealAssignmentEntity {
 
   @Column({ type: 'date', name: 'meal_date' })
   mealDate!: string;
+
+  @Column({ type: 'uuid', name: 'vacation_id', nullable: true })
+  vacationId!: string | null;
+
+  @ManyToOne(() => VacationEntity, { onDelete: 'SET NULL', nullable: true })
+  vacation!: VacationEntity | null;
 
   @Column({ type: 'text', nullable: true })
   description!: string | null;

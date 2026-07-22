@@ -5,8 +5,9 @@ import { MealAssignmentsModule } from './meal-assignments/meal-assignments.modul
 import { RecipesModule } from './recipes/recipes.module';
 import { RecipeVotesModule } from './recipe-votes/recipe-votes.module';
 import { RecipePhotosModule } from './recipe-photos/recipe-photos.module';
+import { VacationsModule } from './vacations/vacations.module';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(buildDatabaseConfig()), MealAssignmentsModule, RecipesModule, RecipeVotesModule, RecipePhotosModule]
+  imports: [TypeOrmModule.forRoot(buildDatabaseConfig()), MealAssignmentsModule, RecipesModule, RecipeVotesModule, RecipePhotosModule, VacationsModule]
 })
 export class AppModule {}

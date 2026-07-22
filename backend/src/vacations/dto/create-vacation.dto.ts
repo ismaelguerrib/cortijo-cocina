@@ -1,0 +1,1 @@
+import { IsDateString, IsNotEmpty, IsString, MaxLength } from 'class-validator'; export class CreateVacationDto { @IsString() @IsNotEmpty() @MaxLength(120) name!: string; @IsDateString() startsOn!: string; @IsDateString() endsOn!: string; }

@@ -3,6 +3,7 @@ import { MealAssignmentEntity } from '../meal-assignments/entities/meal-assignme
 import { RecipeEntity } from '../recipes/entities/recipe.entity';
 import { RecipeVoteEntity } from '../recipe-votes/entities/recipe-vote.entity';
 import { RecipePhotoEntity } from '../recipe-photos/entities/recipe-photo.entity';
+import { VacationEntity } from '../vacations/entities/vacation.entity';
 
 const parsePort = (value: string | undefined, fallback: number): number => {
   if (!value) {
@@ -20,7 +21,7 @@ export const buildDatabaseConfig = (): TypeOrmModuleOptions => ({
   username: process.env.DB_USERNAME ?? 'postgres',
   password: process.env.DB_PASSWORD ?? 'postgres',
   database: process.env.DB_NAME ?? 'cortijo_cocina',
-  entities: [MealAssignmentEntity, RecipeEntity, RecipeVoteEntity, RecipePhotoEntity],
+  entities: [MealAssignmentEntity, RecipeEntity, RecipeVoteEntity, RecipePhotoEntity, VacationEntity],
   migrations: ['dist/database/migrations/*.js'],
   synchronize: false
 });
