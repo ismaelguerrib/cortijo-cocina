@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { DataSource } from 'typeorm';
 import { MealAssignmentEntity } from '../meal-assignments/entities/meal-assignment.entity';
 import { RecipeEntity } from '../recipes/entities/recipe.entity';
+import { RecipeVoteEntity } from '../recipe-votes/entities/recipe-vote.entity';
 
 const parsePort = (value: string | undefined, fallback: number): number => {
   if (!value) {
@@ -19,6 +20,6 @@ export default new DataSource({
   username: process.env.DB_USERNAME ?? 'postgres',
   password: process.env.DB_PASSWORD ?? 'postgres',
   database: process.env.DB_NAME ?? 'cortijo_cocina',
-  entities: [MealAssignmentEntity, RecipeEntity],
+  entities: [MealAssignmentEntity, RecipeEntity, RecipeVoteEntity],
   migrations: ['src/database/migrations/*.ts']
 });
