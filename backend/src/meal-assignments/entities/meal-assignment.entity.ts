@@ -2,6 +2,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   Unique,
@@ -31,6 +32,7 @@ export class MealAssignmentEntity {
   vacationId!: string | null;
 
   @ManyToOne(() => VacationEntity, { onDelete: 'SET NULL', nullable: true })
+  @JoinColumn({ name: 'vacation_id' })
   vacation!: VacationEntity | null;
 
   @Column({ type: 'text', nullable: true })
