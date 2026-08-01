@@ -3,8 +3,13 @@
     <div class="sheet__handle" aria-hidden="true"></div>
     <header class="sheet__header">
       <h2>{{ formattedDate }}</h2>
-      <button type="button" class="app-link-button sheet__close" (click)="close()" aria-label="Fermer">
-        Fermer
+      <button
+        type="button"
+        class="app-link-button sheet__close"
+        (click)="close()"
+        aria-label="Fermer"
+      >
+        En fait non
       </button>
     </header>
   </div>
@@ -12,10 +17,10 @@
   @if (day.meal; as meal) {
     <article class="meal-card" data-testid="day-detail-meal">
       <div class="meal-card__headline">
-        <p class="meal-card__eyebrow">Repas du jour</p>
+        <p class="meal-card__eyebrow">Masha'Allah la comida</p>
       </div>
 
-      <p class="meal-card__note"><strong>Note :</strong> {{ meal.description || 'Aucune note.' }}</p>
+      <p class="meal-card__note"><strong>Note :</strong> {{ meal.description || '-' }}</p>
 
       <div class="dish-list">
         @for (dish of meal.dishes; track dish.title + '-' + $index) {
@@ -25,9 +30,7 @@
               <span class="meal-card__votes">{{ voteAverage(dish.votes) }}/20</span>
             </div>
 
-            <p class="dish-card__cookers">
-              <strong>Cusinier.e.s :</strong> {{ cookers(dish) || '—' }}
-            </p>
+            <p class="dish-card__cookers"><strong>Jefe :</strong> {{ cookers(dish) || '—' }}</p>
             <p class="dish-card__recipe">{{ dish.recipe }}</p>
 
             <div class="dish-card__gallery">
@@ -46,7 +49,7 @@
         (click)="openEditor()"
         data-testid="detail-edit-button"
       >
-        Modifier
+        Boulanjería
       </button>
     </article>
   } @else {

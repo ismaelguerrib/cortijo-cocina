@@ -36,7 +36,7 @@ export class CalendarGridComponent {
 
   cookerSummary(day: CalendarDay): string {
     if (!day.meal) {
-      return 'Aucun plat prevu';
+      return 'No hay plato planeado';
     }
 
     const cookers = Array.from(
@@ -47,7 +47,7 @@ export class CalendarGridComponent {
       ),
     );
 
-    return cookers.length > 0 ? cookers.join(', ') : 'Aucun cusinier renseigne';
+    return cookers.length > 0 ? cookers.join(', ') : 'Ningún cocinero';
   }
 
   mealSummary(day: CalendarDay): string {

@@ -1,7 +1,7 @@
 <main class="recipes-page">
   <section class="recipes-hero">
     <div class="recipes-hero__copy">
-      <h1>Les recettes du Cortijo</h1>
+      <h1>Las recettas del Cortijo</h1>
     </div>
 
     <mat-form-field appearance="outline">
@@ -23,12 +23,12 @@
   @if (loading()) {
     <section class="loading-state" aria-live="polite">
       <mat-spinner diameter="42" />
-      <p>Chargement des fiches recettes…</p>
+      <p>Masha'Allah Masha'Allah…</p>
     </section>
   } @else if (recipeCards().length === 0) {
     <section class="empty-state">
-      <h2>Aucun plat disponible</h2>
-      <p>Ajoute un repas avec un ou plusieurs plats pour alimenter cette bibliothèque.</p>
+      <h2>No recettas.</h2>
+      <p>Ajoutera un comida pour abattre la hess.</p>
     </section>
   } @else {
     <section class="recipe-grid">
@@ -48,16 +48,16 @@
 
             <h2>{{ recipe.dishTitle }}</h2>
             <p class="recipe-card__recipe" [class.recipe-card__recipe--empty]="!recipe.recipe">
-              {{ recipe.recipe || 'Aucune recette pour l’instant. Clique pour en ajouter une.' }}
+              {{ recipe.recipe || 'No recettas pour l’instanta. Cliqua pour ajoutera una.' }}
             </p>
-            <p class="recipe-card__assignees">Cusinier.e.s : {{ cookerSummary(recipe.cookers) }}</p>
+            <p class="recipe-card__assignees">Jefe: {{ cookerSummary(recipe.cookers) }}</p>
 
             <button
               type="button"
               class="app-link-button recipe-card__action"
               (click)="openRecipeEditor(recipe)"
             >
-              Modifier ou compléter la recette
+              Modifiera ou complétera la recetta
             </button>
           </div>
         </article>
