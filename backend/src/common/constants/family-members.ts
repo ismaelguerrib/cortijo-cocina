@@ -8,6 +8,7 @@ export const FAMILY_MEMBERS = [
   'souleimane',
   'anouk',
   'carole',
+  'benjamin',
 ] as const;
 
 export type FamilyMember = (typeof FAMILY_MEMBERS)[number];

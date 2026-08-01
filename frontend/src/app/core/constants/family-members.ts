@@ -8,6 +8,7 @@ export const FAMILY_MEMBERS = [
   { id: 'souleimane', name: 'Souleimane' },
   { id: 'anouk', name: 'Anouk' },
   { id: 'carole', name: 'Carole' },
+  { id: 'benjamin', name: 'Benjamin' },
 ] as const;
 
 export const FAMILY_MEMBER_LABELS = Object.fromEntries(
