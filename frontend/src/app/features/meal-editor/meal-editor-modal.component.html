@@ -62,7 +62,7 @@
         @if (isDishExpanded(index)) {
           <div class="dish-form__panel" [id]="'dish-panel-' + index">
             <mat-form-field appearance="outline">
-              <mat-label>Cusinier.e.s</mat-label>
+              <mat-label>Chkoun i taib ? </mat-label>
               <mat-select formControlName="cookers" multiple panelClass="meal-editor-select-panel">
                 @for (member of familyMembers; track member.id) {
                   <mat-option [value]="member.id">{{ member.name }}</mat-option>
@@ -74,7 +74,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="outline">
-              <mat-label>Nom du plat</mat-label>
+              <mat-label>Noma de la plata</mat-label>
               <input matInput maxlength="150" formControlName="title" />
             </mat-form-field>
 
@@ -95,7 +95,7 @@
                   capture="environment"
                   (change)="handlePhotoFiles($event, dishGroup)"
                 />
-                <span>Ajouter des photos</span>
+                <span>Ajoutera des fotos</span>
               </label>
 
               @if (dishGroup.controls.photos.getRawValue().length > 0) {
