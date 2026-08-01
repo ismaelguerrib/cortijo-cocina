@@ -109,6 +109,13 @@
 .dish-card__recipe {
   color: var(--app-text-muted);
   line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.meal-card__note {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .dish-card__cookers {

@@ -9,7 +9,7 @@
         <p class="meal-card__eyebrow">Repas du jour</p>
       </div>
 
-      <p><strong>Note :</strong> {{ meal.description || 'Aucune note.' }}</p>
+      <p class="meal-card__note"><strong>Note :</strong> {{ meal.description || 'Aucune note.' }}</p>
 
       <div class="dish-list">
         @for (dish of meal.dishes; track dish.title + '-' + $index) {

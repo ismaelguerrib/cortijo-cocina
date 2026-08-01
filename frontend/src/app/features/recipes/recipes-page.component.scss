@@ -124,6 +124,8 @@
 
 .recipe-card__recipe {
   line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
 }
 
 .recipe-card__recipe--empty {
