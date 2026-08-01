@@ -22,9 +22,6 @@
     <div class="app-shell__brand-block">
       <a routerLink="/calendrier" class="app-shell__brand">Cortijo Cocina</a>
       <p class="app-shell__tagline">Los Hamdanos vacaciones</p>
-      @if (currentThemeName()) {
-        <p class="app-shell__palette">{{ currentThemeName() }}</p>
-      }
     </div>
 
     <nav class="app-shell__nav" aria-label="Navigation principale">
@@ -37,6 +34,23 @@
       </a>
       <a routerLink="/recettes" routerLinkActive="is-active">Recettas</a>
     </nav>
+
+    @if (currentThemeName() && availableThemes().length > 0) {
+      <div class="app-shell__palette">
+        <select
+          id="theme-picker"
+          class="app-shell__theme-picker"
+          [value]="currentThemeName()"
+          (change)="selectTheme($event)"
+        >
+          @for (theme of availableThemes(); track theme.name) {
+            <option [value]="theme.name" [selected]="theme.name === currentThemeName()">
+              {{ theme.name }}
+            </option>
+          }
+        </select>
+      </div>
+    }
   </header>
 
   <router-outlet />

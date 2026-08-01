@@ -14,9 +14,18 @@ import { ColorSystemService } from './core/services/color-system.service';
 export class App {
   private readonly colorSystem = inject(ColorSystemService);
   protected readonly backgroundItems = BACKGROUND_ITEMS;
+  protected readonly availableThemes = this.colorSystem.availableThemes;
   protected readonly currentThemeName = this.colorSystem.currentThemeName;
 
   constructor() {
     afterNextRender(() => this.colorSystem.initialize());
+  }
+
+  protected selectTheme(event: Event): void {
+    this.colorSystem.selectTheme((event.target as HTMLSelectElement).value);
+  }
+
+  protected randomizeTheme(): void {
+    this.colorSystem.randomizeTheme();
   }
 }

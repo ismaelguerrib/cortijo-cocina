@@ -11,7 +11,9 @@ export class ColorSystemService {
   private readonly document = inject(DOCUMENT);
   private initialized = false;
   private themes: readonly ColorTheme[] = [];
+  private readonly availableThemesState = signal<readonly ColorTheme[]>([]);
   private readonly currentThemeNameState = signal('');
+  readonly availableThemes = this.availableThemesState.asReadonly();
   readonly currentThemeName = this.currentThemeNameState.asReadonly();
 
   initialize(): void {
@@ -28,6 +30,22 @@ export class ColorSystemService {
     this.initialized = true;
     const initialTheme = pickRandomColorTheme(this.themes);
     this.applyTheme(initialTheme);
+  }
+
+  selectTheme(name: string): void {
+    const theme = this.themes.find((candidate) => candidate.name === name);
+    if (theme) {
+      this.applyTheme(theme);
+    }
+  }
+
+  randomizeTheme(): void {
+    if (this.themes.length === 0) {
+      return;
+    }
+
+    const alternatives = this.themes.filter((theme) => theme.name !== this.currentThemeName());
+    this.applyTheme(pickRandomColorTheme(alternatives.length > 0 ? alternatives : this.themes));
   }
 
   private applyTheme(theme: ColorTheme): void {
@@ -77,6 +95,7 @@ export class ColorSystemService {
 
     const styles = getComputedStyle(this.document.documentElement);
     this.themes = getColorThemes(styles);
+    this.availableThemesState.set(this.themes);
   }
 
   private setColor(root: HTMLElement, name: string, hex: string): void {

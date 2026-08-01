@@ -38,7 +38,6 @@
 }
 
 .app-shell__header {
-  position: sticky;
   top: 0;
   z-index: 10;
   display: flex;
@@ -78,13 +77,43 @@
 }
 
 .app-shell__palette {
-  margin: 0;
-  color: var(--app-heading-color);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.app-shell__theme-label {
+  color: var(--app-text-muted);
   font-family: var(--app-ui-font);
   font-size: var(--app-font-caption);
   font-weight: 700;
-  letter-spacing: var(--app-letter-spacing-wide);
   text-transform: uppercase;
+  letter-spacing: var(--app-letter-spacing-wide);
+}
+
+.app-shell__theme-picker,
+.app-shell__theme-randomize {
+  min-height: 44px;
+  border: 1px solid rgba(var(--app-outline-color-rgb), 0.45);
+  color: var(--app-text-color);
+  background: rgba(var(--app-surface-panel-rgb), 0.9);
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-label);
+}
+
+.app-shell__theme-picker {
+  min-width: min(100%, calc(var(--app-size-unit) * 25));
+  padding: var(--app-space-xs) var(--app-space-sm);
+}
+
+.app-shell__theme-randomize {
+  padding: var(--app-space-xs) var(--app-space-md);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--app-text-inverse);
+    background: var(--app-accent-color);
+  }
 }
 
 .app-shell__nav {
