@@ -16,6 +16,13 @@ body {
   background: var(--app-page-bg);
   text-rendering: optimizeLegibility;
   letter-spacing: var(--app-letter-spacing-base);
+  overflow-wrap: break-word;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
 }
 
 button,
@@ -142,4 +149,15 @@ a:hover {
 
 .empty-state p {
   max-inline-size: var(--app-copy-max-inline);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
