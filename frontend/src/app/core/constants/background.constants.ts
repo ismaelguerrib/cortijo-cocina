@@ -106,7 +106,7 @@ export const BACKGROUND_ITEMS: readonly BackgroundItem[] = Array.from(
 
     return {
       key,
-      src: `/family-pictures/${encodeURIComponent(filename)}`,
+      src: `family-pictures/${encodeURIComponent(filename)}`,
       top: position.top,
       left: position.left,
       size: pickSeededItem(SIZES, key, 'size'),
