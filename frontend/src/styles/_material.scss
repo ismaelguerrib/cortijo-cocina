@@ -53,6 +53,9 @@
   box-shadow: var(--app-shadow-sheet);
   color: var(--app-text-inverse);
   opacity: 1 !important;
+  max-block-size: 85dvh;
+  overflow-y: auto;
+  padding: 0;
 }
 
 .mat-mdc-dialog-panel.meal-editor-dialog .mat-mdc-dialog-surface {

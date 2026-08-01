@@ -29,6 +29,11 @@ export class DayDetailModalComponent {
     });
   }
 
+  close(): void {
+    // Dismiss without a result so the parent does not open the editor.
+    this.bottomSheetRef.dismiss();
+  }
+
   cookers(dish: { cookers: string[] }): string {
     return dish.cookers.map((c) => FAMILY_MEMBER_LABELS[c as keyof typeof FAMILY_MEMBER_LABELS]).join(', ');
   }

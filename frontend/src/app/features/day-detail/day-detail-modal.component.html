@@ -1,7 +1,13 @@
 <section class="sheet">
-  <header class="sheet__header">
-    <h2>{{ formattedDate }}</h2>
-  </header>
+  <div class="sheet__top">
+    <div class="sheet__handle" aria-hidden="true"></div>
+    <header class="sheet__header">
+      <h2>{{ formattedDate }}</h2>
+      <button type="button" class="app-link-button sheet__close" (click)="close()" aria-label="Fermer">
+        Fermer
+      </button>
+    </header>
+  </div>
 
   @if (day.meal; as meal) {
     <article class="meal-card" data-testid="day-detail-meal">

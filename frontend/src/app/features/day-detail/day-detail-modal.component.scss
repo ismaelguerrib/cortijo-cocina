@@ -1,13 +1,38 @@
 @use '../../../styles/sizes' as size;
 
 .sheet {
-  padding: var(--app-page-gutter-block-start) var(--app-page-gutter-inline)
-    calc(var(--app-page-gutter-block-end) * 0.7);
+  padding-inline: var(--app-page-gutter-inline);
+  padding-block-end: calc((var(--app-page-gutter-block-end) * 0.7) + env(safe-area-inset-bottom));
   color: var(--app-text-inverse);
 }
 
+.sheet__top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  margin-inline: calc(-1 * var(--app-page-gutter-inline));
+  padding: var(--app-space-sm) var(--app-page-gutter-inline) var(--app-section-gap);
+  background: var(--app-surface-blue);
+}
+
+.sheet__handle {
+  inline-size: 2.5rem;
+  block-size: 0.25rem;
+  margin: 0 auto var(--app-space-sm);
+  border-radius: 999px;
+  background: rgba(var(--app-text-inverse-rgb), 0.45);
+}
+
 .sheet__header {
-  margin-bottom: var(--app-section-gap);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--app-cluster-gap);
+}
+
+.sheet__close {
+  flex-shrink: 0;
+  color: var(--app-text-inverse);
 }
 
 .sheet__header p,
