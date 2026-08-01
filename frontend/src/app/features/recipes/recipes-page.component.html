@@ -2,7 +2,6 @@
   <section class="recipes-hero">
     <div class="recipes-hero__copy">
       <h1>Les recettes du Cortijo</h1>
-      <p>Chaque carte peut servir à ajouter ou compléter la recette d’un plat.</p>
     </div>
 
     <mat-form-field appearance="outline">
@@ -51,11 +50,13 @@
             <p class="recipe-card__recipe" [class.recipe-card__recipe--empty]="!recipe.recipe">
               {{ recipe.recipe || 'Aucune recette pour l’instant. Clique pour en ajouter une.' }}
             </p>
-            <p class="recipe-card__assignees">
-              Cusinier.e.s : {{ cookerSummary(recipe.cookers) }}
-            </p>
+            <p class="recipe-card__assignees">Cusinier.e.s : {{ cookerSummary(recipe.cookers) }}</p>
 
-            <button type="button" class="app-link-button recipe-card__action" (click)="openRecipeEditor(recipe)">
+            <button
+              type="button"
+              class="app-link-button recipe-card__action"
+              (click)="openRecipeEditor(recipe)"
+            >
               Modifier ou compléter la recette
             </button>
           </div>
