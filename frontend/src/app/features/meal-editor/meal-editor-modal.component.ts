@@ -14,7 +14,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { FAMILY_MEMBERS } from '../../core/constants/family-members';
+import { FAMILY_MEMBERS, FAMILY_MEMBER_LABELS } from '../../core/constants/family-members';
 import { FamilyMember } from '../../core/models/family-member.model';
 import {
   MealAssignment,
@@ -83,6 +83,10 @@ export class MealEditorModalComponent {
   readonly isEditing = computed(() => Boolean(this.data.meal));
   readonly allowRecipeEditing = computed(() => Boolean(this.data.allowRecipeEditing));
 
+  // Accordion state: keep a single dish expanded so the form stays short on a
+  // phone even with several dishes. The others collapse to a summary row.
+  readonly expandedDishIndex = signal<number | null>(this.data.focusDishIndex ?? 0);
+
   readonly form = this.formBuilder.group({
     mealDate: this.formBuilder.control(
       this.data.meal?.mealDate ?? this.data.date,
@@ -107,6 +111,28 @@ export class MealEditorModalComponent {
 
   isFocusedDish(index: number): boolean {
     return this.allowRecipeEditing() && this.data.focusDishIndex === index;
+  }
+
+  isDishExpanded(index: number): boolean {
+    return this.expandedDishIndex() === index;
+  }
+
+  toggleDish(index: number): void {
+    this.expandedDishIndex.set(this.isDishExpanded(index) ? null : index);
+  }
+
+  dishSummaryTitle(dishGroup: DishGroup, index: number): string {
+    return dishGroup.controls.title.getRawValue().trim() || `Plat ${index + 1}`;
+  }
+
+  dishSummaryMeta(dishGroup: DishGroup): string {
+    const names = dishGroup.controls.cookers.getRawValue().map((id) => FAMILY_MEMBER_LABELS[id]);
+    const voteCount = dishGroup.controls.votes.length;
+    const parts = [names.length ? names.join(', ') : 'Aucun·e cuisinier·e'];
+    if (voteCount > 0) {
+      parts.push(`${voteCount} vote${voteCount > 1 ? 's' : ''}`);
+    }
+    return parts.join(' · ');
   }
 
   async handlePhotoFiles(event: Event, dishGroup: DishGroup): Promise<void> {
@@ -145,6 +171,11 @@ export class MealEditorModalComponent {
   async submit(): Promise<void> {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
+      // Reveal the first dish with errors so its messages are visible.
+      const invalidIndex = this.dishGroups.findIndex((group) => group.invalid);
+      if (invalidIndex >= 0) {
+        this.expandedDishIndex.set(invalidIndex);
+      }
       return;
     }
 
@@ -200,12 +231,21 @@ export class MealEditorModalComponent {
 
   addDish(): void {
     this.form.controls.dishes.push(this.createDishGroup());
+    this.expandedDishIndex.set(this.form.controls.dishes.length - 1);
   }
 
   removeDish(index: number): void {
     if (this.form.controls.dishes.length === 1) return;
     this.form.controls.dishes.removeAt(index);
     this.form.controls.dishes.markAsTouched();
+
+    const expanded = this.expandedDishIndex();
+    if (expanded === null) return;
+    if (expanded === index) {
+      this.expandedDishIndex.set(null);
+    } else if (expanded > index) {
+      this.expandedDishIndex.set(expanded - 1);
+    }
   }
 
   private createDishGroup(dish?: MealDish): DishGroup {

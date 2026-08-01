@@ -30,10 +30,23 @@
       <article
         class="dish-form"
         [class.dish-form--focused]="isFocusedDish(index)"
+        [class.dish-form--expanded]="isDishExpanded(index)"
         [formGroup]="dishGroup"
       >
-        <div class="dish-form__header">
-          <h4>Plat {{ index + 1 }}</h4>
+        <div class="dish-form__bar">
+          <button
+            type="button"
+            class="dish-form__toggle"
+            (click)="toggleDish(index)"
+            [attr.aria-expanded]="isDishExpanded(index)"
+            [attr.aria-controls]="'dish-panel-' + index"
+          >
+            <span class="dish-form__caret" aria-hidden="true"></span>
+            <span class="dish-form__summary">
+              <span class="dish-form__summary-title">{{ dishSummaryTitle(dishGroup, index) }}</span>
+              <span class="dish-form__summary-meta">{{ dishSummaryMeta(dishGroup) }}</span>
+            </span>
+          </button>
           <button
             type="button"
             class="app-link-button dish-form__remove"
@@ -44,6 +57,8 @@
           </button>
         </div>
 
+        @if (isDishExpanded(index)) {
+        <div class="dish-form__panel" [id]="'dish-panel-' + index">
         <mat-form-field appearance="outline">
           <mat-label>Cusinier.e.s</mat-label>
           <mat-select formControlName="cookers" multiple panelClass="meal-editor-select-panel">
@@ -118,6 +133,7 @@
                   <input
                     class="votes-field__input"
                     type="number"
+                    inputmode="numeric"
                     min="0"
                     max="20"
                     [formControl]="voteControl"
@@ -135,6 +151,8 @@
             </div>
           }
         </div>
+        </div>
+        }
       </article>
     }
 

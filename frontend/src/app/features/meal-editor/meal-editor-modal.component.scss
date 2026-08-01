@@ -74,7 +74,7 @@
 }
 
 .editor__section-header,
-.dish-form__header {
+.dish-form__bar {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -120,6 +120,69 @@
   flex-shrink: 0;
 }
 
+.dish-form__bar {
+  align-items: flex-start;
+}
+
+.dish-form__toggle {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  align-items: flex-start;
+  gap: var(--app-space-sm);
+  min-height: 44px;
+  padding: var(--app-space-2xs) 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+}
+
+.dish-form__caret {
+  flex: 0 0 auto;
+  align-self: center;
+  inline-size: 0.6rem;
+  block-size: 0.6rem;
+  border-right: 2px solid var(--app-heading-color);
+  border-bottom: 2px solid var(--app-heading-color);
+  transform: rotate(-45deg);
+  transition: transform 160ms ease;
+}
+
+.dish-form--expanded .dish-form__caret {
+  transform: rotate(45deg);
+}
+
+.dish-form__summary {
+  display: grid;
+  gap: var(--app-space-3xs);
+  min-width: 0;
+}
+
+.dish-form__summary-title {
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-body-strong);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--app-heading-color);
+  overflow-wrap: anywhere;
+}
+
+.dish-form__summary-meta {
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-caption);
+  line-height: 1.3;
+  color: rgba(var(--app-text-inverse-rgb), 0.8);
+  overflow-wrap: anywhere;
+}
+
+.dish-form__panel {
+  display: grid;
+  gap: var(--app-space-md);
+}
+
 .votes-field {
   display: grid;
   gap: var(--app-space-sm);
@@ -159,6 +222,7 @@
   display: flex;
   align-items: center;
   gap: var(--app-space-2xs);
+  min-block-size: 44px;
   background: rgba(var(--app-accent-alt-on-surface-rgb), 0.16);
   border: 1px solid rgba(var(--app-accent-alt-on-surface-rgb), 0.4);
   padding: var(--app-space-2xs) var(--app-space-xs);
@@ -185,8 +249,10 @@
 }
 
 .votes-field__remove {
+  min-inline-size: 44px;
+  min-block-size: 44px;
   color: rgba(var(--app-text-inverse-rgb), 0.7);
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   line-height: 1;
 
   &:hover {
@@ -252,8 +318,10 @@
   position: absolute;
   top: 4px;
   right: 4px;
+  min-inline-size: 44px;
+  min-block-size: 44px;
   color: var(--app-text-inverse);
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -126,6 +126,35 @@ describe('MealEditorModalComponent', () => {
     expect(dialogRef.close).toHaveBeenCalledWith(true);
   });
 
+  it('keeps a single dish expanded and opens newly added dishes', async () => {
+    const fixture = await createComponent({ date: '2026-08-15' });
+    const component = fixture.componentInstance;
+
+    expect(component.isDishExpanded(0)).toBe(true);
+
+    component.addDish();
+    expect(component.isDishExpanded(0)).toBe(false);
+    expect(component.isDishExpanded(1)).toBe(true);
+
+    component.toggleDish(1);
+    expect(component.isDishExpanded(1)).toBe(false);
+  });
+
+  it('reveals the first invalid dish when submitting an invalid form', async () => {
+    const fixture = await createComponent({ date: '2026-08-15' });
+    const component = fixture.componentInstance;
+
+    component.dishGroups[0].controls.cookers.setValue(['amel']);
+    component.dishGroups[0].controls.title.setValue('Salade');
+    component.addDish(); // dish 1 is empty (invalid) and now expanded
+    component.toggleDish(1); // collapse it before submitting
+
+    await component.submit();
+
+    expect(component.isDishExpanded(1)).toBe(true);
+    expect(mealStore.createMeal).not.toHaveBeenCalled();
+  });
+
   it('updates the recipe in recipes mode', async () => {
     const fixture = await createComponent({
       date: '2026-08-15',
