@@ -2,6 +2,8 @@
 
 > Livrable d'analyse. **Aucune refonte n'est réalisée à ce stade** : ce document décrit l'existant, les problèmes, et un plan d'exécution progressif. Les modifications de code viendront ensuite, phase par phase.
 
+> **Suivi d'implémentation** (branche `mobile-first-optimization`) : Phases 0→6 réalisées. Voir le [journal de validation multi-écrans (§8)](#8-journal-de-validation-multi-écrans-phase-6) pour les résultats de la matrice de tests.
+
 ## 0. Stack & architecture identifiées
 
 | Élément | Constat |
@@ -411,3 +413,39 @@ Tous les résultats attendus des « Acceptance Criteria » verts : 0 scroll hori
 - **Tests visuels** : aucun outillage e2e/visuel présent ; introduire Playwright/snapshots est une décision de budget (Phase 6).
 - **Coquille « Cusinier »** (→ « Cuisinier ») présente dans plusieurs fichiers : correction cosmétique, hors périmètre responsive mais à noter.
 - Valeurs `dvh` chiffrées (section G1) calculées pour des hauteurs de viewport standard ; à confirmer sur appareils réels (barres navigateur variables).
+
+---
+
+## 8. Journal de validation multi-écrans (Phase 6)
+
+Validation réalisée dans le navigateur intégré (mesure `documentElement.scrollWidth - innerWidth`, styles calculés, ouverture réelle des modales). Aucun correctif n'a été nécessaire : les Phases 0→5 tiennent sur toute la matrice.
+
+### Matrice largeurs × routes — débordement horizontal
+
+| Largeur (portrait) | Calendrier | Vue par défaut | Recettes | Débordement |
+|---|---|---|---|---|
+| 320 px | ✅ | pairs | ✅ | 0 |
+| 360 px | ✅ | pairs | ✅ | 0 |
+| 375 px | ✅ | pairs | ✅ | 0 |
+| 390 px | ✅ | pairs | ✅ | 0 |
+| 414 px | ✅ | pairs | ✅ | 0 |
+| 768 px (`$bp-md`) | ✅ | grid + nav statique | ✅ | 0 |
+| 1024 px | ✅ | grid | ✅ (2 colonnes) | 0 |
+
+### Scénarios spécifiques
+
+| Scénario | Attendu | Résultat |
+|---|---|---|
+| Paysage 812×375 | Texte lisible (plus de `dvh`) | `body` 16px, `caption` 12px, 0 débordement ✅ |
+| Clavier virtuel (hauteur réduite ~380px) | Typo/espacements stables | `body` 16px, `caption` 12px inchangés ✅ |
+| Police OS agrandie (root 22px ≈ 140 %) à 320px | Le texte grossit, pas de débordement | `overflow` 0, nav sans débordement, titres qui s'enroulent ✅ |
+| Dialog meal-editor à 320px, 3 plats (accordéon) | Plein écran, pas de débordement | largeur 320, `overflow` 0 ✅ |
+| Bottom-sheet day-detail | Plafonné + scroll interne + fermeture | `max-height` 85dvh, `overflow-y:auto`, « Fermer » ferme sans ouvrir l'éditeur ✅ |
+
+### Reste à valider hors navigateur intégré (recommandé sur appareils réels)
+- PWA **installée** (`standalone`) sur appareil à encoche : rendu effectif des `safe-area-inset-*` (nav basse, footers, bas du sheet).
+- Clavier virtuel **réel** iOS/Android sur le meal-editor : comportement du footer collant « Enregistrer » (cf. F3, à traiter si un souci apparaît).
+- Lecteur d'écran (VoiceOver/TalkBack) sur l'accordéon des plats et le bouton « Fermer » du sheet.
+
+### Tests automatisés
+Suite Jest : **15/15** verts (dont vue « 2 jours » par défaut + accordéon des plats). Pas d'outillage e2e/visuel introduit (décision de budget — un harnais Playwright multi-viewport reste l'option recommandée pour figer ces résultats).
