@@ -8,15 +8,21 @@
   </header>
 
   <form class="editor__form" [formGroup]="form" (ngSubmit)="submit()">
-    <mat-form-field appearance="outline">
-      <mat-label>Date</mat-label>
-      <input matInput type="date" formControlName="mealDate" />
-    </mat-form-field>
+    <div class="editor__details">
+      <div class="editor__field">
+        <label class="editor__field-label" for="meal-date">Date<span aria-hidden="true">*</span></label>
+        <mat-form-field appearance="outline">
+          <input id="meal-date" matInput type="date" formControlName="mealDate" />
+        </mat-form-field>
+      </div>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Note</mat-label>
-      <textarea matInput rows="3" formControlName="description"></textarea>
-    </mat-form-field>
+      <div class="editor__field editor__field--multiline">
+        <label class="editor__field-label" for="meal-description">Note</label>
+        <mat-form-field appearance="outline">
+          <textarea id="meal-description" matInput rows="3" formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
 
     <div class="editor__section-header">
       <div>
@@ -61,28 +67,51 @@
 
         @if (isDishExpanded(index)) {
           <div class="dish-form__panel" [id]="'dish-panel-' + index">
-            <mat-form-field appearance="outline">
-              <mat-label>Chkoun i taib ? </mat-label>
-              <mat-select formControlName="cookers" multiple panelClass="meal-editor-select-panel">
-                @for (member of familyMembers; track member.id) {
-                  <mat-option [value]="member.id">{{ member.name }}</mat-option>
+            <div class="dish-form__field">
+              <label class="dish-form__field-label" [id]="'dish-cookers-label-' + index">
+                Chkoun i taib ?
+              </label>
+              <mat-form-field appearance="outline">
+                <mat-select
+                  [attr.aria-labelledby]="'dish-cookers-label-' + index"
+                  formControlName="cookers"
+                  multiple
+                  panelClass="meal-editor-select-panel"
+                >
+                  @for (member of familyMembers; track member.id) {
+                    <mat-option [value]="member.id">{{ member.name }}</mat-option>
+                  }
+                </mat-select>
+                @if (dishGroup.controls.cookers.invalid && dishGroup.controls.cookers.touched) {
+                  <mat-error>Chkoun i taib ? </mat-error>
                 }
-              </mat-select>
-              @if (dishGroup.controls.cookers.invalid && dishGroup.controls.cookers.touched) {
-                <mat-error>Chkoun i taib ? </mat-error>
-              }
-            </mat-form-field>
+              </mat-form-field>
+            </div>
 
-            <mat-form-field appearance="outline">
-              <mat-label>Noma de la plata</mat-label>
-              <input matInput maxlength="150" formControlName="title" />
-            </mat-form-field>
+            <div class="dish-form__field">
+              <label class="dish-form__field-label" [for]="'dish-title-' + index">
+                Noma de la plata<span aria-hidden="true">*</span>
+              </label>
+              <mat-form-field appearance="outline">
+                <input [id]="'dish-title-' + index" matInput maxlength="150" formControlName="title" />
+              </mat-form-field>
+            </div>
 
             @if (allowRecipeEditing()) {
-              <mat-form-field appearance="outline">
-                <mat-label>Recetta del plata</mat-label>
-                <textarea matInput rows="6" maxlength="4000" formControlName="recipe"></textarea>
-              </mat-form-field>
+              <div class="dish-form__field dish-form__field--recipe dish-form__field--multiline">
+                <label class="dish-form__field-label" [for]="'dish-recipe-' + index">
+                  Recetta del plata
+                </label>
+                <mat-form-field appearance="outline">
+                  <textarea
+                    [id]="'dish-recipe-' + index"
+                    matInput
+                    rows="6"
+                    maxlength="4000"
+                    formControlName="recipe"
+                  ></textarea>
+                </mat-form-field>
+              </div>
             }
 
             <div class="photos-field">

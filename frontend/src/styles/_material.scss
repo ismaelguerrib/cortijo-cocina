@@ -69,11 +69,33 @@
   background: rgba(var(--app-accent-color-rgb), 0.92) !important;
 }
 
+.meal-editor-dialog .editor .mat-mdc-form-field {
+  // Keep single-line controls on the same density scale as the app's 52px
+  // action controls. The shape uses an existing spacing token instead of a
+  // one-off radius.
+  --mat-form-field-container-height: calc(var(--app-size-unit) * 6.5);
+  --mat-form-field-container-vertical-padding: calc(var(--app-size-unit) * 1.75);
+  --mat-form-field-outlined-container-shape: var(--app-space-xs);
+  --mat-form-field-outlined-focus-outline-color: var(--app-accent-alt-on-surface);
+  --mat-form-field-outlined-hover-outline-color: var(--app-accent-alt-on-surface);
+  --mat-form-field-outlined-focus-label-text-color: var(--app-accent-alt-on-surface);
+}
+
+// A textarea needs its intrinsic height for its label, text and outline to
+// grow together. Applying the compact single-line height here is what caused
+// its contents to crowd the floating label.
+.meal-editor-dialog .editor .editor__field--multiline .mat-mdc-form-field,
+.meal-editor-dialog .editor .dish-form__field--multiline .mat-mdc-form-field {
+  --mat-form-field-container-height: auto;
+  --mat-form-field-container-vertical-padding: var(--app-space-sm);
+}
+
 .meal-editor-dialog .editor .mdc-notched-outline__leading,
 .meal-editor-dialog .editor .mdc-notched-outline__notch,
 .meal-editor-dialog .editor .mdc-notched-outline__trailing {
   border-color: rgba(var(--app-accent-alt-on-surface-rgb), 0.44) !important;
 }
+
 
 .meal-editor-dialog .editor .mdc-floating-label,
 .meal-editor-dialog .editor input,
@@ -84,4 +106,16 @@
 .meal-editor-dialog .editor .mat-mdc-form-field-error,
 .meal-editor-dialog .editor .mat-mdc-form-field-required-marker {
   color: var(--app-text-inverse) !important;
+}
+
+.meal-editor-dialog .editor .mat-focused .mdc-floating-label,
+.meal-editor-dialog .editor .mat-form-field-invalid .mdc-floating-label,
+.meal-editor-dialog .editor .mat-form-field-invalid .mat-mdc-form-field-error {
+  color: var(--app-accent-alt-on-surface) !important;
+}
+
+.meal-editor-dialog .editor .mat-form-field-invalid .mdc-notched-outline__leading,
+.meal-editor-dialog .editor .mat-form-field-invalid .mdc-notched-outline__notch,
+.meal-editor-dialog .editor .mat-form-field-invalid .mdc-notched-outline__trailing {
+  border-color: var(--app-accent-alt-on-surface) !important;
 }

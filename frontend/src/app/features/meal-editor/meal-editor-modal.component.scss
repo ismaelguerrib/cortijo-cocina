@@ -18,8 +18,8 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  gap: var(--app-cluster-gap);
-  padding-block: var(--app-page-gutter-block-start) var(--app-space-md);
+  gap: var(--app-space-xl);
+  padding-block: var(--app-page-gutter-block-start) var(--app-space-lg);
   padding-inline: var(--app-page-gutter-inline);
   margin-inline: calc(-1 * var(--app-page-gutter-inline));
   background: var(--app-surface-blue);
@@ -30,13 +30,14 @@
   align-items: stretch;
   flex-direction: column;
   justify-content: space-between;
-  gap: var(--app-cluster-gap);
+  gap: var(--app-space-xl);
   position: sticky;
   bottom: 0;
   z-index: 5;
   margin-inline: calc(-1 * var(--app-page-gutter-inline));
-  margin-top: var(--app-space-xs);
-  padding: var(--app-space-sm) var(--app-page-gutter-inline) calc(var(--app-space-sm) + env(safe-area-inset-bottom));
+  margin-top: var(--app-space-md);
+  padding: var(--app-space-md) var(--app-page-gutter-inline)
+    calc(var(--app-space-md) + env(safe-area-inset-bottom));
   background: var(--app-surface-blue);
   box-shadow: 0 -10px 24px rgba(var(--app-heading-color-rgb), 0.2);
 }
@@ -64,13 +65,40 @@
 
 .editor__form {
   display: grid;
-  gap: var(--app-space-md);
+  gap: var(--app-space-xl);
   align-content: start;
+}
+
+.editor__details {
+  display: grid;
+  gap: var(--app-space-lg);
+}
+
+.editor__field,
+.dish-form__field {
+  display: grid;
+  gap: var(--app-space-sm);
+  inline-size: 100%;
+  min-inline-size: 0;
+}
+
+.editor__field > mat-form-field,
+.dish-form__field > mat-form-field {
+  inline-size: 100%;
+}
+
+.editor__field-label,
+.dish-form__field-label {
+  color: var(--app-text-inverse);
+  font-family: var(--app-ui-font);
+  font-size: var(--app-font-label);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
 .dish-form {
   display: grid;
-  gap: var(--app-space-md);
+  gap: var(--app-space-lg);
 }
 
 .editor__section-header {
@@ -78,7 +106,7 @@
   align-items: center;
   flex-direction: row;
   justify-content: space-between;
-  gap: var(--app-cluster-gap);
+  gap: var(--app-space-xl);
 }
 
 .editor__section-header p,
@@ -100,7 +128,7 @@
 }
 
 .dish-form {
-  padding: var(--app-card-padding);
+  padding: var(--app-panel-padding);
   border: 1.5px solid rgba(var(--app-accent-alt-on-surface-rgb), 0.5);
   background: rgba(var(--app-accent-color-rgb), 0.55);
   box-shadow: var(--app-shadow-card);
@@ -121,7 +149,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--app-cluster-gap);
+  gap: var(--app-space-xl);
 }
 
 .dish-form__toggle {
@@ -129,7 +157,7 @@
   flex: 1 1 auto;
   min-width: 0;
   align-items: flex-start;
-  gap: var(--app-space-sm);
+  gap: var(--app-space-md);
   min-height: 44px;
   padding: var(--app-space-2xs) 0;
   border: 0;
@@ -157,7 +185,7 @@
 
 .dish-form__summary {
   display: grid;
-  gap: var(--app-space-3xs);
+  gap: var(--app-space-xs);
   min-width: 0;
 }
 
@@ -180,19 +208,19 @@
 
 .dish-form__panel {
   display: grid;
-  gap: var(--app-space-md);
+  gap: var(--app-space-lg);
 }
 
 .votes-field {
   display: grid;
-  gap: var(--app-space-sm);
+  gap: var(--app-space-lg);
 }
 
 .votes-field__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--app-cluster-gap);
+  gap: var(--app-space-xl);
 }
 
 .votes-field__label {
@@ -215,17 +243,17 @@
 .votes-field__list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--app-space-sm);
+  gap: var(--app-space-md);
 }
 
 .votes-field__item {
   display: flex;
   align-items: center;
-  gap: var(--app-space-2xs);
+  gap: var(--app-space-xs);
   min-block-size: 44px;
   background: rgba(var(--app-accent-alt-on-surface-rgb), 0.16);
   border: 1px solid rgba(var(--app-accent-alt-on-surface-rgb), 0.4);
-  padding: var(--app-space-2xs) var(--app-space-xs);
+  padding: var(--app-space-xs) var(--app-space-sm);
 }
 
 .votes-field__input {
@@ -262,7 +290,7 @@
 
 .photos-field {
   display: grid;
-  gap: var(--app-space-sm);
+  gap: var(--app-space-lg);
 }
 
 .photos-field__label {
@@ -279,13 +307,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--app-space-sm) var(--app-space-md);
+  padding: var(--app-space-md) var(--app-space-lg);
   border: 1.5px dashed rgba(var(--app-accent-alt-on-surface-rgb), 0.5);
   color: var(--app-text-inverse);
   cursor: pointer;
   font-family: var(--app-ui-font);
   font-size: var(--app-font-body);
-  gap: var(--app-space-xs);
+  gap: var(--app-space-sm);
 
   input[type="file"] {
     display: none;
@@ -300,7 +328,7 @@
 .photos-field__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--app-space-xs);
+  gap: var(--app-space-sm);
 }
 
 .photos-field__thumb {
@@ -330,7 +358,7 @@
 
 .editor__error {
   margin: 0;
-  padding: var(--app-card-padding-compact) var(--app-panel-padding);
+  padding: var(--app-panel-padding);
   color: var(--app-text-inverse);
   background: rgba(var(--app-accent-color-rgb), 0.92);
   border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--app-accent-alt-on-surface-rgb), 0.38);
@@ -362,5 +390,22 @@
 @media (min-width: size.$bp-md) {
   .editor__header h2 {
     font-size: var(--app-font-title-md);
+  }
+
+  .editor__details {
+    grid-template-columns:
+      minmax(calc(var(--app-size-unit) * 22), 0.7fr)
+      minmax(0, 1.3fr);
+    align-items: start;
+  }
+
+  .dish-form__panel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dish-form__field--recipe,
+  .photos-field,
+  .votes-field {
+    grid-column: 1 / -1;
   }
 }
