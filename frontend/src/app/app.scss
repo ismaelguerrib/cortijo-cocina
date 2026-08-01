@@ -33,7 +33,8 @@
   position: relative;
   z-index: 1;
   min-height: var(--app-shell-min-block);
-  padding-bottom: calc(76px + env(safe-area-inset-bottom));
+  /* Bottom-nav space is reserved by each page (the scrolling content), not
+     here, to avoid double reservation. */
 }
 
 .app-shell__header {
@@ -90,7 +91,7 @@
   position: fixed;
   z-index: 20;
   right: var(--app-page-gutter-inline);
-  bottom: max(var(--app-space-sm), env(safe-area-inset-bottom));
+  bottom: var(--app-bottom-nav-inset);
   left: var(--app-page-gutter-inline);
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

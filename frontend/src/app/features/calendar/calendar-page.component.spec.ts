@@ -64,9 +64,23 @@ describe('CalendarPageComponent', () => {
     document.body.innerHTML = '';
   });
 
+  // The mobile-first default is the "2 jours" (pairs) view; switch to the
+  // month grid explicitly for grid-specific assertions.
+  const switchToMonthGrid = (): void => {
+    const toggleButtons = fixture.debugElement.queryAll(By.css('.hero__view-switch button'));
+    toggleButtons[0].nativeElement.click();
+    fixture.detectChanges();
+  };
+
   it('renders the 31 days of August 2026', () => {
+    switchToMonthGrid();
     const dayCells = fixture.debugElement.queryAll(By.css('[data-testid="day-cell"]'));
     expect(dayCells).toHaveLength(31);
+  });
+
+  it('defaults to the two-days-per-row layout on small screens', () => {
+    const pairDays = fixture.debugElement.queryAll(By.css('[data-testid^="pair-day-"]'));
+    expect(pairDays).toHaveLength(31);
   });
 
   it('can switch to the two-days-per-row layout', async () => {
@@ -82,6 +96,7 @@ describe('CalendarPageComponent', () => {
   });
 
   it('opens the day detail sheet and shows multiple assignees', async () => {
+    switchToMonthGrid();
     const dayCells = fixture.debugElement.queryAll(By.css('[data-testid="day-cell"]'));
 
     dayCells[14].nativeElement.click();
@@ -94,6 +109,7 @@ describe('CalendarPageComponent', () => {
   });
 
   it('opens the editor modal from a detail sheet action', async () => {
+    switchToMonthGrid();
     const dayCells = fixture.debugElement.queryAll(By.css('[data-testid="day-cell"]'));
 
     dayCells[14].nativeElement.click();

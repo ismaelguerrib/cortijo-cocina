@@ -57,6 +57,17 @@ $bp-lg: 64rem;
   --app-gallery-tile-min-inline: calc(var(--app-size-unit) * 14.2);
   --app-button-inline-padding: var(--app-space-xl);
   --app-button-block-padding: var(--app-space-sm);
+
+  /*
+   * Fixed bottom navigation (mobile). `block-size` is the bar's intrinsic
+   * height (48px tap target + its own padding); `inset` is its offset from the
+   * screen bottom, honoring the safe area. Pages reserve
+   * `block-size + inset` (plus their normal bottom gutter) so content can
+   * always scroll clear of the bar. Single source of truth replacing the old
+   * hard-coded 72px/76px compensations.
+   */
+  --app-bottom-nav-block-size: calc(48px + (var(--app-space-2xs) * 2));
+  --app-bottom-nav-inset: max(var(--app-space-sm), env(safe-area-inset-bottom));
   --app-lift-distance: calc(var(--app-size-unit) * 0.24);
   --app-underline-thickness: calc(var(--app-size-unit) * 0.24);
   --app-blur-strong: calc(var(--app-size-unit) * 1.7);

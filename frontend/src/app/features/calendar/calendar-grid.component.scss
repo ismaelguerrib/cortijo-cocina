@@ -9,7 +9,7 @@
   display: grid;
   gap: 0;
   overflow: hidden;
-  width: calc(100vw - (var(--app-page-gutter-inline) * 2));
+  width: 100%;
   max-width: var(--app-inline-max);
   background: linear-gradient(
     90deg,

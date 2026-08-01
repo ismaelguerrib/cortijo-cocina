@@ -5,7 +5,10 @@
   padding:
     var(--app-page-gutter-block-start)
     var(--app-page-gutter-inline)
-    calc(var(--app-page-gutter-block-end) + 72px + env(safe-area-inset-bottom));
+    calc(
+      var(--app-page-gutter-block-end) + var(--app-bottom-nav-block-size) +
+        var(--app-bottom-nav-inset)
+    );
 }
 
 .recipes-hero,

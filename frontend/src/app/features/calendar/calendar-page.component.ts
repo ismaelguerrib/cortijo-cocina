@@ -43,7 +43,10 @@ export class CalendarPageComponent implements OnInit {
   readonly monthLabel = CALENDAR_MONTH_LABEL;
   readonly weekdayLabels = CALENDAR_WEEKDAY_LABELS;
   readonly days = computed(() => buildAugust2026CalendarDays(this.mealStore.mealsByDate()));
-  readonly layoutMode = signal<CalendarLayoutMode>('grid');
+  // Mobile-first default: the 7-column month grid is too cramped to tap on a
+  // phone, so start on the "2 jours" (pairs) view below $bp-md (48rem). The
+  // view switch remains available for users who want the month grid.
+  readonly layoutMode = signal<CalendarLayoutMode>(this.resolveInitialLayoutMode());
 
   readonly quotes = [
     `Il y a deux choses dont j'ai horreur sur cette terre : l'emmental à la place de la mozza sur une pizza et l'amateurisme !`,
@@ -71,6 +74,14 @@ export class CalendarPageComponent implements OnInit {
 
   setLayoutMode(mode: CalendarLayoutMode): void {
     this.layoutMode.set(mode);
+  }
+
+  private resolveInitialLayoutMode(): CalendarLayoutMode {
+    const isTabletUp =
+      typeof window !== 'undefined' &&
+      typeof window.matchMedia === 'function' &&
+      window.matchMedia('(min-width: 48rem)').matches;
+    return isTabletUp ? 'grid' : 'pairs';
   }
 
   openDayDetail(day: CalendarDay): void {
