@@ -128,7 +128,7 @@ export class MealEditorModalComponent {
   dishSummaryMeta(dishGroup: DishGroup): string {
     const names = dishGroup.controls.cookers.getRawValue().map((id) => FAMILY_MEMBER_LABELS[id]);
     const voteCount = dishGroup.controls.votes.length;
-    const parts = [names.length ? names.join(', ') : 'Aucun·e cuisinier·e'];
+    const parts = [names.length ? names.join(', ') : 'No Jefe'];
     if (voteCount > 0) {
       parts.push(`${voteCount} vote${voteCount > 1 ? 's' : ''}`);
     }
@@ -203,7 +203,7 @@ export class MealEditorModalComponent {
 
       this.dialogRef.close(true);
     } catch (error) {
-      this.errorMessage.set(error instanceof Error ? error.message : 'Une erreur est survenue.');
+      this.errorMessage.set(error instanceof Error ? error.message : 'Problemos con la solicitud.');
     } finally {
       this.saving.set(false);
     }
@@ -219,7 +219,7 @@ export class MealEditorModalComponent {
       await this.mealStore.deleteMeal(this.data.meal.id);
       this.dialogRef.close(true);
     } catch (error) {
-      this.errorMessage.set(error instanceof Error ? error.message : 'Une erreur est survenue.');
+      this.errorMessage.set(error instanceof Error ? error.message : 'Problemos con la solicitud.');
     } finally {
       this.saving.set(false);
     }
