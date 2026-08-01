@@ -20,6 +20,7 @@
 .env
 .env.*
 !/backend/.env.example
+!/backend/.env.production.example
 !/frontend/.env.example
 
 # Logs

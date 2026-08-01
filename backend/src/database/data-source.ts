@@ -1,4 +1,5 @@
 import 'reflect-metadata';
+import { join } from 'path';
 import { DataSource } from 'typeorm';
 import { MealAssignmentEntity } from '../meal-assignments/entities/meal-assignment.entity';
 import { RecipeEntity } from '../recipes/entities/recipe.entity';
@@ -23,5 +24,5 @@ export default new DataSource({
   password: process.env.DB_PASSWORD ?? 'postgres',
   database: process.env.DB_NAME ?? 'cortijo_cocina',
   entities: [MealAssignmentEntity, RecipeEntity, RecipeVoteEntity, RecipePhotoEntity, VacationEntity],
-  migrations: ['src/database/migrations/*.ts']
+  migrations: [join(__dirname, 'migrations/*{.ts,.js}')]
 });
