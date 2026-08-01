@@ -1,7 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { FAMILY_MEMBER_LABELS } from '../../core/constants/family-members';
 import { CalendarDayCellComponent, MealSelection } from './calendar-day-cell.component';
-import { CalendarDay, CalendarPairRow, buildCalendarGridCells, buildCalendarPairRows } from './calendar.models';
+import {
+  CalendarDay,
+  CalendarPairRow,
+  buildCalendarGridCells,
+  buildCalendarPairRows,
+} from './calendar.models';
 
 export type CalendarLayoutMode = 'grid' | 'pairs';
 
@@ -10,7 +15,7 @@ export type CalendarLayoutMode = 'grid' | 'pairs';
   imports: [CalendarDayCellComponent],
   templateUrl: './calendar-grid.component.html',
   styleUrl: './calendar-grid.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CalendarGridComponent {
   readonly days = input.required<CalendarDay[]>();
@@ -47,7 +52,7 @@ export class CalendarGridComponent {
 
   mealSummary(day: CalendarDay): string {
     if (!day.meal) {
-      return 'Touchez pour ajouter un repas';
+      return 'Ajouter un repas';
     }
 
     return `${day.meal.dishes.length} plat${day.meal.dishes.length > 1 ? 's' : ''}`;
