@@ -52,7 +52,7 @@ export class CalendarGridComponent {
 
   mealSummary(day: CalendarDay): string {
     if (!day.meal) {
-      return 'Ajouter un repas';
+      return '';
     }
 
     return `${day.meal.dishes.length} plat${day.meal.dishes.length > 1 ? 's' : ''}`;
