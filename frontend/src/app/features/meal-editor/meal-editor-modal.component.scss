@@ -35,6 +35,7 @@
   bottom: 0;
   z-index: 5;
   margin-inline: calc(-1 * var(--app-page-gutter-inline));
+  margin-top: var(--app-space-xs);
   padding: var(--app-space-sm) var(--app-page-gutter-inline) calc(var(--app-space-sm) + env(safe-area-inset-bottom));
   background: var(--app-surface-blue);
   box-shadow: 0 -10px 24px rgba(var(--app-heading-color-rgb), 0.2);
@@ -67,14 +68,12 @@
   align-content: start;
 }
 
-.editor__dishes,
 .dish-form {
   display: grid;
   gap: var(--app-space-md);
 }
 
-.editor__section-header,
-.dish-form__bar {
+.editor__section-header {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -83,8 +82,7 @@
 }
 
 .editor__section-header p,
-.editor__section-header h3,
-.dish-form__header h4 {
+.editor__section-header h3 {
   margin: 0;
 }
 
@@ -97,8 +95,7 @@
   font-size: var(--app-font-caption);
 }
 
-.editor__section-header h3,
-.dish-form__header h4 {
+.editor__section-header h3 {
   color: var(--app-heading-color);
 }
 
@@ -121,7 +118,10 @@
 }
 
 .dish-form__bar {
+  display: flex;
   align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--app-cluster-gap);
 }
 
 .dish-form__toggle {
@@ -336,10 +336,6 @@
   border: calc(var(--app-size-unit) * 0.12) solid rgba(var(--app-accent-alt-on-surface-rgb), 0.38);
 }
 
-.editor__actions {
-  margin-top: var(--app-space-xs);
-}
-
 .editor__actions .app-link-button:last-child {
   justify-content: center;
   min-height: 52px;
@@ -359,26 +355,9 @@
   color: var(--app-accent-alt-on-surface);
 }
 
-:host ::ng-deep .editor .mat-mdc-text-field-wrapper {
-  background: rgba(var(--app-accent-color-rgb), 0.92) !important;
-}
-
-:host ::ng-deep .editor .mdc-notched-outline__leading,
-:host ::ng-deep .editor .mdc-notched-outline__notch,
-:host ::ng-deep .editor .mdc-notched-outline__trailing {
-  border-color: rgba(var(--app-accent-alt-on-surface-rgb), 0.44) !important;
-}
-
-:host ::ng-deep .editor .mdc-floating-label,
-:host ::ng-deep .editor input,
-:host ::ng-deep .editor textarea,
-:host ::ng-deep .editor .mat-mdc-select-value,
-:host ::ng-deep .editor .mat-mdc-select-arrow,
-:host ::ng-deep .editor .mat-mdc-form-field-hint,
-:host ::ng-deep .editor .mat-mdc-form-field-error,
-:host ::ng-deep .editor .mat-mdc-form-field-required-marker {
-  color: var(--app-text-inverse) !important;
-}
+/* Material field theming for this dialog lives in styles/_material.scss (global
+   scope, alongside the other Material overrides) so it stays out of this
+   component's style budget. */
 
 @media (min-width: size.$bp-md) {
   .editor__header h2 {

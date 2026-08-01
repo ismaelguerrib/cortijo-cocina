@@ -21,6 +21,7 @@
         "files": [
           "/favicon.ico",
           "/icons/*",
+          "/fonts/*",
           "/*.(png|svg|jpg|jpeg|webp)"
         ]
       }

@@ -92,7 +92,9 @@ describe('CalendarPageComponent', () => {
 
     const pairDays = fixture.debugElement.queryAll(By.css('[data-testid^="pair-day-"]'));
     expect(pairDays).toHaveLength(31);
-    expect(fixture.nativeElement.textContent).toContain('Touchez pour ajouter un repas');
+    // Assert on data-driven content (cookers of the seeded meal) rather than
+    // UI copy, which is intentionally personalized and changes over time.
+    expect(fixture.nativeElement.textContent).toContain('Amel, Zakaria, Iman');
   });
 
   it('opens the day detail sheet and shows multiple assignees', async () => {
@@ -122,6 +124,8 @@ describe('CalendarPageComponent', () => {
     fixture.detectChanges();
     await fixture.whenStable();
 
-    expect(document.body.textContent).toContain('Modifier un repas');
+    // Assert the editor opened structurally (component present) rather than on
+    // UI copy, which is intentionally personalized.
+    expect(document.body.querySelector('app-meal-editor-modal')).toBeTruthy();
   });
 });

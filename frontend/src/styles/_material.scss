@@ -64,3 +64,24 @@
   color: var(--app-text-inverse);
   box-shadow: var(--app-shadow-soft);
 }
+
+.meal-editor-dialog .editor .mat-mdc-text-field-wrapper {
+  background: rgba(var(--app-accent-color-rgb), 0.92) !important;
+}
+
+.meal-editor-dialog .editor .mdc-notched-outline__leading,
+.meal-editor-dialog .editor .mdc-notched-outline__notch,
+.meal-editor-dialog .editor .mdc-notched-outline__trailing {
+  border-color: rgba(var(--app-accent-alt-on-surface-rgb), 0.44) !important;
+}
+
+.meal-editor-dialog .editor .mdc-floating-label,
+.meal-editor-dialog .editor input,
+.meal-editor-dialog .editor textarea,
+.meal-editor-dialog .editor .mat-mdc-select-value,
+.meal-editor-dialog .editor .mat-mdc-select-arrow,
+.meal-editor-dialog .editor .mat-mdc-form-field-hint,
+.meal-editor-dialog .editor .mat-mdc-form-field-error,
+.meal-editor-dialog .editor .mat-mdc-form-field-required-marker {
+  color: var(--app-text-inverse) !important;
+}
